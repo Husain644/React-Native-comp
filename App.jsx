@@ -5,7 +5,8 @@ import React from 'react'
 const App = () => {
   return (
     <SafeAreaView>
-      <Home/>
+      {/* <Home/> */}
+      <Text style={{flex:1}}>Hello123</Text>
     </SafeAreaView>
   )
 }
