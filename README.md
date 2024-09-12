@@ -1,14 +1,82 @@
-This project related to react native components 
+React native Top Library 
 [
-  Is project me recat native ke component bnaye he 
-  Is project ko learning perpose se design kiya he to isliye isme sbhi components ko
-  alag alag folder me rakha he jisse unka programming logic seperate rahe
+   React Native Navigation,
+   React Redux,
+   React Native Vector Icons,
+
 ]
+============================================================================
+Features made in this project
+[
+  camera features,√√√√√
+  Google map features with all map features location access 
+  payment gateway systems, √√√√√
 
-These are all Component
+]
+============================================================================
+Commponents in this projects are included
+[
+  accordians,
+  animations,
+  autocomplete,
+  buttons,
+  checkbox,
+  infiniteList,
+  slider,
+  table,
+  assets,
+  camera,
+  drawer,
+  forms,
+  google_map,
+  navigation,
+  paymentsGateway,,
+  redux,
+  webview,
+  {
+    'UTILITY': {
+      'how to use environment variable'
+    }
+  }
+  {
+    'React native ui components library'
+    name ==>{unpackedsize,weekly Downloads}
+
+    Lottie for React Native======>{292kb, 327324} //For animations only
+    React Native Paper===========>{3.84mb,218247}
+    React Native Elements========>{350kB, 110851}
+    Nativebase,==================>{8.3mb, 64409}
+    @ui-kitten/components========>{1.47mb,7311}
+    Galio========================>{236kd, 658}
+    Nachos UI====================>{818kb, 29}
+    React Native Material UI Kit=>{221kb, 173}
+    Shoutem UI===================>{1.9mb, 2773}
+    Ignite=======================>{2.17MB,3905}
+  }
+]
+============================================================================
+============================================================================
+Project Made in react native
 {
-   1.Google Maps
-   2.Forms
-   3.React Native Navigation
-
+  taxi app 
+  ecommerce app
 }
+
+
+{
+Top library By 'https://www.antino.com/blog/react-native-libraries'
+React Native Elements
+Native Base
+Lottie for React Native
+React Native Navigation
+React Native Camera
+Ignite CLI
+React Native Maps
+Gifted Chat
+React Native Snap Carousel
+Teaset
+}
+
+
+
+

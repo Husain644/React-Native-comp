@@ -1,21 +1,36 @@
-import { StyleSheet} from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Map from './google_Map/Map'
-import Form from './forms/forms'
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+// import DrawerHome from './drawer/drawer'
+//import HomeNav from './navigation/home'
+// import MyDrawer from './drawer/myDrawer/mydrawer'
+// import HomeCamera from './camera/home'
+// import HomeWeb from './webview/home'
+// import Gallery from './camera/gallery/gallery'
+// import HomeA from './AA_Components/home'
+// import Map from './google_Map/Map'
+import HomeMap from './google_Map/map_home'
+// import MapComp from './google_Map/Map'
+// import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
+//import Cashfree from './paymentGateway/razorpay/cashfree'
+import PaperHome from './paper/paper_home'
+
 
 const Home = () => {
-  const Stack = createNativeStackNavigator();
   return (
     <>
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Map" component={<Map/>}  options={{headerShown:false}}/>
-        <Stack.Screen name="Forms" component={<Form/>}  options={{headerShown:false}}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-     
+      {/* <Text style={{flex:1,width:'100%',textAlign:'center',fontSize:25,backgroundColor:''}}>hello </Text> */}
+      {/* <DrawerHome /> */}
+      {/* <HomeNav /> */}
+      {/* <MyDrawer/> */}
+      {/* <HomeCamera/> */}
+      {/* <HomeWeb/> */}
+      {/* <Gallery/> */}
+      {/* <HomeA/> */}
+      <HomeMap/>
+      {/* <MapComp/> */}
+      {/* <RazorPayHome/> */}
+      {/* <Cashfree/> */}
+      {/* <PaperHome/> */}
     </>
   )
 }

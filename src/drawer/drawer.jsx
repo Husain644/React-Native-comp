@@ -1,32 +1,38 @@
-// first install these dependency 
-// npm install @react-navigation/drawer  react-native-gesture-handler react-native-reanimated
-
-// Add Reanimated's babel plugin
-// Add react-native-reanimated/plugin plugin to your babel.config.js.
-// module.exports = {
-//     presets: [
-//       ... // don't add it here :)
-//     ],
-// add this line 
-//     plugins: ['react-native-reanimated/plugin'],
-
-//   };
-// run command 
-// npm start -- --reset-cache
-
-import { StyleSheet, Text, View } from 'react-native'
+import {View,Button} from 'react-native'
 import React from 'react'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import DrawerLink from './items';
 
-
-const Drawer = () => {
+function HomeScreen({ navigation }) {
   return (
-    <View>
-      <Text>Drawer..........</Text>
-
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button
+        onPress={() => navigation.navigate('Notifications')}
+        title="Go to notifications"
+      />
     </View>
-  )
+  );
 }
 
-export default Drawer
+function NotificationsScreen({ navigation }) {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center',gap:10 }}>
+      <Button onPress={() => navigation.goBack()} title="Go back home" />
+      <Button  onPress={() =>{navigation.openDrawer();} } title="open Drawer" />
+      <Button  onPress={() =>{navigation.closeDrawer();} } title="close Drawer" />
+    </View>
+  );
+}
+const Drawer = createDrawerNavigator();
 
-const styles = StyleSheet.create({})
+export default function DrawerHome() {
+  return (
+    <NavigationContainer >
+      <Drawer.Navigator initialRouteName="Home" drawerContent={(props) => <DrawerLink {...props} />}>
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="Notifications" component={NotificationsScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}

@@ -1,0 +1,20 @@
+first install these dependency 
+npm install @react-navigation/drawer  react-native-gesture-handler react-native-reanimated
+
+Add Reanimated's babel plugin
+Add react-native-reanimated/plugin plugin to your babel.config.js.
+module.exports = {
+    presets: [
+      ... // don't add it here :
+    ],
+add this line 
+    plugins: ['react-native-reanimated/plugin'],
+
+  };
+run command 
+npm start -- --reset-cache
+
+
+the main diffrence between Stack Navigation and drawer navigation is 
+in Stack Navigation const Stack = createNativeStackNavigator()
+and in Drawer navigation const Drawer = createDrawerNavigator();
