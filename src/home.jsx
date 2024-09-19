@@ -8,7 +8,7 @@ import React from 'react'
 // import Gallery from './camera/gallery/gallery'
 // import HomeA from './AA_Components/home'
 // import Map from './google_Map/Map'
-import HomeMap from './google_Map/map_home'
+//import HomeMap from './google_Map/map_home'
 // import MapComp from './google_Map/Map'
 // import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 //import Cashfree from './paymentGateway/razorpay/cashfree'
@@ -26,11 +26,11 @@ const Home = () => {
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
       {/* <HomeA/> */}
-      <HomeMap/>
+      {/* <HomeMap/> */}
       {/* <MapComp/> */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
-      {/* <PaperHome/> */}
+      <PaperHome/>
     </>
   )
 }

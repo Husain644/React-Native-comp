@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
+import Buttons from './components/buttons';
 
 
 const PaperHome = () => {
@@ -22,6 +23,7 @@ const PaperHome = () => {
     <PaperProvider theme={theme}>
       <Text style={{ backgroundColor: theme.colors.error,
         color:theme.colors.secondary,fontSize:theme.textSize.mediam }}>PaperHome</Text>
+        <Buttons/>
     </PaperProvider>
   )
 }
