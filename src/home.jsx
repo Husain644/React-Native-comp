@@ -1,18 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-// import DrawerHome from './drawer/drawer'
-//import HomeNav from './navigation/home'
-// import MyDrawer from './drawer/myDrawer/mydrawer'
-// import HomeCamera from './camera/home'
-// import HomeWeb from './webview/home'
-// import Gallery from './camera/gallery/gallery'
-// import HomeA from './AA_Components/home'
-// import Map from './google_Map/Map'
-//import HomeMap from './google_Map/map_home'
-// import MapComp from './google_Map/Map'
-// import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
-//import Cashfree from './paymentGateway/razorpay/cashfree'
+import DrawerHome from './drawer/drawer'
+import HomeNav from './navigation/home'
+import MyDrawer from './drawer/myDrawer/mydrawer'
+import HomeCamera from './camera/home'
+import HomeWeb from './webview/home'
+import Gallery from './camera/gallery/gallery'                                                
+import HomeA from './AA_Components/home'
+import Map from './google_Map/Map'
+import HomeMap from './google_Map/map_home'
+import MapComp from './google_Map/Map'
+import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
+import Cashfree from './paymentGateway/razorpay/cashfree'
 import PaperHome from './paper/paper_home'
+import Redux_app from './redux/redux_app'
 
 
 const Home = () => {
@@ -27,10 +28,11 @@ const Home = () => {
       {/* <Gallery/> */}
       {/* <HomeA/> */}
       {/* <HomeMap/> */}
-      {/* <MapComp/> */}
+      <MapComp/>
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
-      <PaperHome/>
+      {/* <PaperHome/> */}
+      {/* <Redux_app/> */}
     </>
   )
 }
