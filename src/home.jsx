@@ -12,8 +12,8 @@ import HomeMap from './google_Map/map_home'
 import MapComp from './google_Map/Map'
 import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 import Cashfree from './paymentGateway/razorpay/cashfree'
-import PaperHome from './paper/paper_home'
 import Redux_app from './redux/redux_app'
+import Share_It from './Fetures/share_Features'
 
 
 const Home = () => {
@@ -26,13 +26,13 @@ const Home = () => {
       {/* <HomeCamera/> */}
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
-      {/* <HomeA/> */}
+      <HomeA/>
       {/* <HomeMap/> */}
-      <MapComp/>
+      {/* <MapComp/> */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
-      {/* <PaperHome/> */}
       {/* <Redux_app/> */}
+      {/* <Share_It/> */}
     </>
   )
 }

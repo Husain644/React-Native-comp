@@ -24,12 +24,14 @@ function NotificationsScreen({ navigation }) {
     </View>
   );
 }
-const Drawer = createDrawerNavigator();
+
 
 export default function DrawerHome() {
+  const Drawer = createDrawerNavigator();
+
   return (
     <NavigationContainer >
-      <Drawer.Navigator initialRouteName="Home" drawerContent={(props) => <DrawerLink {...props} />}>
+      <Drawer.Navigator initialRouteName="Home" drawerContent={() => <DrawerLink/>} >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Notifications" component={NotificationsScreen} />
       </Drawer.Navigator>

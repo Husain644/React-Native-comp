@@ -10,7 +10,7 @@ const CompA = ({navigation}) => {
 // }
   return (
     <View style={{flex:1,alignItems:'center',justifyContent:'center',position:'relative'}}>
-         <Menu/>
+         <Menu showNav={false}/>
     <Text style={{width:'100%',backgroundColor:'#fff',color:'red',textAlign:'center',fontSize:20}}>
          This is CompA
     </Text>

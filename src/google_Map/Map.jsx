@@ -6,9 +6,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import FantIcon from 'react-native-vector-icons/Fontisto';
 import GooglePlacesInput from './place_find'
 import MapViewDirections from 'react-native-maps-directions';
+import Geolocation from '@react-native-community/geolocation';
 import {Google_map_api_key} from "react-native-dotenv"
-import { getDistance,getPreciseDistance,getPathLength,getDistanceFromLine } from 'geolib';
-import { calculateDistance } from './map_utility';
+
+
+
+
 
 
 
@@ -16,7 +19,7 @@ const MapComp = () => {
   const mapRef=useRef(null)  //
 
   const moveToLocation=async(latitude,longitude)=>{
-    console.log(latitude,longitude) 
+    // console.log(latitude,longitude) 
     mapRef.current.animateToRegion({
       latitude,
       longitude,
@@ -31,12 +34,26 @@ const MapComp = () => {
     latitudeDelta: 0.0800,
     longitudeDelta: 0.0421,
   }
+  const getLocation=()=>{
+    Geolocation.getCurrentPosition(async (position) => {
+      setCord({
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        latitudeDelta: 0.0800,
+        longitudeDelta: 0.0421,
+      });
+      moveToLocation(position.coords.latitude, position.coords.longitude)
+    },
+    (error) => {
+      console.log(error.message);
+    },
+    { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 });
+  }
   const origin = {latitude: 28.192762, longitude: 76.623940};
   const destination = {latitude: 26.9124336, longitude:75.7872709};
-
   const [rigion, setRigion] = useState(currentLocation)
   const [cord,setCord]=useState({latitude: 28.192762, longitude: 76.623940})
-
+  
 
   const getRegion = (r) => {
     setRigion(r)
@@ -61,7 +78,7 @@ const MapComp = () => {
           strokeWidth={3}
           strokeColor="hotpink"
           onReady={calculateDistance}
-          onStart={(e)=>{console.log(e)}}
+          // onStart={(e)=>{console.log(e)}}
           />
         <Marker  draggable
         coordinate={cord} 
@@ -75,7 +92,7 @@ const MapComp = () => {
       </MapView>
       <FantIcon onPress={() =>moveToLocation(currentLocation.latitude,currentLocation.longitude)} name={"compass-alt"} size={50} color="gray"
         style={{ position: 'absolute', bottom: 20, right: 20 }} />
-      <FantIcon onPress={() =>{}} name={"compass-alt"} size={50} color="gray"
+      <FantIcon onPress={getLocation} name={"compass-alt"} size={50} color="pink"
         style={{ position: 'absolute', bottom: 20, left: 20 }} />
     </View>
   )
