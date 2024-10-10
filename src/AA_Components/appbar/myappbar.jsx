@@ -7,7 +7,7 @@ import { SmallModal } from './utility';
 
 const MyappBar = () => {
   return (
-    <View style={{minHeight:Dimensions.get('window').height,paddingVertical:5}}>
+    <View style={{height:400,paddingVertical:5}}>
      <H6 txt='simple app bar'/>
       <View 
       style={{width:'100%',height:60,backgroundColor:'skyblue',alignItems:'center',justifyContent:'space-between',
@@ -35,7 +35,6 @@ const MyappBar = () => {
         <SmallModal />
         <Icon name="envelope-o" size={20} color="#000" style={{}} />
         </View>
-
       </View>
     </View>
   )

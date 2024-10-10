@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,Button } from 'react-native'
 import React from 'react'
 import * as Animatable from 'react-native-animatable';
-
+import Watch from './watch/watch';
 
 const Anim = () => {
   const [run,setRun]=React.useState(false)
@@ -130,6 +130,8 @@ iterationCount='infinite'
 > 
 <Text>&&</Text>
 </Animatable.View>
+
+<Watch />
     </View>
   )
 }

@@ -8,11 +8,7 @@ import GooglePlacesInput from './place_find'
 import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from '@react-native-community/geolocation';
 import {Google_map_api_key} from "react-native-dotenv"
-
-
-
-
-
+import Header from './header';
 
 
 const MapComp = () => {
@@ -63,7 +59,7 @@ const MapComp = () => {
   }
   return (
     <View style={{ flex: 1 }}>
-      <GooglePlacesInput moveTo={moveToLocation}/>
+     <Header/>
       <MapView style={{ flex: 1, zIndex: 0 }}
         initialRegion={rigion}
         onRegionChange={getRegion}

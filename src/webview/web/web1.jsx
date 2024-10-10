@@ -3,9 +3,9 @@ import React from 'react'
 import { WebView } from 'react-native-webview';
 
 const Web1 = () => {
-  //const url="https://reactnative.dev/"
+  const url="https://reactnative.dev/"
   return (
-    <WebView source={{ uri: '' }} style={{ flex: 1 }} />
+    <WebView source={{ uri: url }} style={{ flex: 1 }} />
   )
 }
 

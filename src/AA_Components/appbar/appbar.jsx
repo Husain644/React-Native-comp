@@ -4,6 +4,7 @@ import { Appbar } from 'react-native-paper';
 import MyappBar from './myappbar'
 import {H3,H5} from '../divider/heading';
 
+
 const AppbarComp = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const AppbarComp = () => {
         </Appbar.Header>
         <H5 txt="This is my app bar"/>
       <MyappBar/>
+  
     </>
   )
 }
