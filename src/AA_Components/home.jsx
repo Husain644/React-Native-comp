@@ -22,10 +22,10 @@ import FHome from './forms/fhome'
 const HomeA = () => {
   return (
  <>
-        {/* <Accordian/> */}
+        <Accordian/>
         {/* <Anim/> */}
         {/* <AutoComp/> */}
-        <Activity_Indicatr/>
+        {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
         {/* <Bar/> */}
         {/* <Divider/> */}

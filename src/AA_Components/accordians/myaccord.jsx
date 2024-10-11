@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Animated,TouchableOpacity } from 'react-native'
-import {React,useState} from 'react'
+import {React,useState,useRef} from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import { Shadow } from '../css/shadow';
 
 const Myaccord = () => {
    const data=[
@@ -10,29 +11,41 @@ const Myaccord = () => {
     ]
     const [itemIndex,setItemIndex]=useState(-1)
     const setter=(index)=>{
-        setItemIndex(index === itemIndex?-1:index)
-  
+        setItemIndex(index === itemIndex?-1:index);
+        Run()
     }
+    const fadeAnim = useRef(new Animated.Value(0)).current
+    const Run=()=>{
+        Animated.timing(fadeAnim, {
+            toValue: 1,
+            duration: 1000,
+            useNativeDriver:true
+        }).start()
+    }
+    // problem isthat animation work for all components
   return (
-    <View>
+    <View style={{padding:15,backgroundColor:'#ddeeda',borderRadius:20}}>
       <Text>Myaccord</Text>
        {data.map((item,index)=>{
         return(
-        <View  style={{marginTop:10,borderWidth:1}}  key={index}> 
+        <View  style={[{marginTop:10},Shadow.s1]}  key={index}> 
           <TouchableOpacity 
           onPress={()=>setter(index)} 
-          style={{fontSize:20,margin:10,display:'flex',flexDirection:'row',width:'90%',justifyContent:'space-between'}}>
+          style={{fontSize:20,flexDirection:'row',width:'100%',justifyContent:'space-between',padding:10,
+            alignItems:'center',borderRadius:8
+          }}>
             <Text>{item.name}</Text>
-            {itemIndex===index?<Icon name="chevron-up" size={20} color="#000"/>:
-            <Icon name="chevron-down" size={20} color="#000"/>}
-
+            {itemIndex===index?
+            <Icon name="angle-up" size={25} color="#000"/>:
+            <Icon name="angle-down" size={25} color="#000"/>}
             </TouchableOpacity>
-          {itemIndex===index&&<Text style={{fontSize:20,margin:10}}>{item.descriptions}</Text>}
-         </View>)})}
+          {itemIndex===index && 
+          <Animated.Text style={{fontSize:20,margin:10,opacity:fadeAnim}}>{item.descriptions}</Animated.Text>}
+         </View>)})} 
     </View>
   )
 }
+export default Myaccord;
+const styles = StyleSheet.create({
 
-export default Myaccord
-
-const styles = StyleSheet.create({})
+})
