@@ -16,13 +16,14 @@ import FabButton from './Buttons/fab_button'
 import Slider from './slider/slider'
 import TableHome from './table/tableHome'
 import FHome from './forms/fhome'
+import ChipComp from './chip/chip'
 
 
 
 const HomeA = () => {
   return (
- <>
-        <Accordian/>
+ <ScrollView>
+        {/* <Accordian/> */}
         {/* <Anim/> */}
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
@@ -38,7 +39,8 @@ const HomeA = () => {
         {/* <EditableList/> */}
         {/* <TableHome/> */}
         {/* <FHome/>   */}
- </>
+        <ChipComp/>
+ </ScrollView>
   )
 }
 

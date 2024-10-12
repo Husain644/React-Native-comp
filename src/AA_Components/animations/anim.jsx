@@ -80,10 +80,29 @@ const Anim = () => {
       rotate: '360deg'
     },
   };
+  const rack = {
+    from: {
+      rotate: '30deg',
+      left:'0%'
+    },
+    to: {
+      rotate: '360deg',
+      left:'100%'
+    },
+  };
+  const racktxt = {
+    from: {
+      left:'0%'
+    },
+    to: {
+      left:'100%'
+    },
+  };
+
 
   return (
     <View style={{ width: '100%', minHeight: 200, marginTop: 30, backgroundColor: 'lightgreen',paddingVertical:30}}>
-        <Text>This is animations from react-native-animatable library</Text>
+        <Text style={{fontSize:18,textAlign:'center',color:'#f7096e',fontWeight:'bold'}}>This is animations from react-native-animatable library</Text>
         <Button title={run?'stop animations':'start animations'} color={run?'#e84659':'#5a6de4'} 
         style={{padding:5}} onPress={setr} />
 
@@ -92,21 +111,21 @@ const Anim = () => {
           <Animatable.Text 
           onPress={()=>{animRunner(index)}}
           key={index}
-          style={{ marginTop:20, width: '90%',alignSelf:'center', fontSize: 20, textAlign: 'center',
+          style={{ marginTop:20, width: '90%',alignSelf:'center', fontSize: 20, textAlign: 'center',padding:5,borderRadius:5,
           backgroundColor:index%2==0? 'pink' :'white'}}
           animation={run||anim===index?items:cstm_Anm} 
-          duration={1000}
+          duration={2000}
           direction='alternate'
           easing='ease'
           iterationCount='infinite'
           delay={2000}
           >
-           {items} Animation
+           {index+1}. {items} Animation
         </Animatable.Text>
         )})
       }
 
-
+{/* Linear Travel Animations By Anymatable library */}
 <Animatable.Text
 style={{margin:10,padding:5,backgroundColor:'white',maxWidth:100}}
   animation={linear}
@@ -119,17 +138,42 @@ style={{margin:10,padding:5,backgroundColor:'white',maxWidth:100}}
   liniear travel
 </Animatable.Text>
 
+<View style={{position:'relative',height:70,marginBottom:50,backgroundColor:'#ddeeda'}}>
 <Animatable.View
-style={{backgroundColor:'#fff',width:50,height:50,margin:20,borderRadius:10,borderWidth:5,
-borderColor:'blue'}}
+style={{backgroundColor:'#faf49f',width:60,height:60,borderRadius:10,position:'absolute',top:0,left:30,
+borderWidth:5,justifyContent:'center',borderColor:'blue'}}
 animation={rotating}
-duration={2000}
+duration={3000}
 direction='normal'
 easing='linear'
 iterationCount='infinite'
 > 
-<Text>&&</Text>
 </Animatable.View>
+<Text style={{top:15,left:40,color:'red',fontSize:12,position:'absolute',fontWeight:'bold'}}>Rotating</Text>
+</View>
+
+{/* Rack and pinion gear movment animations  start*/}
+<View style={{position:'relative',height:70,marginBottom:50,backgroundColor:'#ddeeda'}}>
+<Animatable.View
+style={{backgroundColor:'#faf49f',width:60,height:60,borderRadius:15,position:'absolute',bottom:5,
+borderWidth:5,justifyContent:'center',borderColor:'blue'}}
+animation={rack}
+duration={5000}
+direction='alternate'
+easing='linear'
+iterationCount='infinite'
+> 
+</Animatable.View>
+<Animatable.Text
+animation={racktxt}
+duration={5000}
+direction='alternate'
+easing='linear'
+iterationCount='infinite'
+style={{top:15,left:45,color:'red',fontSize:12,position:'absolute',
+fontWeight:'bold'}}>Linear</Animatable.Text>
+</View>
+{/* Rack and pinion gear movment animations  End*/}
 
 <Watch />
     </View>

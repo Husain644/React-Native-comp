@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View,Animated, Button, } from 'react-native'
 import {React,useRef,useEffect, useState} from 'react'
+import ControlBar from './controlledProgress'
 
 const ProgressBar = () => {
     const pos=useRef(new Animated.Value(0)).current
@@ -12,14 +13,7 @@ const ProgressBar = () => {
         useNativeDriver: true,
       }).start()
   }
-  useEffect(()=>{
-    setInterval(()=>{
-        Prog();
-        setRun(
-          !run
-        )
-    },1000)
-},[])
+
      
 console.log('Running')
     
@@ -30,11 +24,13 @@ console.log('Running')
         marginVertical:20
        }}>
           <Animated.View 
-        style={{width:50,height:'100%',backgroundColor:'blue',transform:[{translateX:pos}]}}>
+        style={{width:50,height:'100%',backgroundColor:'blue'}}>
 
         </Animated.View>
        </View>
        <Button onPress={()=>{Prog()}} title="run"/>
+
+        <ControlBar/>
     </View>
   )
 }
