@@ -17,7 +17,8 @@ import Slider from './slider/slider'
 import TableHome from './table/tableHome'
 import FHome from './forms/fhome'
 import ChipComp from './chip/chip'
-
+import Modal from './modals/modal'
+import Form from '../forms/forms'
 
 
 const HomeA = () => {
@@ -39,7 +40,9 @@ const HomeA = () => {
         {/* <EditableList/> */}
         {/* <TableHome/> */}
         {/* <FHome/>   */}
-        <ChipComp/>
+        {/* <ChipComp/> */}
+        {/* <Modal/> */}
+        <Form/>
  </ScrollView>
   )
 }
