@@ -19,7 +19,7 @@ import FHome from './forms/fhome'
 import ChipComp from './chip/chip'
 import Modal from './modals/modal'
 import Form from '../forms/forms'
-
+import Menu from './menu/menu'
 
 const HomeA = () => {
   return (
@@ -42,11 +42,12 @@ const HomeA = () => {
         {/* <FHome/>   */}
         {/* <ChipComp/> */}
         {/* <Modal/> */}
-        <Form/>
+        {/* <Form/> */}
+         <Menu/>
  </ScrollView>
   )
 }
 
-export default HomeA
+export default HomeA;
 
 const styles = StyleSheet.create({})

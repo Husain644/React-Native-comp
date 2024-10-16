@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import axios from 'axios'
 
-const PlaceAutoComp = () => {
+
+const Sender = () => {
   return (
     <View>
-      <Text>PlaceAutoComp</Text>
+      <Text>Sender</Text>
     </View>
   )
 }
 
-export default PlaceAutoComp
+export default Sender
 
 const styles = StyleSheet.create({})

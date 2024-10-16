@@ -14,6 +14,8 @@ import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 import Cashfree from './paymentGateway/razorpay/cashfree'
 import Redux_app from './redux/redux_app'
 import Share_It from './Fetures/share_Features'
+import GooglePlacesInput2 from './google_Map/comp/placeAutocomp'
+import AutoComplete from './google_Map/comp/autoComplete/autoComplete'
 
 
 
@@ -27,13 +29,15 @@ const Home = () => {
       {/* <HomeCamera/> */}
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
-      <HomeA/>
-      {/* <HomeMap/> */}
+      {/* <HomeA/>  */}
+      {/* <HomeMap/>    */}
+      {/* <GooglePlacesInput2/> */}
       {/* <MapComp/> */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
       {/* <Redux_app/> */}
       {/* <Share_It/> */}
+      <AutoComplete/>
     </>
   )
 }

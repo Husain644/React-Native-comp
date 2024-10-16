@@ -4,7 +4,6 @@ import MapView, { Circle } from 'react-native-maps';
 import { Marker } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FantIcon from 'react-native-vector-icons/Fontisto';
-import GooglePlacesInput from './place_find'
 import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from '@react-native-community/geolocation';
 import {Google_map_api_key} from "react-native-dotenv"
