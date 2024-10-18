@@ -7,15 +7,13 @@ import HomeCamera from './camera/home'
 import HomeWeb from './webview/home'
 import Gallery from './camera/gallery/gallery'                                                
 import HomeA from './AA_Components/home'
-import Map from './google_Map/Map'
-import HomeMap from './google_Map/map_home'
-import MapComp from './google_Map/Map'
 import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 import Cashfree from './paymentGateway/razorpay/cashfree'
 import Redux_app from './redux/redux_app'
 import Share_It from './Fetures/share_Features'
-import GooglePlacesInput2 from './google_Map/comp/placeAutocomp'
+import GoogleMap from './google_Map/map_routing'
 import AutoComplete from './google_Map/comp/autoComplete/autoComplete'
+import Routes from './google_Map/comp/routes/routes'
 
 
 
@@ -30,14 +28,13 @@ const Home = () => {
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
       {/* <HomeA/>  */}
-      {/* <HomeMap/>    */}
-      {/* <GooglePlacesInput2/> */}
-      {/* <MapComp/> */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
       {/* <Redux_app/> */}
       {/* <Share_It/> */}
-      <AutoComplete/>
+      <GoogleMap/>
+      {/* <AutoComplete/> */}
+   
     </>
   )
 }

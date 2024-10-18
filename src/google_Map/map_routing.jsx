@@ -2,21 +2,22 @@ import React from 'react'
 import { View,Text,TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import MapComp from './Map';
-import Header from './header';
+import MapHome from './MapHome';
+import Header from './comp/header';
 import AutoComplete from './comp/autoComplete/autoComplete';
-
+import Routes from './comp/routes/routes';
 
 
 const Stack = createNativeStackNavigator()
 
-export default function HomeMap() {
+export default function GoogleMap() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Nav">
          <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
-         <Stack.Screen name="Map" component={MapComp}  options={{headerShown:false}}/>
+         <Stack.Screen name="Map" component={MapHome}  options={{headerShown:false}}/>
          <Stack.Screen name="AutoComplete" component={AutoComplete} options={{headerShown:false,title:'pick and drop'}}/>
+         <Stack.Screen name="Routes" component={Routes} options={{headerShown:true,title:'Routes'}}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

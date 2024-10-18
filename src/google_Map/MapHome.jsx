@@ -7,10 +7,10 @@ import FantIcon from 'react-native-vector-icons/Fontisto';
 import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from '@react-native-community/geolocation';
 import {Google_map_api_key} from "react-native-dotenv"
-import Header from './header';
+import Header from './comp/header';
 
 
-const MapComp = () => {
+const MapHome = () => {
   const mapRef=useRef(null)  //
 
   const moveToLocation=async(latitude,longitude)=>{
@@ -93,6 +93,6 @@ const MapComp = () => {
   )
 }
 
-export default MapComp;
+export default MapHome;
 
 const styles = StyleSheet.create({})
