@@ -9,7 +9,7 @@ import { useRoute } from '@react-navigation/native';
 
 
 export default function MapScreen() {
-  const route = useRoute();
+  const route = useRoute()
   const { pickLocation, dropLocation } = route.params;
   console.log([{'pick':pickLocation.lat}, {'drop':dropLocation.lat}]);
   const origin = { latitude:pickLocation.lat, longitude:pickLocation.lng };

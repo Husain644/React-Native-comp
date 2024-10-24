@@ -19,20 +19,19 @@ import Routes from './google_Map/comp/routes/routes'
 
 const Home = () => {
   return (
-    <>
-      {/* <Text style={{flex:1,width:'100%',textAlign:'center',fontSize:25,backgroundColor:''}}>hello </Text> */}
+    <>     
+      <HomeA/> 
       {/* <DrawerHome /> */}
       {/* <HomeNav /> */}
       {/* <MyDrawer/> */}
       {/* <HomeCamera/> */}
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
-      {/* <HomeA/>  */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
       {/* <Redux_app/> */}
       {/* <Share_It/> */}
-      <GoogleMap/>
+      {/* <GoogleMap/> */}
       {/* <AutoComplete/> */}
    
     </>

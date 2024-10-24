@@ -20,6 +20,8 @@ import ChipComp from './chip/chip'
 import Modal from './modals/modal'
 import Form from '../forms/forms'
 import Menu from './menu/menu'
+import Skelton from './skelton/skelton'
+
 
 const HomeA = () => {
   return (
@@ -38,12 +40,14 @@ const HomeA = () => {
         {/* <FabButton/> */}
         {/* <Slider/> */}
         {/* <EditableList/> */}
-        {/* <TableHome/> */}
+        <TableHome/>
         {/* <FHome/>   */}
         {/* <ChipComp/> */}
         {/* <Modal/> */}
         {/* <Form/> */}
-         <Menu/>
+         {/* <Menu/> */}
+         {/* <Skelton/> */}
+   
  </ScrollView>
   )
 }

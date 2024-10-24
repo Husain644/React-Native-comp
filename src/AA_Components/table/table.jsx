@@ -1,21 +1,15 @@
 import { StyleSheet, Text, View,TouchableOpacity, ScrollView } from "react-native";
 import React from "react";
 import { H6 } from "../divider/heading";
+import {Data} from './data'
+
+
 
 const Table = () => {
-  const Data = [
-    { name: "Husain", rol: 120, class: "10th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "Rehan", rol: 90, class: "12th",contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "Sumit", rol: 80, class: "11th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "Asif", rol: 50, class: "9th",contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "sakib", rol: 70, class: "8th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "Rohan", rol: 85, class: "10th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']}
-  ]
+
 
   return (
    <>
-
-
         <H6 txt="Table1" style={{backgroundColor:'red',color:'#fff'}}/>
        <View style={styles.container}>
         <View style={[styles.wrapper,styles.headerWrapper]}>
@@ -74,10 +68,6 @@ const Table = () => {
         );
       })}
     </View>
-
-
-
-
     <H6 txt="Table3" style={{backgroundColor:'#2fe81d',color:'blue'}}/>
     <ScrollView contentContainerStyle={[styles.container]}>
         <View style={[styles.wrapper,styles.headerWrapper,{backgroundColor:'#f34216'}]}>

@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View,Animated,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View,TouchableOpacity,Button } from 'react-native'
 import {React,useState,useRef} from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { Shadow } from '../css/shadow';
+import * as Animatable from 'react-native-animatable';
 
 const Myaccord = () => {
    const data=[
@@ -12,20 +13,12 @@ const Myaccord = () => {
     const [itemIndex,setItemIndex]=useState(-1)
     const setter=(index)=>{
         setItemIndex(index === itemIndex?-1:index);
-        Run()
     }
-    const fadeAnim = useRef(new Animated.Value(0)).current
-    const Run=()=>{
-        Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 1000,
-            useNativeDriver:true
-        }).start()
-    }
-    // problem isthat animation work for all components
+    const fadeAnim = {
+      from:{opacity:0,height:0   },
+      to:{   opacity:1, height:100, }}
   return (
     <View style={{padding:15,backgroundColor:'#ddeeda',borderRadius:20}}>
-      <Text>Myaccord</Text>
        {data.map((item,index)=>{
         return(
         <View  style={[{marginTop:10},Shadow.s1]}  key={index}> 
@@ -40,7 +33,9 @@ const Myaccord = () => {
             <Icon name="angle-down" size={25} color="#000"/>}
             </TouchableOpacity>
           {itemIndex===index && 
-          <Animated.Text style={{fontSize:20,margin:10,opacity:fadeAnim}}>{item.descriptions}</Animated.Text>}
+          <Animatable.Text 
+          animation={itemIndex===index?fadeAnim:null}
+          style={{fontSize:20,margin:10}}>{item.descriptions}</Animatable.Text>}
          </View>)})} 
     </View>
   )

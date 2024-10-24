@@ -5,8 +5,8 @@ import Myaccord from './myaccord';
 
 const Accordian = () => {
     const [expanded, setExpanded] = React.useState(true);
-
     const handlePress = () => setExpanded(!expanded);
+    
   return (
     <>
     <List.Section title="Paper Accordions" style={{borderWidth:1,backgroundColor:'#ffc',marginBottom:20}}>

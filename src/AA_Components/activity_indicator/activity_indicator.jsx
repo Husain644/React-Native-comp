@@ -15,7 +15,7 @@ const Activity_Indicatr = () => (
     <RnIndicator size="large" />
     <RnIndicator size="small" color="#0000ff" />
     <RnIndicator size="large" color="#00ff00" />
-      <ProgressBar />
+    <ProgressBar />
     </>
   
 );

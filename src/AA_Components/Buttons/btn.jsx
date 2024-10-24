@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View,TouchableOpacity,Button } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import RatingBtn from './rating';
+import RadioBtn from './radio_btn';
 
 const Btns = () => {
   return (
@@ -47,6 +49,8 @@ const Btns = () => {
        <Button style={{}} color="red"  title="simple btn" onPress={()=>{}}/>
        <Button style={{}} color="blue"  title="simple btn"/>
        <Button style={{}} color="#000" title="simple btn"/>
+       <RatingBtn/>
+       <RadioBtn/>
     </View>
   )
 }
