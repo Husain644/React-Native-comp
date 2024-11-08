@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
-import  Share  from 'react-native-share'
+import Share from 'react-native-share';
 import React from 'react'
 
 const Share_It = () => {
@@ -34,6 +34,6 @@ const onShare=async() => {
   )
 }
 
-export default Share_It
+export default Share_It;
 
 const styles = StyleSheet.create({})

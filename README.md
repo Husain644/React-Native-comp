@@ -78,5 +78,39 @@ Teaset
 }
 
 
+  "dependencies": {
+    "@react-native-camera-roll/camera-roll": "^7.8.1",
+    "@react-native-community/datetimepicker": "^8.2.0",
+    "@react-native-community/geolocation": "^3.2.1",
+    "@react-native-masked-view/masked-view": "^0.3.1",
+    "@react-navigation/drawer": "^6.6.15",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/native-stack": "^6.9.26",
+    "@react-navigation/stack": "^6.4.0",
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.7",
+    "react": "18.2.0",
+    "react-native": "0.74.2",
+    "react-native-animatable": "^1.4.0",
+    "react-native-cashfree-pg-sdk": "^2.1.12",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-debugger": "^1.1.0",
+    "react-native-dotenv": "^3.4.11",
+    "react-native-gesture-handler": "^2.19.0",
+    "react-native-google-places-autocomplete": "^2.5.6",
+    "react-native-maps": "^1.15.6",
+    "react-native-maps-directions": "^1.9.0",
+    "react-native-paper": "^5.12.3",
+    "react-native-razorpay": "^2.3.0",
+    "react-native-reanimated": "^3.16.1",
+    "react-native-safe-area-context": "^4.10.5",
+    "react-native-screens": "^3.32.0",
+    "react-native-share": "^11.0.3",
+    "react-native-vector-icons": "^10.1.0",
+    "react-native-vision-camera": "^4.3.2",
+    "react-native-webview": "^13.10.4",
+    "react-redux": "^9.1.2"
+  },
+
 
 

@@ -508,3 +508,45 @@ export const Data2=[{
     "number": 340,
     "email": "bcaskey2r@discovery.com"
   }]
+
+export const piaData=[
+  {title:"Visit friends and relatives",
+    persent:'33',
+    color:'#cade1d'
+  },
+  {title:"Personal Business",
+    persent:'14.6',
+    color:'#1d86de'
+  },
+  {title:"Work Related",
+    persent:'22.5',
+    color:'#2ede1d'
+  },
+  {title:"Other",
+    persent:'30',
+    color:'#de461d'
+  }
+]
+
+export const caroselData=[
+  { id:1,
+    img:"https://via.placeholder.com/320x150",
+    title:"Title 1",
+    text:"Lorem ipsum dolor sit amet, lectus felis faucibus ipsum, at condimentum neque justo vel neque."
+  },
+  {id:2,
+    img:"https://via.placeholder.com/320x150",
+    title:"Title 2",
+    text:"Lorem ipsum dolor sit , lectus felis faucibus ipsum, at condimentum neque justo vel neque."
+  },
+  {id:3,
+    img:"https://via.placeholder.com/320x150",
+    title:"Title 3",
+    text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit., lectus felis fauc"
+  }, {id:4,
+    img:"https://via.placeholder.com/320x150",
+    title:"Title 4",
+    text:"Lorem ipsum dolor sit amet, consectetur adipiscing elit., lectus felis fauc"
+  }
+
+  ]

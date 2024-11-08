@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,TextInput } from 'react-native'
 import {React,useState} from 'react'
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import FormData from './formData';
+import DateTime from './date&timepicker/datetime';
 
 const Forms = () => {
 
@@ -90,6 +91,9 @@ const Forms = () => {
       </View>
       {/* input6 end */}
 
+
+
+    <DateTime/>
     </View>
   )
 }

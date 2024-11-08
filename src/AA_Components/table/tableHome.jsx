@@ -3,13 +3,15 @@ import React from 'react'
 import Table from './table'
 import { H4 } from '../divider/heading'
 import Pagination from "./pagination/pagination";
+import Chart from './chart/chart';
 
 const TableHome = () => {
   return (
     <>
-      <H4 txt="Table Example"/>
-      <Table />
-      <Pagination />
+      <H4 txt="Data Showing facility"/>
+      {/* <Table />
+      <Pagination /> */}
+      <Chart />
     </>
   )
 }

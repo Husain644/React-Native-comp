@@ -10,10 +10,13 @@ import HomeA from './AA_Components/home'
 import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 import Cashfree from './paymentGateway/razorpay/cashfree'
 import Redux_app from './redux/redux_app'
-import Share_It from './Fetures/share_Features'
+//import Share_It from './Fetures/share_Features'
 import GoogleMap from './google_Map/map_routing'
 import AutoComplete from './google_Map/comp/autoComplete/autoComplete'
 import Routes from './google_Map/comp/routes/routes'
+import DateTime from './forms/date&timepicker/datetime'
+
+
 
 
 

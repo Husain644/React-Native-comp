@@ -4,6 +4,7 @@ import AutoComp from './autocomplete/autocomplete'
 import EditableList from './list/editable_list'
 import Accordian from './accordians/accord'
 import Anim from './animations/anim'
+import ReanimHome from './animations/reanimated/reanimHome'
 import Activity_Indicatr from './activity_indicator/activity_indicator'
 import AppbarComp from './appbar/appbar'
 import Divider from './divider/divider'
@@ -21,13 +22,17 @@ import Modal from './modals/modal'
 import Form from '../forms/forms'
 import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
+import BannerHome from './banner/banner/bannerHome'
+
 
 
 const HomeA = () => {
   return (
  <ScrollView>
+        {/* <BannerHome/> */}
         {/* <Accordian/> */}
         {/* <Anim/> */}
+        <ReanimHome/>
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
@@ -40,14 +45,14 @@ const HomeA = () => {
         {/* <FabButton/> */}
         {/* <Slider/> */}
         {/* <EditableList/> */}
-        <TableHome/>
+        {/* <TableHome/> */}
         {/* <FHome/>   */}
+        {/* <Form/> */}
         {/* <ChipComp/> */}
         {/* <Modal/> */}
-        {/* <Form/> */}
          {/* <Menu/> */}
          {/* <Skelton/> */}
-   
+      
  </ScrollView>
   )
 }
