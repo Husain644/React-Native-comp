@@ -15,7 +15,7 @@ import GoogleMap from './google_Map/map_routing'
 import AutoComplete from './google_Map/comp/autoComplete/autoComplete'
 import Routes from './google_Map/comp/routes/routes'
 import DateTime from './forms/date&timepicker/datetime'
-
+import FileComp from './Fetures/fileSystems/fileSystem'
 
 
 
@@ -23,7 +23,7 @@ import DateTime from './forms/date&timepicker/datetime'
 const Home = () => {
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
       {/* <HomeNav /> */}
       {/* <MyDrawer/> */}
@@ -36,7 +36,7 @@ const Home = () => {
       {/* <Share_It/> */}
       {/* <GoogleMap/> */}
       {/* <AutoComplete/> */}
-   
+      <FileComp/>
     </>
   )
 }

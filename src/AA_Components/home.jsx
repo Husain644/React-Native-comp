@@ -23,6 +23,7 @@ import Form from '../forms/forms'
 import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
 import BannerHome from './banner/banner/bannerHome'
+import Music from './animations/music/music'
 
 
 
@@ -52,7 +53,7 @@ const HomeA = () => {
         {/* <Modal/> */}
          {/* <Menu/> */}
          {/* <Skelton/> */}
-      
+          {/* <Music/> */}
  </ScrollView>
   )
 }
