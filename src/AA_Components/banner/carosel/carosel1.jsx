@@ -9,10 +9,10 @@ const Carosel1 = () => {
    
     const [pos,setPos]=useState(1)
 
-    const handleScroll=(e)=>{
-        //setPos(e.nativeEvent.contentOffset.x)
-    }
-
+    const handleScroll = (event) => {
+        const positionX = event.nativeEvent.contentOffset.x;
+        const positionY = event.nativeEvent.contentOffset.y;
+      };
     const scroll=()=>{
    
     }
@@ -33,7 +33,8 @@ const Carosel1 = () => {
                 {
                     caroselData.map((item, index) => {
                         return (
-                            <View key={item.id} style={[styles.wrapper, { width: windowWidth, }]}>
+                            <View key={item.id} 
+            style={[styles.wrapper, { width: windowWidth }]}>
                                 <Image style={styles.bannerImg} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ9P1sshM3VrUz_LAKHPh5CMX1tvGuLL6jzw&s' }} />
                                 <View style={styles.itmWrapper}>
                                     <View style={styles.titleWrapperLeft}>

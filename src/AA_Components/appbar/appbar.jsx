@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView } from 'react-native'
 import React from 'react'
 import { Appbar } from 'react-native-paper';
 import MyappBar from './myappbar'
@@ -17,7 +17,6 @@ const AppbarComp = () => {
         </Appbar.Header>
         <H5 txt="This is my app bar"/>
       <MyappBar/>
-  
     </>
   )
 }

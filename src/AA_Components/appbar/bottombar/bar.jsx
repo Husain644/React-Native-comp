@@ -11,6 +11,7 @@ const Bar = () => {
         {name:'file',icon:'folder-o'}]
   return (
     <View style={styles.bar}>
+        
         {data.map((item,index)=>{
             return(
                 <TouchableOpacity key={index} style={[styles.menu,activeMenu===index&& styles.active_menu]} onPress={()=>{handleMenu(index)}}>

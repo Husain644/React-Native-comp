@@ -4,7 +4,10 @@ export const Data = [
     { name: "Sumit", rol: 80, class: "11th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
     { name: "Asif", rol: 50, class: "9th",contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
     { name: "sakib", rol: 70, class: "8th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
-    { name: "Rohan", rol: 85, class: "10th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']}
+    { name: "Rohan", rol: 85, class: "10th" ,contact:'9198989898',subect:['hindi','english','math','science','commerce','social-scince']},
+    { name: "Tinu", rol: 55, class: "11th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
+    { name: "asraf", rol: 152, class: "12th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']},
+    { name: "komal", rol: 74, class: "9th" ,contact:'9198989898',subect:['hindi','english','math','science','biology','social-scince']}
   ]
 
 export const Data2=[{

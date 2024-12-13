@@ -17,30 +17,32 @@ const CustomInput = ({ placeholder = "search" }) => {
   return (
     <View style={{ marginBottom: 10 }}>
       <TextInput
+      inputMode="text"
+      autoCapitalize="sentences"
+      autoComplete="gender"
         style={{
-          paddingHorizontal: 10,
-          paddingVertical: 5,
+          padding: 5,
+          paddingRight:10,
           borderWidth: 1,
           borderColor: "#ccc",
           borderRadius: 8,
           backgroundColor: "#fff",
-          width: 200,
+          width: 20
         }}
         placeholder={placeholder}
         value={value}
-        onChangeText={onChangeText}
+        onChangeText={onChangeText} 
       />
       <Icon
         name="search"
         size={20}
         color="#ccc"
-        style={{ position: "absolute", top: 8, right: 10 }}
+        style={{ position: "absolute", top: 8, right: 10 }} 
       />
     </View>
   );
 };
 export default CustomInput;
-///////////////////////////////////////
 export const SmallModal = () => {
   const data = [
     { name: "New group", icon: "user-plus" },

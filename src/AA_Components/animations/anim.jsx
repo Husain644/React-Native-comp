@@ -118,8 +118,8 @@ const Anim = () => {
           direction='alternate'
           easing='ease'
           iterationCount='infinite'
-          delay={2000}
-          >
+          delay={2000}> 
+          
            {index+1}. {items} Animation
         </Animatable.Text>
         )})

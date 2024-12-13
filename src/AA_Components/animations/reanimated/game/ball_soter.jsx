@@ -10,19 +10,18 @@ import { GestureDetector, Gesture, PanGestureHandler, TapGestureHandler } from '
 import { transform } from '@babel/core';
 import ring1 from './game.mp3'
 
+const height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
 
 const BallSorter = () => {
-    const height = Dimensions.get('window').height;
-    const width = Dimensions.get('window').width;
-    const [sound, setSound] = useState(true)
+    const [sender,setSender]=useState({senderNum:0,getter:0});
+    const [sound, setSound] = useState(true);
+    
     
     const music=new Sound(ring1,Sound.MAIN_BUNDLE,(error)=>{
         if(error){console.log('failed to load the sound', error)}
-       
-    })
-    
-  
-        
+    })   
+
     return (
         <View style={[styles.container, { height: height, width: width }]}>
             <View style={{flexDirection:'row',justifyContent:'space-between',width:'80%',marginBottom:50,
@@ -31,18 +30,17 @@ const BallSorter = () => {
                 <View style={{}}><Text style={{fontSize:28}}>Score:100</Text></View>
                 <View style={{}}>
                     <View >
-                       { sound?<TouchableOpacity onPress={()=>{music.play();setSound(!sound)}}>
+                       <TouchableOpacity onPress={()=>{music.stop();setSound(!sound)}}>
                            <Icon style={{transform:[{rotate:"-110deg"}]}} name="sound-mute" size={55} color="#fff"/>
-                        </TouchableOpacity>:
-                        <TouchableOpacity onPress={()=>{music.stop();setSound(!sound)}}>
-                           <Icon style={{transform:[{rotate:"-110deg"}]}} name="sound" size={55} color="#fff"/>
-                        </TouchableOpacity>}
+                        </TouchableOpacity>
                     <Text style={{alignSelf:'flex-end',fontWeight:500}}>{sound?'Off':'On'}</Text>
                     </View>
                 </View>
             </View>
             <View style={styles.pipeWrapper}>
-                <TouchableOpacity style={styles.pipe}>
+                <TouchableOpacity 
+                        style={[styles.pipe,{transform:[{scale:sender.senderNum===1?1.05:1}]}]} 
+                        onPress={()=>{setSender({senderNum:1,getter:sender.getter})}}>
                     <View style={[styles.ball,{backgroundColor:'red'}]}></View>
                     <View style={[styles.ball,{backgroundColor:'green'}]}></View>
                     <View style={[styles.ball,{backgroundColor:'green'}]}></View>
@@ -51,8 +49,33 @@ const BallSorter = () => {
                     <View style={[styles.ball,{backgroundColor:'green'}]}></View>
                     <View style={[styles.ball,{backgroundColor:'green'}]}></View>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.pipe}></TouchableOpacity>
-                <TouchableOpacity style={styles.pipe}></TouchableOpacity>
+                <TouchableOpacity 
+                        style={[styles.pipe,{transform:[{scale:sender.senderNum===2?1.05:1}]}]} 
+                        onPress={()=>{setSender({senderNum:2,getter:sender.getter})}}>
+                <View style={[styles.ball,{backgroundColor:'red'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                        style={[styles.pipe,{transform:[{scale:sender.senderNum===3?1.05:1}]}]} 
+                        onPress={()=>{setSender({senderNum:3,getter:sender.getter})}}>
+                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+                </TouchableOpacity>
+                <TouchableOpacity 
+                        style={[styles.pipe,{transform:[{scale:sender.senderNum===4?1.05:1}]}]} 
+                        onPress={()=>{setSender({senderNum:4,getter:sender.getter})}}> 
+                        
+                </TouchableOpacity>
             </View>
             <TouchableOpacity onPress={()=>{music.play((err)=>{console.log(err)}) }}
              style={{margin:20,backgroundColor:'#ccc'}}><Text style={{fontSize:30,paddingHorizontal:20}}>Play</Text></TouchableOpacity>
@@ -60,7 +83,7 @@ const BallSorter = () => {
     )
 }
 
-export default BallSorter
+export default BallSorter;
 
 const styles = StyleSheet.create({
     container: {

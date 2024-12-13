@@ -1,39 +1,39 @@
-import {View, Text, Button,TouchableOpacity} from 'react-native';
-import React from 'react';
-import DocumentPicker, { types,pick } from 'react-native-document-picker';
-import ReactNativeFsHome from './react-native-fs';
+import { View, Text, Button, TouchableOpacity } from 'react-native';
+import {React,useEffect} from 'react';
+import DocumentPicker, { types, pick } from 'react-native-document-picker';
+import { useNavigation } from '@react-navigation/native';
+import { requestReadPermission } from './permissions';
 
-
-export default function App() {
-  const selectDoc = async () => {
-    try{ 
-      const res=await DocumentPicker.pick({
-        type:[DocumentPicker.types.audio]
-      })
-      console.log(res[0])}
-    catch(err){
-      console.log('error:', err);
-    }
-   
-
-  }
+export default function FilePicker() {
+  useEffect(() => {
+    requestReadPermission();
+  }, []);
+  const navigation = useNavigation();
+  const allDock = async(options) => {
+    try {const res = await DocumentPicker.pick(options.types);
+                     navigation.navigate('filepickeritems',{data:res});}
+    catch (err) {console.log('error:', err);}}
 
   return (
-    <View>
+    <View style={{backgroundColor:'#fff',paddingVertical:20}}>
       <Text
         style={{
           color: 'black',
-          fontSize: 28,
-          textAlign: 'center',
-          marginVertical: 40,
+          fontSize: 20,
+          textAlign: 'center'
         }}>
         Document Picker
       </Text>
-      <View style={{marginHorizontal: 40}}>
-        <Button title="Select Document" onPress={selectDoc}/>
+      <Text style={{
+        fontSize: 12,
+        textAlign: 'center',
+      }}>with  react-native-document-picker</Text>
+      <View style={{ marginHorizontal: 10 }}>
+        <Button title="Select Document" 
+        onPress={()=>{allDock({types:{type:[DocumentPicker.types.allFiles],allowMultiSelection:true}})}} />
+
       </View>
-      <TouchableOpacity style={{margin:40}} onPress={selectDoc}><Text style={{fontSize:28,backgroundColor:'#eaea'}}>clic</Text></TouchableOpacity>
-      <ReactNativeFsHome/>
+  
     </View>
   );
 }

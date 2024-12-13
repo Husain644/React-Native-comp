@@ -9,7 +9,8 @@ const Divider = () => {
      <View style={{width:'100%',height:5,backgroundColor:'red',marginTop:10,transform:[{rotateZ:'3deg'}]}}></View>
       <View style={{width:'100%',height:4,backgroundColor:'red',marginTop:10}}></View>
       <View style={{width:'100%',height:2,backgroundColor:'red',marginTop:10}}></View>
-      <View style={{width:'100%',height:1,backgroundColor:'red',marginTop:5}}></View>     
+      <View style={{width:'100%',height:1,backgroundColor:'red',marginTop:5}}></View>
+      <View style={{width:'100%',height:5,borderStyle: 'dotted',borderTopWidth:10,backgroundColor:'#fff',marginTop:10}}></View>     
     </View>
   )
 }

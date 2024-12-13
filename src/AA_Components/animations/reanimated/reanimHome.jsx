@@ -8,10 +8,11 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { enableLayoutAnimations } from 'react-native-reanimated';
 
 
+
 const ReanimHome = () => {
   enableLayoutAnimations(true);
   return (
-  <GestureHandlerRootView style={{ flex: 1 }}>
+  <GestureHandlerRootView  style={{ flex: 1 }}>
         {/* <SmplAnim/> */}
         {/* <Interpol/> */}
         {/* <GesturComp/> */}

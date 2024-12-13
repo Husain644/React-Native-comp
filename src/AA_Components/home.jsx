@@ -22,22 +22,21 @@ import Modal from './modals/modal'
 import Form from '../forms/forms'
 import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
-import BannerHome from './banner/banner/bannerHome'
+import AllCarosel from './banner/banner/bannerHome'
 import Music from './animations/music/music'
 
 
 
 const HomeA = () => {
   return (
- <ScrollView>
-        {/* <BannerHome/> */}
+ <View  >
         {/* <Accordian/> */}
+        {/* <AllCarosel/> */}
         {/* <Anim/> */}
-        <ReanimHome/>
+        {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
-        {/* <Bar/> */}
         {/* <Divider/> */}
         {/* <Btns/> */}
         {/* <Card/> */}
@@ -45,16 +44,17 @@ const HomeA = () => {
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
         {/* <Slider/> */}
-        {/* <EditableList/> */}
+        <EditableList/>
         {/* <TableHome/> */}
         {/* <FHome/>   */}
         {/* <Form/> */}
         {/* <ChipComp/> */}
         {/* <Modal/> */}
-         {/* <Menu/> */}
-         {/* <Skelton/> */}
-          {/* <Music/> */}
- </ScrollView>
+        {/* <Menu/> */}
+        {/* <Skelton/> */}
+        {/* <Music/> */}
+        {/* <Bar/> */}
+ </View>
   )
 }
 

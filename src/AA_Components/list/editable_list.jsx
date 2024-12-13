@@ -1,26 +1,33 @@
-import { StyleSheet, Text, View,FlatList,Button } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, ScrollView, Button,TouchableOpacity,TextInput } from 'react-native'
+import {Reac,useState} from 'react'
 import { H4 } from '../divider/heading'
+import { Data } from '../table/data'
 
 const EditableList = () => {
-    const data=[{name:'husain',id:1},{name:'sumit',id:2},{name:'rehan',id:3},
-      {name:'husain',id:4},{name:'sumit',id:5},{name:'rehan',id:6},
-      {name:'husain',id:7},{name:'sumit',id:8},{name:'rehan',id:10}]
+
   return (
     <View style={styles.container}>
       <H4 txt="Editable List" />
-        <FlatList
-            contentContainerStyle={styles.flate_list}
-            data={data}
-            renderItem={({item})=>(
-                <View style={styles.item} >
-                    <Text style={{fontSize:20}} >{item.id}</Text>
-                    <Text style={{fontSize:20}} >{item.name}</Text>
-                     <Button title='edit' color="#cccc" onClick={()=>{}}>Edit</Button>
-                </View>
-            )}
-            keyExtractor={(item)=>item.id.toString()}
-        />
+      <ScrollView contentContainerStyle={styles.list}
+      >
+        {Data.map((item, index) => {
+          return (
+            <View key={index} style={styles.item} >
+              <Text style={{ fontSize:12 }} >{item.rol}</Text>
+              <Text style={{ fontSize: 20 }} >{item.name}</Text>
+              <Text style={{ fontSize:12 }} >{item.class}</Text>
+              <View style={{width:150,flexDirection:'row',flexWrap:'wrap'}}>{item.subect.map((sub,i)=>{return(<Text key={i}>{sub}, </Text>)})}</View>
+              <Button title='edit' color="#cccc" onClick={() => { }}>Edit</Button>
+            </View>)
+        })}
+      </ScrollView>
+      <TouchableOpacity  onPress={()=>{}}
+      style={{height:'100%',width:'100%',position:'absolute',backgroundColor:'#000',alignItems:'center',justifyContent:'center',
+      opacity:0.5}}>
+               <View style={{width:'100%',padding:10,backgroundColor:'#fff'}}>
+                 <TextInput placeholder='name'/>
+               </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -28,27 +35,26 @@ const EditableList = () => {
 export default EditableList
 
 const styles = StyleSheet.create({
-    container: {
-      height:500,
-      backgroundColor: '#ccc',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    flate_list:{
-        paddingVertical:20,
-        backgroundColor:'lightgreen',
-        minWidth:'90%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    item: {
-      backgroundColor:'#fff',
-      flexDirection:'row',
-      minWidth:'95%',
-      padding:10,
-      borderRadius:5,
-      marginBottom:10,
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    }
-  });
+  container: {
+    backgroundColor: '#ccc',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  list: {
+    paddingVertical: 20,
+    backgroundColor: 'lightgreen',
+    minWidth: '90%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  item: {
+    backgroundColor: '#fff',
+    flexDirection: 'row',
+    minWidth: '95%',
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 10,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  }
+});

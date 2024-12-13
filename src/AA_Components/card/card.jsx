@@ -8,7 +8,6 @@ const Card = () => {
   return (
     <View style={{padding:10}}>
     <H5 txt="card exapmle"/>
-
     <View style={{backgroundColor: '#e8f7f7', padding: 10, marginVertical: 10, borderRadius:5,flexWrap:'wrap',
       width:'95%',alignSelf:'center',borderWidth:1,display:'flex',flexDirection:'row',justifyContent:'space-between'
     }}>
