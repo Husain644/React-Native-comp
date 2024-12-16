@@ -2,8 +2,9 @@ import { StyleSheet, Text, View, Button, Image,FlatList,ScrollView } from 'react
 import { React, useState,useEffect } from 'react'
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
 
+
 const Gallery = ({navigation}) => {
-    const [photos, setPhotos] = useState(null)
+    const [photos, setPhotos] = useState([])
     const[num,setNum] = useState(2000)
   
     const get = async () => {
@@ -19,7 +20,11 @@ const Gallery = ({navigation}) => {
 
     return (
     <View style={{flex:1,display:'relative'}}>
-          <Button title="Go Back" style={{position:'absolute',top:0}} onPress={()=>{navigation.goBack()}}></Button>
+        <View style={{flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:25}}>
+        <Button title="Go Back" style={{width:200}} onPress={()=>{navigation.goBack()}}/>
+        <Text style={{fontSize:20}}>All photos - {photos.length}</Text>
+        </View>
+         
             <FlatList
             numColumns={2}
             initialNumToRender={20}

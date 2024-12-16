@@ -25,10 +25,8 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
-
 export default function DrawerHome() {
   const Drawer = createDrawerNavigator();
-
   return (
     <NavigationContainer >
       <Drawer.Navigator initialRouteName="Home" drawerContent={() => <DrawerLink/>} >

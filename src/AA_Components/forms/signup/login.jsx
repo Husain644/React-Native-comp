@@ -20,7 +20,6 @@ const Login = () => {
   const Submit = () => {}
   const width=Dimensions.get('window').width
   const position = useRef(new Animated.Value(0)).current
-
   const animat=()=>{
     setLogin((v)=>!v)
     Animated.timing(position,{
@@ -78,7 +77,7 @@ const Login = () => {
           </TouchableOpacity>
           <TouchableOpacity style={[css.submitBtn]} onPress={getData}>
             <Text style={[css.submitBtnTxt]}>submit</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> 
         </View>
         <TouchableOpacity
           style={{ alignSelf: "flex-end", marginRight: 20, marginTop: 20 }}
@@ -175,4 +174,6 @@ const Login = () => {
 
 export default Login;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+
+});

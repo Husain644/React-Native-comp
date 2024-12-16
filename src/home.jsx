@@ -10,7 +10,7 @@ import HomeA from './AA_Components/home'
 import RazorPayHome from './paymentGateway/razorpay/home_razorpay'
 import Cashfree from './paymentGateway/razorpay/cashfree'
 import Redux_app from './redux/redux_app'
-//import Share_It from './Fetures/share_Features'
+import Share_It from './Fetures/share_Features'
 import GoogleMap from './google_Map/map_routing'
 import AutoComplete from './google_Map/comp/autoComplete/autoComplete'
 import Routes from './google_Map/comp/routes/routes'
@@ -20,27 +20,25 @@ import NotifeeHome from './Fetures/notifications/notifeeHome'
 import ContactsHome from './Fetures/Contacts/contacts'
 
 
-
-
 const Home = () => {
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
-      {/* <HomeNav /> */}
       {/* <MyDrawer/> */}
-      {/* <HomeCamera/> */}
+      {/* <HomeNav /> */}
+      {/* <HomeCamera/>  */}
       {/* <HomeWeb/> */}
       {/* <Gallery/> */}
       {/* <RazorPayHome/> */}
       {/* <Cashfree/> */}
-      {/* <Redux_app/> */}
+      {/* <Redux_app/>  */}
       {/* <Share_It/> */}
-      {/* <GoogleMap/> */}
-      {/* <AutoComplete/> */}
-       {/* <FileManager/> */}
-       {/* <NotifeeHome/> */}
-       {/* <ContactsHome/> */}
+      <GoogleMap/>
+      {/* <AutoComplete/>  */}
+      {/* <FileManager/> */}
+      {/* <NotifeeHome/> */}
+      {/* <ContactsHome/> */}
     </>
   )
 }

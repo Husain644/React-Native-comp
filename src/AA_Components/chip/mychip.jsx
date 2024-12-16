@@ -8,7 +8,7 @@ const Mychip = () => {
         setItems(items.filter(item=>item!==item2))
   
     }
-
+ 
   return (
     <View  style={{padding:10,backgroundColor:'#fff',flexDirection:'row',gap:20,flexWrap:'wrap'}}>
        { items.includes(1)&& <View style={{flexDirection:'row',padding:5,borderRadius:5,backgroundColor:'#ebeaea',alignItems:'center',

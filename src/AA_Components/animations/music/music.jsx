@@ -1,31 +1,27 @@
 import { StyleSheet, Text, View,Button } from 'react-native'
 import React from 'react'
-import Sound from 'react-native-sound'
+import TrackPlayer,{ State } from 'react-native-track-player';
+import { musicData } from './audio/music_data';
 
 
 const music = () => {
-
-  Sound.setCategory('Playback');
- 
-  var ding = new Sound('content://media/external/audio/media/40854', Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-      console.log('failed to load the sound', error);
-      return;
+   const setup = async() => {
+    try{
+      await TrackPlayer.setupPlayer()
+      await TrackPlayer.add(musicData)
     }
-    // when loaded successfully
-    console.log('duration in seconds:');
-  })
-  
- 
+    catch(error){
+      console.log(error)
+    }
+     
+   }
 
   return (
     <View>
       <Text>music155</Text>
-      <Button title="Play" onPress={() => {ding.play()}} /><Text></Text>
-      <Button title="Pouse" onPress={() => {ding.pause()}} /><Text></Text>
-
- 
-    </View>
+      <Button title="Play" onPress={() => {}} /><Text></Text>
+      <Button title="Pouse" onPress={() =>{setup()}} /><Text></Text>
+    </View> 
   )
 }
 

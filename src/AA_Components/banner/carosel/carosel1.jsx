@@ -1,10 +1,11 @@
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image, Dimensions } from "react-native";
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image, useWindowDimensions } from "react-native";
 import { React, useState, useRef,useEffect } from "react";
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import { caroselData } from "../../table/data";
 
-const windowWidth = Dimensions.get('window').width;
+
 const Carosel1 = () => {
+    const windowWidth = useWindowDimensions().width
     const scrollRef = useRef(null);
    
     const [pos,setPos]=useState(1)
@@ -75,7 +76,7 @@ const Carosel1 = () => {
                     <Text>next</Text><Icon name="arrow-right" size={20} color="#000" />
                 </TouchableOpacity>
             </View>
-            <Text style={{padding:50}}>{windowWidth},,,{pos}</Text>
+            <Text style={{padding:50}}>{windowWidth},{pos}</Text>
         </View>
     );
 };

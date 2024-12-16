@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ActivityIndicator, MD2Colors } from 'react-native-paper';
 import { View,StyleSheet,ActivityIndicator as RnIndicator } from 'react-native';
 import ProgressBar from './progressbar/progressbar';
+import ReanimProgress from './reanim_progress';
 
 const Activity_Indicatr = () => (
     <>      
@@ -16,6 +17,7 @@ const Activity_Indicatr = () => (
     <RnIndicator size="small" color="#0000ff" />
     <RnIndicator size="large" color="#00ff00" />
     <RnIndicator size={150} color="red" animating={true}/>
+    <ReanimProgress />
     <ProgressBar />
     </>
 );

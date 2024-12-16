@@ -53,7 +53,7 @@ const slider = () => {
             <Text style={{paddingHorizontal:5}}>Class {item.class}</Text>
             <Text style={{paddingHorizontal:5}}>Ph {item.contact}</Text>
             <View style={{width:'100%',flexDirection:'row',flexWrap:'wrap',borderTopWidth:1,paddingHorizontal:5}}
-            >{item.subect.map((subect) =>{return( <Text >{subect}, </Text>)})}</View>
+            >{item.subect.map((subect,i) =>{return( <Text key={i} >{subect}, </Text>)})}</View>
           </View>
         )
       })

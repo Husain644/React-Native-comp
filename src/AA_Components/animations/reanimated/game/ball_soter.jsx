@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Dimensions, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, useWindowDimensions, TouchableOpacity } from 'react-native'
 import {React,useState,useEffect} from 'react'
 import Sound from 'react-native-sound'
 import Icon from 'react-native-vector-icons/dist/Entypo';
@@ -10,10 +10,10 @@ import { GestureDetector, Gesture, PanGestureHandler, TapGestureHandler } from '
 import { transform } from '@babel/core';
 import ring1 from './game.mp3'
 
-const height = Dimensions.get('window').height;
-const width = Dimensions.get('window').width;
 
-const BallSorter = () => {
+
+const BallSorter = () => { 
+    const {height,width}=useWindowDimensions()
     const [sender,setSender]=useState({senderNum:0,getter:0});
     const [sound, setSound] = useState(true);
     

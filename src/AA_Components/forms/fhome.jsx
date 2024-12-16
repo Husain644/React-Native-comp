@@ -8,7 +8,7 @@ import Calndr from './signup/time_date/calender'
 const FHome = () => {
   return (
     <>
-   {/* <Login /> */}
+   <Login />
    <Calndr />
     </>
   )

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity} from 'react-native'
 import React from 'react'
 import { H5 } from '../divider/heading'
+import Story from './story/story'
 
 
 
@@ -54,7 +55,7 @@ const Card = () => {
       </View>
       </View>
     </View>
-    
+    <Story/>
     </View>
   )
 }

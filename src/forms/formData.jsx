@@ -28,7 +28,7 @@ const FormDataUpload = () => {
            
     }
   return (
-    <View style={{borderWidth:1,gap:10}}>
+    <View style={{borderWidth:1,gap:10,padding:5}}>
       <Text style={{fontSize:18}}>name is {data.name} and email is {data.email} and password is {data.password}</Text>
 
     <TextInput style={{backgroundColor:'#ccc'}} placeholder='name' 

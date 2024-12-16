@@ -24,12 +24,13 @@ import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
 import AllCarosel from './banner/banner/bannerHome'
 import Music from './animations/music/music'
+import Typography from './text/txt'
 
 
 
 const HomeA = () => {
   return (
- <View  >
+ <ScrollView  >
         {/* <Accordian/> */}
         {/* <AllCarosel/> */}
         {/* <Anim/> */}
@@ -44,17 +45,18 @@ const HomeA = () => {
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
         {/* <Slider/> */}
-        <EditableList/>
+        {/* <EditableList/>   */}
         {/* <TableHome/> */}
-        {/* <FHome/>   */}
+        {/* <FHome/>  Login and register  */}
         {/* <Form/> */}
         {/* <ChipComp/> */}
-        {/* <Modal/> */}
+        {/* <Modal/>*/}
         {/* <Menu/> */}
         {/* <Skelton/> */}
         {/* <Music/> */}
         {/* <Bar/> */}
- </View>
+        <Typography/>
+ </ScrollView>
   )
 }
 
