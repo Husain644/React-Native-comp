@@ -4,7 +4,8 @@ import React from 'react'
 const Txt = () => {
     const [color,setColor]=React.useState('#000')
     const colorList=['red','green','blue','yellow','white','black','pink','orange','gray','purple']
-    const fontFamily=['serif','Roboto','monospace','sans-serif-thin','sans-serif-condensed','notoserif','sans-serif-light','sans-serif-condensed','sans-serif-medium']
+    const fontFamily=['serif','Roboto','monospace','sans-serif-thin','sans-serif-condensed',
+      'notoserif','sans-serif-light','sans-serif-condensed','sans-serif-medium']
   return (
     <View style={{padding:10,backgroundColor:'#ccc',flex:1}}>
        <Text style={{fontSize:40,textAlign:'center',color:'#000'}}>Font Family - Android</Text>

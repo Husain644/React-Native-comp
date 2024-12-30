@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View,TouchableOpacity } from 'react-native'
 import React from 'react'
 import Menu from './menu';
+import { useRoute } from '@react-navigation/native';
 
 const CompB = ({navigation}) => {
+  const route=useRoute()
     // we got data from CompA components
-   // const {id,message}=route.params
+   //const {id,message}=route.params
+    
   return (
     <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
       <Menu/>

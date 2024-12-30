@@ -3,14 +3,10 @@ import React from 'react'
 import Menu from './menu';
 
 const CompA = ({navigation}) => {
-//   We send data CompA to=>> CompB 
-// const data={
-//   id:10,
-//   message:'this is messages'
-// }
+
   return (
     <View style={{flex:1,alignItems:'center',justifyContent:'center',position:'relative'}}>
-         <Menu showNav={false}/>
+         <Menu/>
     <Text style={{width:'100%',backgroundColor:'#fff',color:'red',textAlign:'center',fontSize:20}}>
          This is CompA
     </Text>

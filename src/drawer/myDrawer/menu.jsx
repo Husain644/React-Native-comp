@@ -4,12 +4,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
 
 
-
-const Menu = () => {
+const Menu = ({showDrawer=false}) => {
     const position = useRef(new Animated.Value(-500)).current;
     const navigation = useNavigation();
     const menuItems=[{name:'CompA',icon:'home',url:'CompA'}, {name:'CompB',icon:'contacts',url:'CompB'},]
-    const[show,setShow]=useState(false)
+    const[show,setShow]=useState(showDrawer)
 
      const shower=()=>{
         show? Animated.timing(position,{
@@ -35,7 +34,7 @@ const Menu = () => {
       <Animated.View style={[styles.container,{ transform:[{translateX:position}]}]}>
         {
             menuItems.map((item,index)=>(
-                <TouchableOpacity key={index} onPress={()=>{navigation.navigate(item.url);setShow(false)}}>
+                <TouchableOpacity key={index} onPress={()=>{navigation.navigate(item.url)}}>
                     <View style={styles.menuItem}>
                         <Icon name={item.icon} size={25} color="#000" />
                         <Text style={{fontSize:18,color:'#000',marginLeft:10}}>{item.name}</Text>

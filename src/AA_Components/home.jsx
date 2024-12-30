@@ -22,9 +22,10 @@ import Modal from './modals/modal'
 import Form from '../forms/forms'
 import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
-import AllCarosel from './banner/banner/bannerHome'
+import BannerHome from './banner/banner/bannerHome'
 import Music from './animations/music/music'
 import Typography from './text/txt'
+import CaroselNew from './banner/carosel/caroselNew'
 
 
 
@@ -32,7 +33,6 @@ const HomeA = () => {
   return (
  <ScrollView  >
         {/* <Accordian/> */}
-        {/* <AllCarosel/> */}
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
@@ -42,6 +42,8 @@ const HomeA = () => {
         {/* <Btns/> */}
         {/* <Card/> */}
         {/* <Chckbox/> */}
+        <CaroselNew/>
+        <BannerHome/>
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
         {/* <Slider/> */}
@@ -55,7 +57,7 @@ const HomeA = () => {
         {/* <Skelton/> */}
         {/* <Music/> */}
         {/* <Bar/> */}
-        <Typography/>
+        {/* <Typography/> */}
  </ScrollView>
   )
 }

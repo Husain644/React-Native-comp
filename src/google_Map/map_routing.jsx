@@ -6,6 +6,7 @@ import MapHome from './MapHome';
 import Header from './comp/header';
 import AutoComplete from './comp/autoComplete/autoComplete';
 import Routes from './comp/routes/routes';
+import MapSplash from './comp/mapsplash';
 
 
 const Stack = createNativeStackNavigator()
@@ -13,7 +14,8 @@ const Stack = createNativeStackNavigator()
 export default function GoogleMap() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Nav">
+      <Stack.Navigator initialRouteName="Splash">
+        <Stack.Screen name='Splash' component={MapSplash} options={{headerShown:false}}/>
          <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
          <Stack.Screen name="Map" component={MapHome}  options={{headerShown:false}}/>
          <Stack.Screen name="AutoComplete" component={AutoComplete} options={{headerShown:false,title:'pick and drop'}}/>
