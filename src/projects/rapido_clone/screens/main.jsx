@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ImageBackground, ScrollView, useWindowDimensions } from 'react-native'
 import { React, useEffect,useState } from 'react'
-
 import { Img,FontIcon } from '../../../assets/assets';
 import Header from './map/comp/header'
 

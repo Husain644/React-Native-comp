@@ -1,10 +1,12 @@
 import { StyleSheet } from "react-native";
+import { bgColor,Colors } from "./color";
+
 const css = StyleSheet.create({
-    // common css
-    container: {
-        paddingHorizontal: 10,
-        alignItems: 'center'
-    },
+    //background color
+    bg:bgColor,
+    // common css 
+    flex1:{flex:1}, flex2:{flex:2},flex3:{flex:3}, flex4:{flex:4},
+    container: {paddingHorizontal: 10,alignItems: 'center'},
     center: {
         justifyContent: 'center',
         alignItems: 'center',
@@ -28,6 +30,7 @@ const css = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
     },
+    w100:{width:'100%'},w75:{width:'75%'},w50:{width:'50%'},w25:{width:'25%'},
     inputWrapper: {
         backgroundColor: '#f2f7f1',
         padding: 20,
@@ -126,6 +129,7 @@ const css = StyleSheet.create({
     textCenter: {
         textAlign: 'center'
     },
+    color:Colors,
     // text styling End
     //  border styling start
     border: {
@@ -137,6 +141,12 @@ const css = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#999'
     },
+    borderff:{
+        borderWidth: 1,
+         borderRadius: 10,
+        borderColor: '#fff'
+    },
+
     // padding and margins
     p5: { padding: 5 },
     p10: { padding: 10 },
@@ -173,24 +183,7 @@ const css = StyleSheet.create({
         shadowOffset:{height:5,width:5},
         shadowOpacity:0.7,
         shadowRadius:5,
-        elevation:10
-    },
-    bgRed: {
-        backgroundColor: '#FF0000'
-    },
-    bgBlue: {
-        backgroundColor: 'blue'
-    },
-    bgGreen:{
-        backgroundColor:'green'
-    },
-    bgGray:{ backgroundColor:'#ccc'},
-    bgYellow:{ backgroundColor:''},
-    bgDark:{ backgroundColor:'green'},
-    bgPink:{ backgroundColor:'green'},
-    bgWhite:{ backgroundColor:'green'},
-    bgPrpl:{ backgroundColor:'green'},
-    bgCyan:{backgroundColor:'#00FFFF'}
+        elevation:10},
+    
 })
-
 export default css;

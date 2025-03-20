@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { List } from 'react-native-paper';
 import Myaccord from './myaccord';
+import Accord3 from './accord3';
 
 const Accordian = () => {
     const [expanded, setExpanded] = React.useState(true);
@@ -27,6 +28,7 @@ const Accordian = () => {
       </List.Accordion>
     </List.Section>
      <Myaccord />
+     <Accord3/>
     </>
 
   )

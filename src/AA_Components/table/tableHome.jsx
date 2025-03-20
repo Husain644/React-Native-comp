@@ -8,9 +8,9 @@ import Chart from './chart/chart';
 const TableHome = () => {
   return (
     <>
-      <H4 txt="Data Showing facility"/>
-      {/* <Table />
-      <Pagination /> */}
+      <H4 txt="Data By Chart"/>
+      {/* <Table /> */}
+      {/* <Pagination /> */}
       <Chart />
     </>
   )

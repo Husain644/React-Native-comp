@@ -1,3 +1,7 @@
+how to start React native app-[
+npx @react-native-community/cli projectName
+]
+
 React native Top Library 
 [
    React Native Navigation,

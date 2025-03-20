@@ -1,9 +1,11 @@
-import { StyleSheet, Text, View, Button, Image,FlatList,ScrollView } from 'react-native'
+import { StyleSheet, Text, View, Button, Image,FlatList,ScrollView,TouchableOpacity } from 'react-native'
 import { React, useState,useEffect } from 'react'
 import { CameraRoll } from '@react-native-camera-roll/camera-roll'
+import { useNavigation } from '@react-navigation/native'
 
 
-const Gallery = ({navigation}) => {
+const Gallery = () => {
+    const navigation=useNavigation()
     const [photos, setPhotos] = useState([])
     const[num,setNum] = useState(2000)
   
@@ -31,9 +33,10 @@ const Gallery = ({navigation}) => {
               style={styles.container}
                 data={photos}
                 renderItem={({item }) => (
-                    <View style={{width:'50%',height:200,backgroundColor:'#fff',padding:3}}>
+                    <TouchableOpacity style={{width:'50%',height:200,backgroundColor:'#fff',padding:3}} 
+                    onPress={()=>{navigation.navigate('Photo2',{img:item.node.image.uri})}}>
                         <Image style={{width:'100%',height:'100%'}} source={{ uri: item.node.image.uri }} />
-                    </View>
+                    </TouchableOpacity>
                 )}
             />
         

@@ -19,12 +19,13 @@ import FileManager from './Fetures/fileSystems/file_manager'
 import NotifeeHome from './Fetures/notifications/notifeeHome'
 import ContactsHome from './Fetures/Contacts/contacts'
 import ProjectHome from './projects/proectHome'
+import Chat from './chatRoom/chat'
 
 
 const Home = () => {
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -40,7 +41,8 @@ const Home = () => {
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
-      {/* <ProjectHome/> */}
+      <ProjectHome/>
+       {/* <Chat /> */}
     </>
   )
 }

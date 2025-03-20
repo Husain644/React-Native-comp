@@ -7,7 +7,7 @@ const Txt = () => {
     const fontFamily=['serif','Roboto','monospace','sans-serif-thin','sans-serif-condensed',
       'notoserif','sans-serif-light','sans-serif-condensed','sans-serif-medium']
   return (
-    <View style={{padding:10,backgroundColor:'#ccc',flex:1}}>
+    <View style={{padding:10,backgroundColor:'#ccc'}}>
        <Text style={{fontSize:40,textAlign:'center',color:'#000'}}>Font Family - Android</Text>
         {
           fontFamily.map(((item,index)=>{
@@ -17,8 +17,12 @@ const Txt = () => {
          <View style={{flexDirection:'row',justifyContent:'flex-start',flexWrap:'wrap',gap:20,marginTop:20,paddingTop:10,borderTopWidth:2,borderTopColor:'#fff'}}>
           {
             colorList.map((item,index)=>(
-              <TouchableOpacity key={index} style={{height:35,width:55,borderRadius:10,backgroundColor:item}} 
-              onPress={()=>{setColor(item)}}></TouchableOpacity>
+              <TouchableOpacity key={index} style={{height:35,width:55,borderRadius:10,backgroundColor:item,
+                alignItems:'center',justifyContent:'center'
+              }} 
+              onPress={()=>{setColor(item)}}>
+                <Text style={{color:'#008000',fontSize:10,paddingHorizonta:2,backgroundColor:'#fff',borderRadius:2,width:'60%',textAlign:'center'}}>{item}</Text>
+              </TouchableOpacity>
             ))
           }
            

@@ -9,7 +9,7 @@ import DrawerLink from './components/items';
 import PickDrop from './screens/pickDrop';
 
 const Rapido = () => {
-  const Drawer = createDrawerNavigator()
+  const Drawer = createDrawerNavigator();
   return (
     <>
     <NavigationContainer>

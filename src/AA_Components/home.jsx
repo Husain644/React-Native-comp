@@ -32,7 +32,7 @@ import CaroselNew from './banner/carosel/caroselNew'
 const HomeA = () => {
   return (
  <ScrollView  >
-        {/* <Accordian/> */}
+        {/* <Accordian/>  */}
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
@@ -42,17 +42,17 @@ const HomeA = () => {
         {/* <Btns/> */}
         {/* <Card/> */}
         {/* <Chckbox/> */}
-        <CaroselNew/>
+        {/* <CaroselNew/> */}
         <BannerHome/>
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
         {/* <Slider/> */}
         {/* <EditableList/>   */}
         {/* <TableHome/> */}
-        {/* <FHome/>  Login and register  */}
+        {/* <FHome/> */}
         {/* <Form/> */}
         {/* <ChipComp/> */}
-        {/* <Modal/>*/}
+        {/* <Modal/> */}
         {/* <Menu/> */}
         {/* <Skelton/> */}
         {/* <Music/> */}

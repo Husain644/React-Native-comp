@@ -1,111 +1,274 @@
-{"_reactInternalInstance": { }, "_reactInternals": {
-    "_debugHookTypes": null, "_debugNeedsRemount": false,
-      "_debugOwner": {
-        "_debugHookTypes": [Array], "_debugNeedsRemount": false,
-          "_debugOwner": [FiberNode], "actualDuration": 0, "actualStartTime": 132455513.539891,
-            "alternate": [FiberNode], "child": [FiberNode], "childLanes": 0, "deletions": null,
-              "dependencies": null, "elementType": [Function MyappBar], "flags": 0, "index": 3,
-                "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": [Object],
-                  "mode": 2, "pendingProps": [Object], "ref": null, "refCleanup": null,
-                    "return": [FiberNode], "selfBaseDuration": 8.912000000476837, "sibling": null,
-                      "stateNode": null, "subtreeFlags": 0, "tag": 0, "treeBaseDuration": 49.498928129673004,
-                        "type": [Function MyappBar], "updateQueue": null
-    }, "actualDuration": 0.5352289974689484,
-      "actualStartTime": 132436042.089352, "alternate": {
-        "_debugHookTypes": null,
-          "_debugNeedsRemount": false, "_debugOwner": [FiberNode], "actualDuration": 2.236306995153427,
-            "actualStartTime": 132448606.61643, "alternate": [Circular], "child": [FiberNode],
-              "childLanes": 0, "deletions": null, "dependencies": null,
-                "elementType": [Function AnimatableComponent], "flags": 6291457, "index": 1, "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": [Object], "mode": 2, "pendingProps": [Object], "ref": [Object], "refCleanup": null, "return": [FiberNode], "selfBaseDuration": 0.5006159991025925, "sibling": null, "stateNode": [Circular], "subtreeFlags": 14682629, "tag": 1, "treeBaseDuration": 2.1506929993629456, "type": [Function AnimatableComponent], "updateQueue": [Object]
-    }, "child": {
-      "_debugHookTypes": [Array], "_debugNeedsRemount": false, "_debugOwner": [Circular], "actualDuration": 0.40038299560546875, "actualStartTime": 132436042.221121, "alternate": [FiberNode], "child": [FiberNode], "childLanes": 0, "deletions": null, "dependencies": null, "elementType": [Object], "flags": 12584965, "index": 0, "key": null, "lanes": 0, "memoizedProps": [Object], "memoizedState": [Object],
-        "mode": 2, "pendingProps": [Object], "ref": [Function anonymous],
-          "refCleanup": null, "return": [Circular], "selfBaseDuration": 0.2541539967060089,
-            "sibling": null, "stateNode": null, "subtreeFlags": 2097669, "tag": 11,
-              "treeBaseDuration": 0.3855379968881607, "type": [Object], "updateQueue": [Object]
-    },
-    "childLanes": 0, "deletions": null, "dependencies": null, "elementType": [Function AnimatableComponent],
-      "flags": 6291457, "index": 1, "key": null, "lanes": 0,
-        "memoizedProps": {
-          "animation": undefined, "delay": 0,
-            "direction": "normal", "duration": undefined,
-              "easing": "ease-out", "isInteraction": undefined, "iterationCount": "infinite", "iterationDelay": 0,
-                "onAnimationBegin": [Function onAnimationBegin], "onAnimationEnd": [Function onAnimationEnd],
-                  "onTransitionBegin": [Function onTransitionBegin], "onTransitionEnd": [Function onTransitionEnd],
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView, TextInput } from 'react-native'
+import React, { useState } from 'react'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
-                    "style": [Object], "transition": undefined, "useNativeDriver": false
-    },
-    "memoizedState": {
-      "animationStyle": [Object], "animationValue": [AnimatedValue],
-        "compiledAnimation": [Object], "currentTransitionValues": [Object], "transitionStyle": [Object],
-          "transitionValues": [Object]
-    }, "mode": 2, "pendingProps": {
-      "animation": undefined, "delay": 0,
-        "direction": "normal",
-          "duration": undefined, "easing": "ease-out", "isInteraction": undefined, "iterationCount": "infinite",
-            "iterationDelay": 0, "onAnimationBegin": [Function onAnimationBegin],
-              "onAnimationEnd": [Function onAnimationEnd], "onTransitionBegin": [Function onTransitionBegin],
-                "onTransitionEnd": [Function onTransitionEnd], "style": [Object], "transition": undefined,
-                  "useNativeDriver": false
-    }, "ref": { "current": [Circular] }, "refCleanup": null,
-      "return": {
-        "_debugHookTypes": null, "_debugNeedsRemount": false, "_debugOwner": [FiberNode],
-          "actualDuration": 3.0753060281276703, "actualStartTime": 132436039.356198, "alternate": [FiberNode],
-            "child": [FiberNode], "childLanes": 0, "deletions": null, "dependencies": null,
-              "elementType": "RCTView", "flags": 4, "index": 0, "key": null, "lanes": 0,
-                "memoizedProps": [Object], "memoizedState": null, "mode": 2,
-                  "pendingProps": [Object], "ref": null, "refCleanup": null, "return": [FiberNode],
-                    "selfBaseDuration": 0.04700000584125519, "sibling": null,
-                      "stateNode": [ReactNativeFiberHostComponent], "subtreeFlags": 14682629, "tag": 5,
-                        "treeBaseDuration": 3.007457047700882, "type": "RCTView", "updateQueue": null
-    },
-    "selfBaseDuration": 0.1290000081062317, "sibling": null, "stateNode": [Circular],
-      "subtreeFlags": 14682629, "tag": 1, "treeBaseDuration": 0.5145380049943924,
-        "type": [Function AnimatableComponent], "updateQueue": {
-          "baseState": [Object],
-            "callbacks": null, "firstBaseUpdate": null, "lastBaseUpdate": null,
-              "shared": [Object]
+const AddressPage = () => {
+  const [addresses, setAddresses] = useState([
+    {
+      id: 1,
+      name: 'John Doe',
+      mobile: '9876543210',
+      pincode: '560001',
+      address: '123 Main Street, Apartment 4B',
+      locality: 'Downtown',
+      city: 'Bangalore',
+      state: 'Karnataka',
+      isDefault: true,
+      isEditing: false
     }
-  }, "bounce": [Function bound animate],
-    "bounceIn": [Function bound animate], "bounceInDown": [Function bound animate],
-      "bounceInLeft": [Function bound animate], "bounceInRight": [Function bound animate],
-        "bounceInUp": [Function bound animate], "bounceOut": [Function bound animate],
-          "bounceOutn bound animate], "bounceIn": [Function bound animate], 
-  "bounceInDown": [Function bound animate], "bounceInLeft": [Function bound animate],
-    "bounceInRight": [Function bound animate], "bounceInUp": [Function bound animate],
-      "bounceOut": [Function bound animate], "bounceOute], "bounceInRight": [Function bound animate], "bounceInUp": [Function bound animate], "bounceOut": [Function bound animate], "bounceOutDown": [Function bound animate], "bounceOutLeft": [Function bound animate], "bounceOutRight": [Function bound animate], "bounceOutUp": [Down": [Function bound animate], "bounceOutLeft": [Function bound animate], "bounceOutRight": [Function bound animate], "bounceOutUp": [Function bound animate], "context": { }, "delayTimer": null, "fadeIn": [Function bound animate], "fadeInDown": [Function bound animate],
-        "fadeInDownBig": [Function bound animate], "fadeInLeft": [Function bound animate], "fadeInLeftBig": [Function bound animate], "fadeInRig"fadeInDownBig": [Function bound animate], "fadeInLeft": [Function bound animate], "fadeInLeftBig": [Function bound animate], "fadeInRight": [Function bound animate], "fadeInRightBig": [Function bound animate], "fadeInUp": [Function bound animate], "fadeInUpBig": [Function bound animate], "fadeOut": [Function bound animate], "fadeOutDown": [Function bound animate], "fadeOutDownBig": [Function bound animate], "fadeOutLeft": [Function bound animate], "fadeOutLeftBig": [Function bound animate], "fadeOutRight": [Function bound animate], "fadeOutRightBig": [Function bound animate], "fadeOutUp": [Function bound animate], "fadeOutUpBig": [Function bound animate], "flash": [Function bound animate], "flipInX": [Function bound animate], "flipInY": [Function bound animate], "flipOutX": [Function bound animate], "flipOutY": [Function bound animate], "handleRef": [Function anonymous], "jello": [Function bound animate], "lightSpeedIn": [Function bound animate], "lightSpeedOut": [Function bound animate], "props": {"animation": undefined, "delay": 0, "direction": "normal", "duration": undefined, "easing": "ease - out", "isInteraction": undefined, "iterationCount": "infinite", "iterationDelay": 0, "onAnimationBegin": [Function onAnimationBegin], "onAnimationEnd": [Function onAnimationEnd], "onTransitionBegin": [Function onTransitionBegin], "onTransitionEnd": [Function onTransitionEnd], 
-        
-  "style": { "backgroundColor": "#ccc", "flex": 1, "width": "50%" },
-  "transition": undefined, "useNativeDriver": false
-}, "pulse": [Function bound animate],
-  "ref": {
-    "_children": [], "_internalFiberInstanceHandleDEV": {
-      "_debugHookTypes": null,
-        "_debugNeedsRemount": false, "_debugOwner": [FiberNode],
-          "actualDuration": 0.0283069908618927, "actualStartTime": 132436042.59189,
-            "alternate": [FiberNode], "child": null, "childLanes": 0, "deletions": null, "dependencies": null,
-              "elementType": "RCTView", "flags": 2097668, "index": 0, "key": null, "lanes": 0,
-                "memoizedProps": [Object], "memoizedState": null, "mode": 2, "pendingProps": [Object],
-                  "ref": [Function anonymous], "refCleanup": undefined, "return": [FiberNode],
-                    "selfBaseDuration": 0.021460995078086853, "sibling": null, "stateNode": [Circular],
-                      "subtreeFlags": 0, "tag": 5, "treeBaseDuration": 0.021460995078086853,
-                        "type": "RCTView", "updateQueue": null
-    }, "_nativeTag": 16915,
-      "viewConfig": {
-        "Commands": [Object], "NativeProps": [Object],
-          "bubblingEventTypes": [Object], "directEventTypes": [Object],
-            "uiViewClassName": "RCTView", "validAttributes": [Object]
+  ])
+
+  const [newAddress, setNewAddress] = useState({
+    name: '',
+    mobile: '',
+    pincode: '',
+    address: '',
+    locality: '',
+    city: '',
+    state: '',
+    isDefault: false,
+    isEditing: false
+  })
+
+  const toggleEdit = (id) => {
+    setAddresses(addresses.map(addr => 
+      addr.id === id ? {...addr, isEditing: !addr.isEditing} : addr
+    ))
   }
-},
-"refs": { }, "rotate": [Function bound animate],
-  "rubberBand": [Function bound animate],
-    "shake": [Function bound animate], "slideInDown": [Function bound animate],
-      "slideInLeft": [Function bound animate], "slideInRight": [Function bound animate],
-        "slideInUp": [Function bound animate], "slideOutDown": [Function bound animate],
-          "slideOutLeft": [Function bound animate], "slideOutRight": [Function bound animate],
-            "slideOutUp": [Function bound animate], "state": {
-              "animationStyle": { },
-  "animationValue": 0, "compiledAnimation": { }, "currentTransitionValues": { }, "transitionStyle": { }, "transitionValues": { }
-}, "swing": [Function bound animate], "tada": [Function bound animate], "updater": { "enqueueForceUpdate": [Function enqueueForceUpdate], "enqueueReplaceState": [Function enqueueReplaceState], "enqueueSetState": [Function enqueueSetState], "isMounted": [Function isMounted] }, "wobble": [Function bound animate], "zoomIn": [Function bound animate], "zoomInDown": [Function bound animate], "zoomInLeft": [Function bound animate], "zoomInRight": [Function bound animate], "zoomInUp": [Function bound animate], "zoomOut": [Function bound animate], "zoomOutDown": [Function bound animate], "zoomOutLeft": [Function bound animate], "zoomOutRight": [Function bound animate], "zoomOutUp":
-[Function bound animate]}
+
+  const updateAddress = (id, field, value) => {
+    setAddresses(addresses.map(addr =>
+      addr.id === id ? {...addr, [field]: value} : addr
+    ))
+  }
+
+  const addNewAddress = () => {
+    setAddresses([...addresses, {
+      ...newAddress,
+      id: addresses.length + 1
+    }])
+    setNewAddress({
+      name: '',
+      mobile: '',
+      pincode: '',
+      address: '',
+      locality: '',
+      city: '',
+      state: '',
+      isDefault: false,
+      isEditing: false
+    })
+  }
+
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>My Addresses</Text>
+        <TouchableOpacity style={styles.addButton}>
+          <Icon name="add" size={24} color="#fff" />
+          <Text style={styles.addButtonText}>Add New Address</Text>
+        </TouchableOpacity>
+      </View>
+
+      {addresses.map(addr => (
+        <View key={addr.id} style={styles.addressCard}>
+          {addr.isEditing ? (
+            <View style={styles.editForm}>
+              <TextInput
+                style={styles.input}
+                value={addr.name}
+                onChangeText={(text) => updateAddress(addr.id, 'name', text)}
+                placeholder="Full Name"
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.mobile}
+                onChangeText={(text) => updateAddress(addr.id, 'mobile', text)}
+                placeholder="Mobile Number"
+                keyboardType="phone-pad"
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.pincode}
+                onChangeText={(text) => updateAddress(addr.id, 'pincode', text)}
+                placeholder="Pincode"
+                keyboardType="numeric"
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.address}
+                onChangeText={(text) => updateAddress(addr.id, 'address', text)}
+                placeholder="Address (House No, Building, Street)"
+                multiline
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.locality}
+                onChangeText={(text) => updateAddress(addr.id, 'locality', text)}
+                placeholder="Locality"
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.city}
+                onChangeText={(text) => updateAddress(addr.id, 'city', text)}
+                placeholder="City"
+              />
+              <TextInput
+                style={styles.input}
+                value={addr.state}
+                onChangeText={(text) => updateAddress(addr.id, 'state', text)}
+                placeholder="State"
+              />
+              <TouchableOpacity 
+                style={styles.saveButton}
+                onPress={() => toggleEdit(addr.id)}
+              >
+                <Text style={styles.saveButtonText}>Save Changes</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View>
+              <View style={styles.addressHeader}>
+                <Text style={styles.name}>{addr.name}</Text>
+                {addr.isDefault && (
+                  <View style={styles.defaultBadge}>
+                    <Text style={styles.defaultText}>DEFAULT</Text>
+                  </View>
+                )}
+              </View>
+              <Text style={styles.addressText}>{addr.address}</Text>
+              <Text style={styles.addressText}>{addr.locality}</Text>
+              <Text style={styles.addressText}>{`${addr.city}, ${addr.state} - ${addr.pincode}`}</Text>
+              <Text style={styles.mobile}>Mobile: {addr.mobile}</Text>
+              
+              <View style={styles.actionButtons}>
+                <TouchableOpacity 
+                  style={styles.editButton}
+                  onPress={() => toggleEdit(addr.id)}
+                >
+                  <Icon name="edit" size={18} color="#2874f0" />
+                  <Text style={styles.editButtonText}>Edit</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.deleteButton}>
+                  <Icon name="delete" size={18} color="#ff6161" />
+                  <Text style={styles.deleteButtonText}>Delete</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          )}
+        </View>
+      ))}
+    
+    </ScrollView>
+  )
+}
+
+export default AddressPage
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f1f3f6',
+    padding: 12
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16
+  },
+  headerText: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  addButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2874f0',
+    padding: 8,
+    borderRadius: 4
+  },
+  addButtonText: {
+    color: '#fff',
+    marginLeft: 4
+  },
+  addressCard: {
+    backgroundColor: '#fff',
+    padding: 16,
+    borderRadius: 8,
+    marginBottom: 12,
+    elevation: 2
+  },
+  addressHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 8
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold'
+  },
+  defaultBadge: {
+    backgroundColor: '#2874f0',
+    paddingHorizontal: 8,
+    paddingVertical: 2,
+    borderRadius: 4,
+    marginLeft: 8
+  },
+  defaultText: {
+    color: '#fff',
+    fontSize: 12
+  },
+  addressText: {
+    color: '#444',
+    marginBottom: 4
+  },
+  mobile: {
+    color: '#444',
+    marginTop: 8
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    marginTop: 16,
+    borderTopWidth: 1,
+    borderTopColor: '#eee',
+    paddingTop: 12
+  },
+  editButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 24
+  },
+  deleteButton: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  editButtonText: {
+    color: '#2874f0',
+    marginLeft: 4
+  },
+  deleteButtonText: {
+    color: '#ff6161',
+    marginLeft: 4
+  },
+  editForm: {
+    marginTop: 8
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 4,
+    padding: 8,
+    marginBottom: 12
+  },
+  saveButton: {
+    backgroundColor: '#2874f0',
+    padding: 12,
+    borderRadius: 4,
+    alignItems: 'center'
+  },
+  saveButtonText: {
+    color: '#fff',
+    fontWeight: 'bold'
+  }
+})
