@@ -34,7 +34,7 @@ const HomeA = () => {
  <ScrollView  >
         {/* <Accordian/>  */}
         {/* <Anim/> */}
-        {/* <ReanimHome/> */}
+        <ReanimHome/>
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
@@ -43,7 +43,7 @@ const HomeA = () => {
         {/* <Card/> */}
         {/* <Chckbox/> */}
         {/* <CaroselNew/> */}
-        <BannerHome/>
+        {/* <BannerHome/> */}
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
         {/* <Slider/> */}

@@ -25,7 +25,7 @@ import Chat from './chatRoom/chat'
 const Home = () => {
   return (
     <>     
-      {/* <HomeA/>  */}
+      <HomeA/> 
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -41,7 +41,7 @@ const Home = () => {
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
-      <ProjectHome/>
+      {/* <ProjectHome/> */}
        {/* <Chat /> */}
     </>
   )
