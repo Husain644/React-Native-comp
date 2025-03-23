@@ -1,4 +1,5 @@
 import React from 'react';
+import {View,Text } from 'react-native'
 import {
   Directions,
   Gesture,
@@ -45,6 +46,9 @@ export default function Fling_Gesture() {
 
   return (
     <GestureHandlerRootView style={styles.container}>
+      <Text style={{fontSize:16,color:'#000'}}>
+          A discrete gesture that activates when the movement is sufficiently long and fast
+      </Text>
       <GestureDetector gesture={fling}>
         <Animated.View style={[styles.box, boxAnimatedStyles]}></Animated.View>
       </GestureDetector>
@@ -57,7 +61,9 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 300,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
+    marginTop:10,
+    backgroundColor:'#ccc'
   },
   box: {
     width: 100,

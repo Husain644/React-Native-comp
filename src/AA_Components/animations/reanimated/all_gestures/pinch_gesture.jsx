@@ -25,6 +25,7 @@ export default function Pinch_Gesture() {
       startScale.value = scale.value;
     })
     .onUpdate((event) => {
+      console.log(event)
       scale.value = clamp(
         startScale.value * event.scale,
         0.5,
@@ -48,9 +49,12 @@ export default function Pinch_Gesture() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    height:300,
+    width:'100%',
+    backgroundColor:'#ccc',
+    marginTop:10
   },
   box: {
     width: 100,

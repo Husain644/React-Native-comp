@@ -31,7 +31,7 @@ import CaroselNew from './banner/carosel/caroselNew'
 
 const HomeA = () => {
   return (
- <ScrollView  >
+ <>
         {/* <Accordian/>  */}
         {/* <Anim/> */}
         <ReanimHome/>
@@ -58,7 +58,7 @@ const HomeA = () => {
         {/* <Music/> */}
         {/* <Bar/> */}
         {/* <Typography/> */}
- </ScrollView>
+ </>
   )
 }
 

@@ -1,4 +1,5 @@
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import { View,Text } from 'react-native';
 
 export default function Exclusive_Gesture() {
   const singleTap = Gesture.Tap().onEnd((_event, success) => {
@@ -18,17 +19,12 @@ export default function Exclusive_Gesture() {
 
   return (
     <GestureDetector gesture={taps}>
-      <Component />
+       <View style={{height:300,width:'100%',alignItems:'center',justifyContent:'center',backgroundColor:'#ccc',marginTop:10}}>
+          <View style={{height:100,width:100,backgroundColor:'#eaea'}}>
+          </View>
+          <Text style={{fontSize:18,color:'#000',padding:10,bottom:-50,position:'absolute'}}>Only one of the provided gestures can become active, with the first one having a higher priority</Text>
+       </View>
     </GestureDetector>
   );
 }
 
-
-// Only one of the provided gestures can become active, with the first one having a higher priority than the second one 
-// (if both gestures are still possible, the second one will wait for the first one to fail before it activates),
-//  second one having a higher priority than the third one, and so on. It is equivalent to having some gesture handlers 
-//  where the second one has the waitFor prop set to the first handler, third one has the waitFor prop set to the first and 
-//  the second one, and so on.
-
-// For example, if you want to make a component that responds to single tap as well as to a double tap, you can accomplish 
-// that using Exclusive:

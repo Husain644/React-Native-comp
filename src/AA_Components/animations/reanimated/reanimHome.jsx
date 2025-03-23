@@ -14,16 +14,15 @@ import Testing from './testing'
 const ReanimHome = () => {
   enableLayoutAnimations(true);
   return (
-  <GestureHandlerRootView  style={{ flex: 1 }}>
-        <All_gestures/>
-        {/* <SmplAnim/> */}
-        {/* <Interpol/> */}
-        {/* <GesturComp/> */}
-        {/* <Game/> */}
-        {/* <Testing/> */}
-    </GestureHandlerRootView>
-    
-  
+    <GestureHandlerRootView  style={{ flex: 1 }}>
+    <All_gestures/>
+    {/* <SmplAnim/> */}
+    {/* <Interpol/> */}
+    {/* <GesturComp/> */}
+    {/* <Game/> */}
+    {/* <Testing/> */}
+</GestureHandlerRootView>
+      
   )
 }
 

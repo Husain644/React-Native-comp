@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View,ScrollView } from "react-native";
 import { React, useState } from "react";
 import Pan_Gesture from "./pan_gesture";
 import Tap_Gesture from "./tap_gasture";
@@ -10,20 +10,21 @@ import Pinch_Gesture from "./pinch_gesture";
 import Rotation_Gesture from "./rotation_gesture";
 import Composed_Gesture from "./composed_gesture";
 import Simultaneous_Gesture from "./Simultaneous_gesture";
+import Exclusive_Gesture from "./exclusive_gesture";
 
 const All_gestures = () => {
-  const [index, setIndex] = useState(3);
+  const [index, setIndex] = useState(9);
   const Btn = ({ name, i }) => {
     return (
       <TouchableOpacity
-        style={{ backgroundColor: "#fff", borderRadius: 5, padding: 2 }}
+        style={{ backgroundColor: "#fff", borderRadius: 5, padding: 2,marginHorizontal:10 }}
         onPress={() => {
           setIndex(i);
         }}
       >
         <Text
           style={{
-            fontSize: 12,
+            fontSize: 15,
             color: "blue",
             fontFamily: "Roboto",
             fontWeight: 600,
@@ -39,8 +40,8 @@ const All_gestures = () => {
 
   return (
     <>
-      <View
-        style={{ flexDirection: "row", padding: 10,gap:10, backgroundColor: "#ccc",flexWrap:'wrap'}}
+      <ScrollView horizontal 
+        style={styles.scrollStyle}
       >
         <Btn name="pan gesture" i={1} />
         <Btn name="tap gesture" i={2} />
@@ -49,8 +50,10 @@ const All_gestures = () => {
         <Btn name="hover gesture" i={5} />
         <Btn name="native gesture" i={6} />
         <Btn name="pinch gesture" i={7} />
-        <Btn name ="rotation gesture" i={8}/> 
-      </View>
+        <Btn name ="rotation gesture" i={8}/>
+        <Btn name ="simult.. gesture" i={9}/> 
+        <Btn name ="exclusiv gesture" i={10}/> 
+      </ScrollView>
       <>
         {index === 1 ? (
           <Pan_Gesture />
@@ -68,7 +71,12 @@ const All_gestures = () => {
           <Pinch_Gesture />
         ) :index === 8 ?  (
           <Rotation_Gesture />
-        ):(<Text>select one</Text>)
+        ):index === 9 ?  (
+          <Simultaneous_Gesture />
+        ):index === 10 ?  (
+          <Exclusive_Gesture />
+        ):
+        (<Text>select one</Text>)
         
         }
       </>
@@ -78,4 +86,11 @@ const All_gestures = () => {
 
 export default All_gestures;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  scrollStyle:{
+    padding: 10,
+    gap:10, 
+    backgroundColor: "#ccc",
+    maxHeight:50
+  }
+});

@@ -26,6 +26,7 @@ export default function Hover_Gesture() {
 
   const hover = Gesture.Hover()
     .onStart((event) => {
+      console.log('hover start')
       startX.value = event.x;
       startY.value = event.y;
     })

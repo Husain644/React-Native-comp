@@ -1,74 +1,88 @@
-import { GestureDetector, Gesture } from 'react-native-gesture-handler';
+import { StyleSheet, Text, View ,useWindowDimensions} from "react-native";
+import React from "react";
 import Animated, {
   useSharedValue,
+  withTiming,
   useAnimatedStyle,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
-export default function Simultaneous_Gesture() {
-  const offset = useSharedValue({ x: 0, y: 0 });
-  const start = useSharedValue({ x: 0, y: 0 });
-  const scale = useSharedValue(1);
-  const savedScale = useSharedValue(1);
-  const rotation = useSharedValue(0);
-  const savedRotation = useSharedValue(0);
-  const animatedStyles = useAnimatedStyle(() => {
-    return {
-      transform: [
-        { translateX: offset.value.x },
-        { translateY: offset.value.y },
-        { scale: scale.value },
-        { rotateZ: `${rotation.value}rad` },
-      ],
-    };
-  });
 
-  const dragGesture = Gesture.Pan()
-    .averageTouches(true)
-    .onUpdate((e) => {
+const Simultaneous_gesture = () => {
+ const {height, width} = useWindowDimensions();
+  console.log(height,width)
+    // Pan gesture
+    const offset=useSharedValue({x:0,y:0}) 
+    const start=useSharedValue({x:0,y:0})
+    const panStyle=useAnimatedStyle(()=>{
+      let val=`${Math.round(offset.value.x)}deg`
+      return {
+        transform: [
+          { translateX: offset.value.x },
+          { translateY: offset.value.y },
+          {rotateZ:val}
+        ] 
+      }
+    })
+   const Pan=Gesture.Pan().onUpdate(
+    (e)=>{
+      if(e.absoluteX >55 & e.absoluteX < width-50){
       offset.value = {
         x: e.translationX + start.value.x,
         y: e.translationY + start.value.y,
-      };
-    })
-    .onEnd(() => {
-      start.value = {
-        x: offset.value.x,
-        y: offset.value.y,
-      };
-    });
+      };}
+    }
+   ).onEnd((e)=>{
+    start.value = {
+      x: offset.value.x,
+      y: offset.value.y,
+    };
+   })
 
-  const zoomGesture = Gesture.Pinch()
-    .onUpdate((event) => {
-      scale.value = savedScale.value * event.scale;
-    })
-    .onEnd(() => {
-      savedScale.value = scale.value;
-    });
-
-  const rotateGesture = Gesture.Rotation()
-    .onUpdate((event) => {
-      rotation.value = savedRotation.value + event.rotation;
-    })
-    .onEnd(() => {
-      savedRotation.value = rotation.value;
-    });
-
-  const composed = Gesture.Simultaneous(
-    dragGesture,
-    Gesture.Simultaneous(zoomGesture, rotateGesture)
-  );
+   
+    // long press gesture
+    const color=useSharedValue('#fff')
+    const animStyle=useAnimatedStyle(()=>{return{
+        backgroundColor:color.value
+      }})
+    const longPress=Gesture.LongPress().maxDistance(1000)
+    .onBegin(()=>{
+      console.log('long Press start')
+      color.value='#cccc'
+    }).onEnd((e,success)=>{
+     if(success){
+      console.log(`Long pressed for ${e.duration} ms!`);
+      color.value='#7deea8'}})
 
   return (
-    <Animated.View>
-      <GestureDetector gesture={composed}>
-        <Photo style={animatedStyles} />
+    <View style={styles.container}>
+      <Text style={{fontSize:16,color:'#000'}}>Simultaneous_Gesture</Text>
+      <GestureDetector 
+  gesture={Gesture.Simultaneous(longPress,Pan)}>
+         <Animated.View style={[styles.box,animStyle,panStyle]}>
+
+         </Animated.View>
       </GestureDetector>
-    </Animated.View>
+    </View>
   );
-}
+};
 
-// All of the provided gestures can activate at the same time. Activation of one will not cancel the other. 
-// It is the equivalent to having some gesture handlers, each with simultaneousHandlers prop set to the other handlers.
+export default Simultaneous_gesture;
 
-// For example, if you want to make a gallery app, you might want user to be able to zoom, rotate and pan around photos. 
-// You can do it with Simultaneous:
+const styles = StyleSheet.create({
+  container: {
+    height: 300,
+    with: "100%",
+    backgroundColor: "#c7a8a8",
+    marginTop: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  box: {
+    height: 100,
+    width: 100,
+    borderRadius: 10,
+    borderColor:'#0808',
+    borderWidth:2
+  },
+});

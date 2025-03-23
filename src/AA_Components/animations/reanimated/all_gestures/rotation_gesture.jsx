@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet,View,ImageBackground } from 'react-native';
 import {
   Gesture,
   GestureDetector,
@@ -9,6 +9,7 @@ import Animated, {
   useSharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
+import gear from './../../../../assets/images/gear.png'
 
 export default function Rotation_Gesture() {
   const angle = useSharedValue(0);
@@ -29,7 +30,14 @@ export default function Rotation_Gesture() {
   return (
     <GestureHandlerRootView style={styles.container}>
       <GestureDetector gesture={rotation}>
-        <Animated.View style={[styles.box, boxAnimatedStyles]}></Animated.View>
+        <Animated.View style={[boxAnimatedStyles]}>
+          <ImageBackground style={styles.box} resizeMode='cover' source={gear}>
+                <View style={styles.dot}> 
+                </View>
+                <View style={styles.dot}>
+                </View>
+          </ImageBackground>
+        </Animated.View>
       </GestureDetector>
     </GestureHandlerRootView>
   );
@@ -37,23 +45,26 @@ export default function Rotation_Gesture() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height:400,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor:'#ccc',
+    marginTop:10
   },
   box: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     borderRadius: 20,
-    backgroundColor: '#b58df1',
+    backgroundColor: '#6527c4',
+    flexDirection:'row',
+    justifyContent: 'space-between',
+    alignItems:'center',
+    padding:20
   },
   dot: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#ccc',
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
+    backgroundColor: '#e91616',
   },
 });

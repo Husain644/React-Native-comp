@@ -46,19 +46,20 @@ const GestureComp = () => {
 
   // Shared values for X and Y position
   const translateX = useSharedValue(0);
-
+  const startPos=useSharedValue(0)
   // Define Pan Gesture
   const gesture2 = Gesture.Pan()
     .onUpdate((event) => {
-      translateX.value = event.translationX;
+      translateX.value = startPos.value + event.translationX;
     }) 
     .onEnd((event) => {
-     
       if(event.absoluteX > (width/2)){
         translateX.value = withSpring(width-100);
+        startPos.value = width-100
       }
       else{
         translateX.value = withSpring(0);
+        startPos.value = 0
       };
 
       
