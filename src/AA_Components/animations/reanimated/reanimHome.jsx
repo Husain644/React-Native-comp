@@ -15,11 +15,11 @@ const ReanimHome = () => {
   enableLayoutAnimations(true);
   return (
     <GestureHandlerRootView  style={{ flex: 1 }}>
-    <All_gestures/>
+    {/* <All_gestures/> */}
     {/* <SmplAnim/> */}
     {/* <Interpol/> */}
     {/* <GesturComp/> */}
-    {/* <Game/> */}
+    <Game/>
     {/* <Testing/> */}
 </GestureHandlerRootView>
       

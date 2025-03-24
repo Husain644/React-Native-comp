@@ -6,9 +6,8 @@ import Animated, {
     useSharedValue, useAnimatedStyle, withSpring, interpolate,
     withClamp, withDecay, withTiming
 } from 'react-native-reanimated'
-import { GestureDetector, Gesture, PanGestureHandler, TapGestureHandler } from 'react-native-gesture-handler'
-import { transform } from '@babel/core';
-import ring1 from './game.mp3'
+import { GestureDetector, Gesture, PanGestureHandler, TapGestureHandler } from 'react-native-gesture-handler';
+import ring1 from './../game.mp3'
 
 
 
@@ -16,12 +15,25 @@ const BallSorter = () => {
     const {height,width}=useWindowDimensions()
     const [sender,setSender]=useState({senderNum:0,getter:0});
     const [sound, setSound] = useState(true);
-    
-    
     const music=new Sound(ring1,Sound.MAIN_BUNDLE,(error)=>{
         if(error){console.log('failed to load the sound', error)}
     })   
-
+    //###############
+    const offset=useSharedValue(0);
+    const offsetY=useSharedValue(0);
+    const offsetStyle=useAnimatedStyle(()=>{return{
+        transform:[{translateX:offset.value},{translateY:offsetY.value}]
+    }}) 
+    
+  const mover=()=>{
+  offsetY.value=withTiming(-50,{duration:500},(isOk)=>{
+    if(isOk){
+        offset.value=withTiming(200,{duration:1000},(isOk2)=>{
+            if(isOk2){ offsetY.value=withTiming(0,{duration:500})}
+        })
+    }
+  });
+}
     return (
         <View style={[styles.container, { height: height, width: width }]}>
             <View style={{flexDirection:'row',justifyContent:'space-between',width:'80%',marginBottom:50,
@@ -41,42 +53,24 @@ const BallSorter = () => {
                 <TouchableOpacity 
                         style={[styles.pipe,{transform:[{scale:sender.senderNum===1?1.05:1}]}]} 
                         onPress={()=>{setSender({senderNum:1,getter:sender.getter})}}>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
+
+                    <Animated.View style={[styles.ball,{backgroundColor:'red'},offsetStyle]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'red'}]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'red'}]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
+                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
                 </TouchableOpacity>
-                <TouchableOpacity 
-                        style={[styles.pipe,{transform:[{scale:sender.senderNum===2?1.05:1}]}]} 
-                        onPress={()=>{setSender({senderNum:2,getter:sender.getter})}}>
-                <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                        style={[styles.pipe,{transform:[{scale:sender.senderNum===3?1.05:1}]}]} 
-                        onPress={()=>{setSender({senderNum:3,getter:sender.getter})}}>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'red'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'#fff'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                    <View style={[styles.ball,{backgroundColor:'green'}]}></View>
-                </TouchableOpacity>
+
+            
                 <TouchableOpacity 
                         style={[styles.pipe,{transform:[{scale:sender.senderNum===4?1.05:1}]}]} 
-                        onPress={()=>{setSender({senderNum:4,getter:sender.getter})}}> 
+                        onPress={()=>{setSender({senderNum:4,getter:sender.getter});mover()}}> 
                         
                 </TouchableOpacity>
             </View>
+
             <TouchableOpacity onPress={()=>{music.play((err)=>{console.log(err)}) }}
              style={{margin:20,backgroundColor:'#ccc'}}><Text style={{fontSize:30,paddingHorizontal:20}}>Play</Text></TouchableOpacity>
         </View>
@@ -102,7 +96,6 @@ const styles = StyleSheet.create({
         width: 50,
         height: 300,
         paddingBottom:2,
-        backgroundColor:'#eaeaea',
         borderColor:'#000',
         borderWidth:3,
         borderTopWidth:1,
@@ -110,13 +103,15 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius:25,
         alignItems: 'center',
         justifyContent:'flex-end',
-        gap:1
+        gap:1,
+        zIndex:-1
     },
     ball: {
       width:40,
       height:40 ,
       borderRadius:23,
       borderWidth:1,
-      borderColor:'#fff'
+      borderColor:'#fff',
+      zIndex:10
     }
 })
