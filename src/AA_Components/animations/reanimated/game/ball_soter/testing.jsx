@@ -2,44 +2,26 @@ import { StyleSheet, Text, View, useWindowDimensions, TouchableOpacity } from 'r
 import {React,useState,useEffect} from 'react'
 import Sound from 'react-native-sound'
 import Icon from 'react-native-vector-icons/dist/Entypo';
-import Animated, {
-    useSharedValue, useAnimatedStyle, withSpring, interpolate,
-    withClamp, withDecay, withTiming
-} from 'react-native-reanimated'
-import { GestureDetector, Gesture, PanGestureHandler, TapGestureHandler } from 'react-native-gesture-handler';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming} from 'react-native-reanimated'
 import ring1 from './../game.mp3'
-
-
+import Ball from './components/ball.jsx'
 
 const BallSorter = () => { 
     const {height,width}=useWindowDimensions()
+    const [sound, setSound] = useState(false);
+    const music=new Sound(ring1,Sound.MAIN_BUNDLE,(error)=>{if(error){console.log('failed to load the sound', error)}})
+  
     const [sender,setSender]=useState({senderNum:0,getter:0});
-    const [sound, setSound] = useState(true);
-    const music=new Sound(ring1,Sound.MAIN_BUNDLE,(error)=>{
-        if(error){console.log('failed to load the sound', error)}
-    })   
-    //###############
-    const offset=useSharedValue(0);
-    const offsetY=useSharedValue(0);
-    const offsetStyle=useAnimatedStyle(()=>{return{
-        transform:[{translateX:offset.value},{translateY:offsetY.value}]
-    }}) 
-    
-  const mover=()=>{
-  offsetY.value=withTiming(-50,{duration:500},(isOk)=>{
-    if(isOk){
-        offset.value=withTiming(200,{duration:1000},(isOk2)=>{
-            if(isOk2){ offsetY.value=withTiming(0,{duration:500})}
-        })
-    }
-  });
-}
-    return (
+
+   return (
         <View style={[styles.container, { height: height, width: width }]}>
             <View style={{flexDirection:'row',justifyContent:'space-between',width:'80%',marginBottom:50,
                 borderBottomWidth:1
             }}>
-                <View style={{}}><Text style={{fontSize:28}}>Score:100</Text></View>
+                <View style={{}}>
+                    <Text>Stage.1</Text>
+                    <Text style={{fontSize:28}}>Score:100</Text>
+                </View>
                 <View style={{}}>
                     <View >
                        <TouchableOpacity onPress={()=>{music.stop();setSound(!sound)}}>
@@ -50,29 +32,28 @@ const BallSorter = () => {
                 </View>
             </View>
             <View style={styles.pipeWrapper}>
+                
                 <TouchableOpacity 
-                        style={[styles.pipe,{transform:[{scale:sender.senderNum===1?1.05:1}]}]} 
+                        style={[styles.pipe]} 
                         onPress={()=>{setSender({senderNum:1,getter:sender.getter})}}>
-
-                    <Animated.View style={[styles.ball,{backgroundColor:'red'},offsetStyle]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'red'}]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'red'}]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
-                    <Animated.View style={[styles.ball,{backgroundColor:'green'}]}></Animated.View>
+                       <Ball run={sound}/>
                 </TouchableOpacity>
 
-            
                 <TouchableOpacity 
-                        style={[styles.pipe,{transform:[{scale:sender.senderNum===4?1.05:1}]}]} 
-                        onPress={()=>{setSender({senderNum:4,getter:sender.getter});mover()}}> 
-                        
+                        style={[styles.pipe]} 
+                        onPress={()=>{setSender({senderNum:2,getter:sender.getter})}}>
+                       <Ball run={false}/>
+                </TouchableOpacity>
+
+                <TouchableOpacity 
+                        style={[styles.pipe]} 
+                        onPress={()=>{setSender({senderNum:3,getter:sender.getter})}}>              
                 </TouchableOpacity>
             </View>
-
-            <TouchableOpacity onPress={()=>{music.play((err)=>{console.log(err)}) }}
-             style={{margin:20,backgroundColor:'#ccc'}}><Text style={{fontSize:30,paddingHorizontal:20}}>Play</Text></TouchableOpacity>
+      
+            <TouchableOpacity onPress={()=>{music.play((err)=>{console.log(err)}) }}  style={{margin:20,backgroundColor:'#ccc'}}>
+                <Text style={{fontSize:30,paddingHorizontal:20}}>Play</Text>
+            </TouchableOpacity>
         </View>
     )
 }

@@ -12,6 +12,6 @@ const Game = () => {
   )
 }
 
-export default Game
+export default Game;
 
 const styles = StyleSheet.create({})
