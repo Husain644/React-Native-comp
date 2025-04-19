@@ -11,10 +11,8 @@ import { useRoute } from '@react-navigation/native';
 export default function MapScreen() {
   const route = useRoute()
   const { pickLocation, dropLocation } = route.params;
-  console.log([{'pick':pickLocation.lat}, {'drop':dropLocation.lat}]);
   const origin = { latitude:pickLocation.lat, longitude:pickLocation.lng };
   const destination = { latitude: dropLocation.lat, longitude: dropLocation.lng };
-
   const [routes, setRoutes] = useState([]);
   const [mode,setMode]=useState("DRIVING");
   const [showMode,setShowMode] = useState(false)
@@ -22,7 +20,6 @@ export default function MapScreen() {
     distance:0,
     duration:0,
   })
-
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,8 +27,13 @@ export default function MapScreen() {
              <Icon name="long-arrow-left" color="#000" size={20} />
             </TouchableOpacity>
             <TouchableOpacity onPress={()=>{setShowMode(!showMode)}} style={{alignItems:'center'}}>
-              <Icon name={showMode?"remove":mode==="DRIVING"?"car":mode==="WALKING"?"person-walking":mode==="BICYCLING"?"bicycle":"train-subway"} 
-              color="#999" size={20} />
+              <Icon name={
+              showMode?"remove":
+              mode==="DRIVING"?"car":
+              mode==="WALKING"?"person-walking":
+              mode==="BICYCLING"?"bicycle":"train-subway"
+            }
+              color="#000" size={20} />
               <Text style={{fontSize:12,color:'blue'}}> Travel Mode</Text>
             </TouchableOpacity>
         <View style={{position:'absolute',right:showMode?10:-60,top:50,gap:20,borderWidth:1,alignItems:'center'}}>
@@ -48,7 +50,6 @@ export default function MapScreen() {
             <Icon6 name="train-subway" color="#000" size={20} />
             <Text style={{}}>Train</Text></TouchableOpacity>
         </View>
-    
       </View>
       <View style={styles.mapWrapper}>
         <MapView
@@ -62,7 +63,6 @@ export default function MapScreen() {
         >
           <Marker coordinate={origin} />
           <Marker coordinate={destination} />
-
           <MapViewDirections
             origin={origin}
             destination={destination}
@@ -99,11 +99,10 @@ export default function MapScreen() {
              </View>
              <View style={{flexDirection:'row',justifyContent:'space-between'}}>
               <Text>Distance: {result.distance} Km</Text>
-              <Text>Calculated Time {result.duration} Minuts </Text>
+              <Text>Calculated Time{result.duration} Minuts </Text>
              </View>
       </View>
     </View>
-
   );
 }
 
@@ -136,7 +135,6 @@ const styles = StyleSheet.create({
       position: 'absolute', 
       zIndex: 9 ,
       backgroundColor:'#fff',
-      opacity:0.6,
       borderBottomColor:'#ccc',
       borderBottomWidth:1
 

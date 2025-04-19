@@ -12,9 +12,7 @@ import Header from './comp/header';
 
 const MapHome = () => {
   const mapRef=useRef(null)  //
-
-  const moveToLocation=async(latitude,longitude)=>{
-    // console.log(latitude,longitude) 
+  const moveToLocation=async(latitude,longitude)=>{ 
     mapRef.current.animateToRegion({
       latitude,
       longitude,

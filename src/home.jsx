@@ -25,7 +25,7 @@ import Chat from './chatRoom/chat'
 const Home = () => {
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -36,13 +36,13 @@ const Home = () => {
       {/* <Cashfree/> */}
       {/* <Redux_app/>  */}
       {/* <Share_It/> */}
-      {/* <GoogleMap/> */}
+      <GoogleMap/>
       {/* <AutoComplete/>  */}
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}
-       {/* <Chat /> */}
+      {/* <Chat /> */}
     </>
   )
 }

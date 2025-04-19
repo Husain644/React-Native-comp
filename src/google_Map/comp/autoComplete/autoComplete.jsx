@@ -8,7 +8,9 @@ import { useNavigation } from '@react-navigation/native';
 
 
 const AutoComplete = () => {
-  const navigation = useNavigation()
+
+  const navigation = useNavigation();
+
   const initial=[{
      "description": "Paris, France",
      "structured_formatting": {
@@ -20,7 +22,7 @@ const AutoComplete = () => {
   const [predictions2, setPredictions2] = useState(initial)
   const [pick, setPick]= useState(true)
   const [picDropAddr, setPicDropAddr]= useState({ pick:'', drop:'' })
-  const [locations,setLocations]=useState({pickLocation:{lat:0,lng:0},dropLocation:{lat:0,lng:0} })
+  const [locations,setLocations]=useState({pickLocation:{lat:0,long:0},dropLocation:{lat:0,long:0} })
   
 
  
@@ -28,13 +30,13 @@ const AutoComplete = () => {
      const options={
       input:pick?picDropAddr.pick:picDropAddr.drop,
       type:'geocode',
-      location: { lat: 29.4727, lng: 77.7085 },
+      location: { lat: 29.4727, long: 77.7085 },
       radius: 5000,
       key:'AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us',
       token:'abcd1234-5678-90ab-cdef-1234567890ab'
      }
-  const url=`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${options.input}&key=${options.key}&types=${options.type}&components=country:in&
-          location=${options.location.lat},${options.location.lng}&radius=${options.radius}&language=en&sessiontoken=${options.token}`
+  const url=`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${options.input}&key=${options.key}&types=${options.type}
+  &components=country:in&location=${options.location.lat},${options.location.long}&radius=${options.radius}&language=en&sessiontoken=${options.token}`
     if (pick?picDropAddr.pick.length >= 3:picDropAddr.drop.length >= 3){
       try {
         const res = await axios(
@@ -57,16 +59,13 @@ const AutoComplete = () => {
   
 useEffect(() => {getData()},[picDropAddr])
 useEffect(()=>{
-  Geolocation.getCurrentPosition((info) =>{setLocations({...locations,pickLocation:{lat:info.coords.latitude,lng:info.coords.longitude}})})},[])
+  Geolocation.getCurrentPosition((info) =>{setLocations({...locations,pickLocation:{lat:info.coords.latitude,long:info.coords.longitude}})})},[])
  
 if(
-locations.dropLocation.lat!==0 & locations.dropLocation.lng!==0){
+locations.dropLocation.lat!==0 & locations.dropLocation.long!==0){
   navigation.navigate('Routes',locations)
 }
 
-
-
-console.log(locations)
 
   return (
     <View style={styles.container}>

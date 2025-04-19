@@ -11,7 +11,7 @@ const Header = () => {
     <Icon name="align-justify" size={30} color="#000" /> 
     <TouchableOpacity 
      style={[styles.toMap]}  
-     onPress={()=>navigation.navigate("AutoComplete")}>
+     onPress={()=>navigation.navigate("PickDrop")}>
      <Icon name="search" size={20} color="#000" />
       <Text style={{color:'#999'}}>
         Where are you going ?

@@ -1,12 +1,26 @@
 import { StyleSheet, Text, View,ImageBackground } from 'react-native'
 import {React,useEffect} from 'react'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation,CommonActions } from '@react-navigation/native'
 import mapBg from './../../assets/images/map.png'
 
-const MapSplash = () => {
+
+const MapSplash = () => { 
   const navigation=useNavigation()
   useEffect(()=>{
-    setTimeout(()=>{navigation.navigate('Nav')},2000)
+    setTimeout(()=>{
+      navigation.navigate('Nav');
+      navigation.dispatch(
+        CommonActions.reset({
+          index: 1,
+          routes: [
+            {
+              name: 'Nav',
+              params: {},
+            }
+          ],
+        })
+      );
+    },2000)
   },[])
   return (
     <View style={{flex:1,backgroundColor:'#eaea',alignItems:'center',justifyContent:'center'}}>

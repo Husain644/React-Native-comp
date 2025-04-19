@@ -3,7 +3,7 @@
 // import GooglePlacesInput2 from './placeAutocomp'
 
 // const PlaceAutoComplete = () => {
-//   const [pickDrop,setPicDrop]=useState({pick:{lat:0,lng:0},drop:{lat:0,lng:0}})
+//   const [pickDrop,setPicDrop]=useState({pick:{lat:0,long:0},drop:{lat:0,long:0}})
 //   const [val,setVal]=useState('place name')
 //   console.log(val)
 //   return (
