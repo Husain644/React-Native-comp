@@ -19,7 +19,6 @@ const ChooseOnMap = ({route}) => {
   const initialLocation=route.params.curLocName
   const pick=route.params.pick
   const mapRef=useRef(null);
-    
   const moveToLocation=async(latitude,longitude)=>{     /// Location per move krne k liye function
     mapRef.current.animateToRegion({
       latitude,
@@ -34,12 +33,10 @@ const ChooseOnMap = ({route}) => {
     latitudeDelta: 0.0800,
     longitudeDelta: 0.0421,
   }
-
+  
   const [rigion, setRigion] = useState(currentLocation);
   const [location,setLocation]=useState({address_components:[{},{long_name:initialLocation.title}],
-  
   formatted_address:initialLocation.desc});
-
   const getRegion = (r) =>{
     setRigion(r);}
   const lastLocation=async(r)=>{
@@ -49,7 +46,7 @@ const ChooseOnMap = ({route}) => {
   } 
   const addrToPicDrop=()=>{
     pick?navigation.navigate("PickDrop",{pickLatLong:rigion,addr:location}):
-    navigation.navigate("Routes",{rigion:rigion,addr:location});
+    navigation.navigate("Routes",{rigion:rigion,addr:location})
   }
   return (
     <View style={{ flex: 1}}>
@@ -73,7 +70,7 @@ const ChooseOnMap = ({route}) => {
           <Icon  name={"arrow-back-outline"} size={30} color="gray" />
        </TouchableOpacity>
        <Text style={{fontSize:16,color:'#003',fontWeight:'600'}}>
-              {pick?'Choose Your Pick Location':'Choose Your Drop Location'}
+            {pick?'Choose Your Pick Location':'Choose Your Drop Location'}
         </Text>
   </View>
         <View style={styles.loc}>
@@ -86,7 +83,7 @@ const ChooseOnMap = ({route}) => {
                 </View>
         </View>
         <TouchableOpacity onPress={addrToPicDrop} style={{backgroundColor:'#008000',borderRadius:20,alignItems:'center'}}>
-            <Text style={{fontSize:20,color:'#fff',padding:5}}> Click </Text>
+            <Text style={{fontSize:20,color:'#fff',padding:5}}> Click </Text> 
         </TouchableOpacity> 
      </View>
     </View>

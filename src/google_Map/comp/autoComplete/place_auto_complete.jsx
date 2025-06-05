@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,TouchableOpacity,ScrollView } from "react-native
 import React,{useState,useEffect} from "react";
 import Geolocation from "@react-native-community/geolocation";
 import Geocoder from "react-native-geocoding";
+import axios from "axios";
 
 const PlaceAutoComplete = () => {
     const [name,setName]=useState();
@@ -13,8 +14,8 @@ const PlaceAutoComplete = () => {
 
     const getData = async () => {
         const options={
-         input:name,
-         type:type,
+         input:'rewari',
+         type:'geocode',
          location: { lat: 29.4727, lng: 77.7085 },
          radius: 5000,
          key:'AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us',
@@ -22,7 +23,6 @@ const PlaceAutoComplete = () => {
         }
      const url=`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${options.input}&key=${options.key}&types=${options.type}
      &components=country:in&location=${options.location.lat},${options.location.lng}&radius=${options.radius}&language=en&sessiontoken=${options.token}`
-       if (pick?picDropAddr.pick.length >= 3:picDropAddr.drop.length >= 3){
          try {
            const res = await axios(
               {
@@ -30,17 +30,19 @@ const PlaceAutoComplete = () => {
                url:url,
               }
            )
-           pick?setPredictions(res.data.predictions):setPredictions2(res.data.predictions);
+          console.log(res.data)
          } catch (error) {
-           console.error(error)}}      
+           console.error(error)}    
          }
+
+
          const CurrentLoc=()=>{
           Geolocation.getCurrentPosition(async (info) =>{
             const resp=await Geocoder.from(info.coords.latitude,info.coords.longitude);
             
           })};
         
-        useEffect(()=>{CurrentLoc()},[]);
+        useEffect(()=>{CurrentLoc();getData()},[]);
   return (
     <View style={styles.container}>
        <View style={{}}>

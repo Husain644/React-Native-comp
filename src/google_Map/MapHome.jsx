@@ -47,7 +47,6 @@ const MapHome = () => {
   const [rigion, setRigion] = useState(currentLocation)
   const [cord,setCord]=useState({latitude: 28.192762, longitude: 76.623940})
   
-
   const getRegion = (r) => {
     setRigion(r)
   }

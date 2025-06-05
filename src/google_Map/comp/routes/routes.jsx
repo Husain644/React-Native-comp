@@ -11,7 +11,7 @@ import { useRoute } from '@react-navigation/native';
 export default function MapScreen() {
   const route = useRoute()
   const { pickLocation, dropLocation } = route.params;
-  const origin = { latitude:pickLocation.lat, longitude:pickLocation.lng };
+  const origin = { latitude:pickLocation.lat, longitude:pickLocation.lng};
   const destination = { latitude: dropLocation.lat, longitude: dropLocation.lng };
   const [routes, setRoutes] = useState([]);
   const [mode,setMode]=useState("DRIVING");

@@ -27,14 +27,12 @@ import Music from './animations/music/music'
 import Typography from './text/txt'
 import CaroselNew from './banner/carosel/caroselNew'
 
-
-
 const HomeA = () => {
   return (
  <ScrollView>
         {/* <Accordian/>  */}
         {/* <Anim/> */}
-        <ReanimHome/>
+        {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
@@ -55,7 +53,7 @@ const HomeA = () => {
         {/* <Modal/> */}
         {/* <Menu/> */}
         {/* <Skelton/> */}
-        {/* <Music/> */}
+        <Music/>
         {/* <Bar/> */}
         {/* <Typography/> */}
  </ScrollView>

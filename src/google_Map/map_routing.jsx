@@ -10,7 +10,7 @@ import ChooseOnMap from './comp/pick_drop_screens/choose_on_map';
 import LocationTracker from './comp/real_time_location/realtime';
 import PlaceAutoComplete from './comp/autoComplete/place_auto_complete';
 
-const Stack = createNativeStackNavigator()
+const Stack = createNativeStackNavigator();
 export default function GoogleMap() {
   return (
     <NavigationContainer>
@@ -19,7 +19,7 @@ export default function GoogleMap() {
          <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
          <Stack.Screen name="Map" component={MapHome}  options={{headerShown:false}}/>
          <Stack.Screen name="PickDrop" component={PickDrop} options={{headerShown:false,title:'pick and drop'}}/>
-         <Stack.Screen name="Routes" component={Routes} options={{headerShown:false,title:'Routes'}}/>
+         <Stack.Screen name="Routes" component={Routes} options={{headerShown:false,title:'Routes'}}/> 
          <Stack.Screen name="ChooseOnMap" component={ChooseOnMap} options={{headerShown:false,title:'Routes'}}/>
          <Stack.Screen name="RealTime" component={LocationTracker} options={{headerShown:true,title:'Real Time Location'}}/>
          <Stack.Screen name="Place" component={PlaceAutoComplete} options={{headerShown:true,title:'search place type'}}/>
@@ -34,7 +34,7 @@ const data=[
   {name:'get Near by data like hospitals,bank etc',screen:'Place'},
   {name:'Real Time Location sharing',screen:'Nav'}
 ]
- 
+
 const Nav=({navigation})=>{
   return(
     <> 

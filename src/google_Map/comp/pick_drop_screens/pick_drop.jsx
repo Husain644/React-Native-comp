@@ -8,13 +8,19 @@ import { useNavigation } from '@react-navigation/native';
 import ListComp from './list_comp';
 
 const AutoComplete = ({route}) => {
-  console.log(route.params)
+  const pickFromMap={
+    title:route.params?.addr.formatted_address,
+    desc:route.params?.addr.address_components[1].long_name,
+    lat:route.params?.pickLatLong.latitude,
+    long:route.params?.pickLatLong.longitude,
+  }
+
   const navigation = useNavigation();
   Geocoder.init("AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us");
   const [predictions, setPredictions] = useState([]);
   const [predictions2, setPredictions2] = useState([]);
   const [pick, setPick]= useState(true);
-  const [picDropAddr, setPicDropAddr]= useState({ pick:'',pickDesc:'', drop:'',dropDesc:''});
+  const [picDropAddr, setPicDropAddr]= useState({pick:'',pickDesc:'', drop:'',dropDesc:''});
   const [locations,setLocations]=useState({pickLocation:{lat:0,lng:0},dropLocation:{lat:0,lng:0}});
   const [currentLocation,setCurrentLocation]=useState(null);
 
@@ -29,7 +35,7 @@ const AutoComplete = ({route}) => {
      }
   const url=`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${options.input}&key=${options.key}&types=${options.type}&components=country:in&
           location=${options.location.lat},${options.location.lng}&radius=${options.radius}&language=en&sessiontoken=${options.token}`
-    if (pick?picDropAddr.pick.length >= 3:picDropAddr.drop.length >= 3){
+    if (pick?picDropAddr.pick?.length >= 3:picDropAddr.drop?.length >= 3){
       try {const res = await axios({method:'get',url:url,});
       console.log('Get axios call')
         pick?setPredictions(res.data.predictions):setPredictions2(res.data.predictions)
@@ -44,11 +50,22 @@ const getLatLong = async (placeId,placeName) => {
         const Loc=pick?{...locations,pickLocation:response.result.geometry.location}:
         {...locations,dropLocation:response.result.geometry.location}
         setLocations(Loc);
-        if(Loc.pickLocation.lat!==0 & Loc.dropLocation.lng!==0){ 
+        if(Loc.pickLocation.lat!==0 & Loc.dropLocation.lng!==0){
              navigation.navigate('Routes',Loc);
           }};
 
 useEffect(() =>{getData()},[picDropAddr]);
+useEffect(
+  ()=>{if(route!==undefined){
+  setPicDropAddr({
+    ...picDropAddr,
+    pick:pickFromMap.title,
+    pickDesc:pickFromMap.desc});
+  setLocations(
+  {...locations,pickLocation:{
+    lat:pickFromMap.lat,
+    lng:pickFromMap.long
+  }})}},[route]);
 
 const CurrentLoc=()=>{
   Geolocation.getCurrentPosition(async (info) =>{
