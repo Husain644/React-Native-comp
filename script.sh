@@ -1,3 +1,3 @@
 git add .
-git commit -m "changes on 01-10-2024 "
+git commit -m "changes"
 git push
