@@ -23,7 +23,7 @@ import Form from '../forms/forms'
 import Menu from './menu/menu'
 import Skelton from './skelton/skelton'
 import BannerHome from './banner/banner/bannerHome'
-import Music from './animations/music/music'
+import Music from './media/music/music'
 import Typography from './text/txt'
 import CaroselNew from './banner/carosel/caroselNew'
 

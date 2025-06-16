@@ -26,7 +26,7 @@ import Auth from './forms/Authentication/auth'
 const Home = () => {
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -42,7 +42,7 @@ const Home = () => {
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
-      {/* <ProjectHome/> */}
+      <ProjectHome/>
       {/* <Chat /> */}
       {/* <Auth/> */}
     </>
