@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View,ScrollView,Image,TouchableOpacity } from 'react-native'
-import React from 'react'
 import { Data } from '../assets/data'
+import { useNavigation } from '@react-navigation/native'
+
 const Main = () => {
+    const navigation=useNavigation();
   return (
     <ScrollView contentContainerStyle={styles.mainContainer} >
      {
         Data.map((item,index)=>{return(
-        <TouchableOpacity style={styles.container} key={index}>
-            <Image style={styles.img} source={item.img} resizeMode='stretch'/>
+        <TouchableOpacity style={styles.container} key={index} onPress={()=>{navigation.navigate(item.screen)}}>
+            <Image style={styles.img} source={item.img} resizeMode='stretch' />
             <Text style={styles.txt} >{item.name}</Text>
         </TouchableOpacity>
         )})
@@ -37,7 +39,8 @@ const styles = StyleSheet.create({
         height:180
     },
     txt:{
-        fontSize:20,
-        fontWeight:'600'
+        fontSize:25,
+        fontWeight:'600',
+        left:10
     }
 })
