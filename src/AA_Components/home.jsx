@@ -32,7 +32,7 @@ const HomeA = () => {
  <ScrollView>
         {/* <Accordian/>  */}
         {/* <Anim/> */}
-        {/* <ReanimHome/> */}
+        <ReanimHome/>
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
@@ -53,7 +53,7 @@ const HomeA = () => {
         {/* <Modal/> */}
         {/* <Menu/> */}
         {/* <Skelton/> */}
-        <Music/>
+        {/* <Music/> */}
         {/* <Bar/> */}
         {/* <Typography/> */}
  </ScrollView>

@@ -9,6 +9,8 @@ import { enableLayoutAnimations } from 'react-native-reanimated';
 import All_gestures from './all_gestures/all_gestures'
 import Testing from './testing'
 import CustomHome from './custom_animations/custom_home'
+import LoopAnim from './loop'
+import SkiaHome from '../skia/skiahome'
 
 
 
@@ -16,13 +18,15 @@ const ReanimHome = () => {
   enableLayoutAnimations(true);
   return (
     <GestureHandlerRootView  style={{ flex: 1 }}>
-    <All_gestures/>
+    {/* <All_gestures /> */}
     {/* <SmplAnim/> */}
     {/* <CustomHome/> */}
     {/* <Interpol/> */}
     {/* <GesturComp/> */}
     {/* <Game/> */}
+    {/* <LoopAnim/> */}
     {/* <Testing/> */}
+    <SkiaHome/>
 </GestureHandlerRootView>
       
   )

@@ -49,6 +49,10 @@ const SmplAnim = () => {
 
 export default SmplAnim
 
+
+
+
+
 const styles = StyleSheet.create({
       textIn:{
         backgroundColor:'#ccc',
