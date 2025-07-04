@@ -8,6 +8,7 @@ const Sound_player = () => {
   const[index,setIndex]=useState(0);
  const sound=new Sound(musicData[1].url, Sound.MAIN_BUNDLE,(error)=>{
   if(error){console.log(error)}});
+  
 console.log(musicData.length > index)
  
 

@@ -14,11 +14,16 @@ import chick4 from './../assets/images/chick4.jpeg'
 import chick5 from './../assets/images/chick5.jpeg'
 import chick6 from './../assets/images/chick6.jpeg'
 import chick7 from './../assets/images/chick7.jpeg'
+import afor from './../assets/images/afor.png'
+import pen from './../assets/images/pen.png'
 import web from './../assets/images/web.jpg'
 import {css as cs} from '../AA_Components/css/css';
+import aforvoice from './../assets/audio/text_voice/afor.mp3'
+import suno_to_jara from './../assets/videos/suno_to_jara.mp4'
 
 export const css=cs;
 export const Img={
+    suno_to_jara:suno_to_jara,
     car:car,
     auto:auto,
     parcel:parcel,
@@ -32,8 +37,12 @@ export const Img={
     chick5:chick5,
     chick6:chick6,
     chick7:chick7,
+    pen:pen,
+    afor:afor
 }
-
+export const music ={
+    afor:aforvoice
+}
 
 export const FontIcon=({name='star',size=20,color="#999"})=> {return (<><Icon1 name={name} size={size} color={color}/></>)}  //font Awesome
 export const MuiIcon=({name='star',size=20,color="#999"})=> {return (<><Icon2 name={name} size={size} color={color}/></>)}   //material community icon

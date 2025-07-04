@@ -1,21 +1,9 @@
- LOG  {"__typename__": "Path", "addArc": [Function addArc], 
-  "addCircle": [Function addCircle],
-   "addOval": [Function addOval], "addPath": [Function addPath], "addPoly": [Function addPoly],
-    "addRRect": [Function addRRect], "addRect": [Function addRect], "arcToOval": [Function arcToOval], 
-    "arcToRotated": [Function arcToRotated], "arcToTangent": [Function arcToTangent],
-     "close": [Function close], "computeTightBounds": [Function computeTightBounds],
-      "conicTo": [Function conicTo], "contains": [Function contains], "copy": [Function copy],
-       "countPoints": [Function countPoints], "cubicTo": [Function cubicTo], "dash": [Function dash],
-        "dispose": [Function dispose], "equals": [Function equals], "getBounds": [Function getBounds], 
-        "getFillType": [Function getFillType], "getLastPt": [Function getLastPt], "getPoint": [Function getPoint], 
-        "interpolate": [Function interpolate], "isEmpty": [Function isEmpty], 
-        "isInterpolatable": [Function isInterpolatable], "isVolatile": [Function isVolatile],
-         "lineTo": [Function lineTo], "makeAsWinding": [Function makeAsWinding], "moveTo": [Function moveTo],
-          "offset": [Function offset], "op": [Function op], "quadTo": [Function quadTo], 
-          "rArcTo": [Function rArcTo], "rConicTo": [Function rConicTo], "rCubicTo": [Function rCubicTo],
-           "rLineTo": [Function rLineTo], "rMoveTo": [Function rMoveTo], "rQuadTo": [Function rQuadTo],
-            "reset": [Function reset], "rewind": [Function rewind], "setFillType": [Function setFillType], 
-            "setIsVolatile": [Function setIsVolatile], "simplify": [Function simplify], "stroke": 
-[Function stroke], "toCmds": [Function toCmds], "toSVGString": [Function toSVGString], 
-"transform": [Function transform], "trim": [Function 
-trim]
+<svg xmlns="http://www.w3.org/2000/svg"><defs/><g><g fill="#0f3ae6"><g transform="translate(0, 0)"><path d=
+
+
+
+
+
+
+
+/></g></g></g></svg>
