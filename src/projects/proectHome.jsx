@@ -12,8 +12,8 @@ const ProjectHome = () => {
       {/* <ExpHome/> */}
       {/* <Rapido/> */}
       {/* <App_fresh/> */}
-      {/* <HomeLkg/> */}
-      <CncHome/>
+      <HomeLkg/>
+      {/* <CncHome/> */}
     </>
   )
 }

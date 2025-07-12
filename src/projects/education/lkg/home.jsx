@@ -14,7 +14,7 @@ const Stack = createStackNavigator();
 const HomeLkg = () => {
      useEffect(() => {
     Orientation.lockToLandscape();
-    // return () => Orientation.lockToPortrait(); // back to normal
+    return () => Orientation.lockToPortrait(); // back to normal
   }, []);
       const config = {
         animation:'timing',
