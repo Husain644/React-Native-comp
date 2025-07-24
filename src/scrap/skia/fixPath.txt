@@ -1,0 +1,256 @@
+import {
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions
+} from "react-native";
+import { useState, useEffect } from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
+import Icon5 from "react-native-vector-icons/FontAwesome5";
+import roboto from '../data/roboto.ttf';
+import {
+  usePathValue,
+  Canvas,
+  Skia,
+  Path,
+  Circle,
+  Text as SkiaText,
+  useFont,
+} from "@shopify/react-native-skia";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+  withRepeat,
+  withDelay,
+  withSequence,
+} from "react-native-reanimated";
+import { Gesture, GestureDetector } from "react-native-gesture-handler";
+import { wordA} from "../data/data";
+import { BlinkSkia,Blink } from "./utils/blink";
+
+const FixPath = () => {
+  const size =30;
+  const scale=1
+  const { width, height } = useWindowDimensions();
+  const font = useFont(roboto, 20);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [animPath,setAnimPath] = useState(Skia.Path.Make());
+  const initialPoint = wordA[0];
+  const MoveX = useSharedValue(initialPoint.x);
+  const MoveY = useSharedValue(initialPoint.y);
+  const MoveX2 = useSharedValue(initialPoint.x);
+  const MoveY2 = useSharedValue(initialPoint.y);
+  const r = useSharedValue(size*.5)  //for BlinkPoint
+  const updatedList = wordA.slice(0, currentIndex + 1);
+  animPath.moveTo(wordA[0].x, wordA[0].y);
+  const animPathRef = usePathValue((p) => {
+    "worklet";
+    animPath.lineTo(MoveX2.value, MoveY2.value);
+    return animPath;
+  },animPath);
+  const path = Skia.Path.Make();
+  wordA.forEach((item, index) => {
+    if (index === 0) {
+      path.moveTo(item.x, item.y);
+    } else {
+      if(item.n){
+      path.lineTo(item.x, item.y);
+      }else{ path.moveTo(item.x, item.y);}
+    }
+
+  });
+  const pathNew = Skia.Path.Make();
+  updatedList.forEach((item, index) => {
+     if (index === 0) {
+      pathNew.moveTo(item.x, item.y);
+    } else {
+      if(item.n){
+      pathNew.lineTo(item.x, item.y);
+      }else{ pathNew.moveTo(item.x, item.y);}
+    }
+  });
+
+  const gesture = Gesture.Pan()
+    .onBegin((e) => {
+      "worklet";
+      if (wordA.length > currentIndex + 1) {
+        if (
+          Math.abs(wordA[currentIndex + 1].x - e.x) < 20 &&
+          Math.abs(wordA[currentIndex + 1].y - e.y) < 20
+        ) {
+          (MoveX.value = wordA[currentIndex + 1].x),
+            (MoveY.value = wordA[currentIndex + 1].y);
+          setCurrentIndex((prev) => {
+            if (prev < wordA.length - 1) {
+              return prev + 1;
+            } else {
+              return prev;
+            }
+          });
+        }
+      } else {
+        MoveX.value = withTiming(wordA[0].x, { duration: 100 });
+        MoveY.value = withTiming(wordA[0].y, { duration: 100 });
+        setCurrentIndex(0);
+      }
+    })
+    .onUpdate((e) => {
+      "worklet";
+      if (wordA.length > currentIndex + 1) {
+        if (
+          Math.abs(wordA[currentIndex + 1].x - e.x) < 20 &&
+          Math.abs(wordA[currentIndex + 1].y - e.y) < 20
+        ) {
+          (MoveX.value = wordA[currentIndex + 1].x),
+            (MoveY.value = wordA[currentIndex + 1].y);
+          setCurrentIndex((prev) => {
+            if (prev < wordA.length - 1) {
+              return prev + 1;
+            } else {
+              return prev;
+            }
+          });
+        }
+      }
+    })
+    .runOnJS(true);
+  const AnimStyle = useAnimatedStyle(() => {
+    const x1 = wordA[currentIndex]?.x;
+    const y1 = wordA[currentIndex]?.y;
+    const x2 =
+      wordA.length > currentIndex + 1 ? wordA[currentIndex + 1].x : wordA[0].x;
+    const y2 =
+      wordA.length > currentIndex + 1 ? wordA[currentIndex + 1].y : wordA[0].y;
+    const angle = Math.atan2(y1 - y2, x1 - x2) * (180 / Math.PI);
+    return {
+      left: MoveX.value - 15,
+      top: MoveY.value - 15,
+      transform: [{ rotate: `${angle - 90}deg` }],
+    };
+  })
+useEffect(()=>{
+  MoveX2.value =withRepeat(
+    withSequence(
+   ...wordA.map((item,i)=>{
+    const lenX=Math.abs(wordA[i].x-wordA[i-1]?.x)
+    const lenY=Math.abs(wordA[i].y-wordA[i-1]?.y)
+    const t=lenX>lenY?lenX:lenY
+    const Time=t&&wordA[i]?.n?t:1
+    return  withTiming(item.x, { duration:Time*30 })
+   })
+  ),1
+  )
+  MoveY2.value=withRepeat(
+    withSequence(
+   ...wordA.map((item,i)=>{
+    const lenX=Math.abs(wordA[i].x-wordA[i-1]?.x)
+    const lenY=Math.abs(wordA[i].y-wordA[i-1]?.y)
+    const t=lenX>lenY?lenX:lenY
+   const Time=t&&wordA[i]?.n?t:1
+    return withTiming(item.y, { duration:Time*30 })
+   })
+  ),1
+  );
+   r.value = withRepeat(withTiming(size*.33, { duration: 1000 }), -1,true)
+},[])
+
+  const AnimStyle2 = useAnimatedStyle(() => {
+    return {
+      left: MoveX2.value - 15,
+      top: MoveY2.value - 15,
+    };
+  });
+  return (
+    <View style={{ padding: 0 }}> 
+      <GestureDetector gesture={gesture}>
+        <View
+          style={{
+            width: width,
+            height: height>350?350:height,
+            backgroundColor: "#ccc",
+          }}
+        >
+          <Animated.View
+            style={[
+              {
+                height:size,
+                borderRadius: 15,
+                width: size,
+                backgroundColor: "green",
+                alignItems:'center',
+                zIndex: 1,
+              },
+              AnimStyle,
+            ]}
+          >
+            <Icon
+              name="caret-up"
+              color={"#fff"}
+              size={45}
+              style={{ top: -10}}
+            />
+          </Animated.View>
+          <Canvas
+            style={{
+              position: "absolute",
+              width: width,
+            height: height>350?350:height,
+            }}
+          >
+            {wordA.map((p, i) => (
+              currentIndex+1===i?<Circle key={i} cx={p.x} cy={p.y} r={r} color="red"/>:
+              <Circle key={i} cx={p.x} cy={p.y} r={2} color="#4a148c" />
+            ))}
+            <Path
+              path={path}
+              color="blue"
+              style="stroke"
+              strokeJoin="round"
+              strokeWidth={1}
+            />
+            <Path
+              path={pathNew}
+              color="yellow"
+              style="stroke"
+              strokeJoin="round"
+              strokeWidth={2}
+            />
+              <Path
+              // path={animPathRef}
+              color="green"
+              style="stroke"
+              strokeJoin="round"
+              strokeWidth={1}  
+            />
+            <SkiaText x={10} y={20} text="Hello Skia!" font={font} color="red" />
+                <Circle cx={projectedX} cy={projectedY} r={20} color="orange" />
+          </Canvas>
+          <Animated.View
+            style={[
+              {
+                position: "absolute",
+                height: 60,
+                borderRadius: 15,
+                width: 45,
+                zIndex: 1,
+                transform:[{rotate:'-20deg'}]
+              },
+              AnimStyle2,
+            ]}
+          >
+            {/* <Icon5
+              name="hand-point-up"
+              color={"#000"}
+              size={45}
+              style={{ top: 5,left:5 }}
+            /> */}
+          </Animated.View>
+        </View>
+      </GestureDetector>
+    </View>
+  );
+};
+export default FixPath;
+
+const styles = StyleSheet.create({});
