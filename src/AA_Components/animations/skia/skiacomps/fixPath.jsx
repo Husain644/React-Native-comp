@@ -1,20 +1,19 @@
 import { StyleSheet, Text, View, useWindowDimensions } from "react-native";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useMemo,useLayoutEffect } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon5 from "react-native-vector-icons/FontAwesome5";
 import roboto from "../data/roboto.ttf";
 import {
-  usePathValue,
-  Canvas,
-  Skia,
-  Path,
-  Circle,
-  Text as SkiaText,
-  useFont,
+usePathValue,
+Canvas,
+Skia,
+Path,
+Circle,
+Text as SkiaText,
+useFont,
 RoundedRect,
-DashPathEffect,
-
-} from "@shopify/react-native-skia";
+Path1DPathEffect,
+DashPathEffect } from "@shopify/react-native-skia";
 import Animated, {
   useSharedValue,
   useDerivedValue,
@@ -29,60 +28,38 @@ import Animated, {
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { wordB as wordN } from "../data/data";
 import { BlinkSkia, Blink } from "./utils/blink";
-import { wordModify } from "./utils/func";
+import { wordModify,StructureByPath,basePathStyle ,
+  tracePathStyle,handPathStyle,sortPathStyle
+} from "./utils/func";
 import { TouchableOpacity } from "react-native";
 
 const FixPath = () => {
-  const wordA = wordModify(
-    wordN,
-    (positions = { x: 100, y: 100 }),
-    (scale = 1)
-  ); //for scalling and positions change.
+  const wordA = useMemo(()=>wordModify(wordN,(positions = { x: 100, y: 100 }),(scale = 1)),[wordN]); //for scalling and positions change.
+  // const BasePathStyle=useMemo(()=>{basePathStyle()})
+ 
+ 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const initialPoint = wordA[0];
+  const crntIndexPoint=wordA[currentIndex];
+  const nextPoint=wordA[currentIndex+1]?wordA[currentIndex+1]:initialPoint;
   const size = 30;
   const { width, height } = useWindowDimensions();
   const font = useFont(roboto, 20);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const initialPoint = wordA[0];
-  const MoveX = useSharedValue(initialPoint.x);
+  const MoveX = useSharedValue(initialPoint.x);  //for hand driven ball
   const MoveY = useSharedValue(initialPoint.y);
-  const MoveX2 = useSharedValue(initialPoint.x);
+  const MoveX2 = useSharedValue(initialPoint.x); //for auto animated ball
   const MoveY2 = useSharedValue(initialPoint.y);
   const r = useSharedValue(size * 0.5); //for BlinkPoint //
-  // Animation path for handDraw path //
-  const handPointSkip = useSharedValue(false);
-  const [animPath, setAnimPath] = useState(
-    Skia.Path.Make().moveTo(wordA[0].x, wordA[0].y)
-  );
-  const handAnimPath = usePathValue((p) => {
-    "worklet";
-    if (!handPointSkip.value) {
-      animPath.lineTo(MoveX2.value, MoveY2.value);
-    } else {
-      animPath.moveTo(MoveX2.value, MoveY2.value);
-    }
-    return animPath;
-  }, animPath);
-
-  const path = Skia.Path.Make();
-  wordA.forEach((item, index) => {
-    if (index === 0) {
-      path.moveTo(item.x, item.y);
-    } else {
-      if (item.n) {
-        path.moveTo(item.x, item.y);
-      } else {
-        path.lineTo(item.x, item.y);
-      }
-    }
-  });
+ 
+//Base path (Word structure )  start ##################################
+  const path = useMemo(()=>StructureByPath(wordA),[wordN])
   ///Gesture path logic
-  const [gesturePath, setGesturePath] = useState(
-    Skia.Path.Make().moveTo(wordA[0].x, wordA[0].y)
-  );
+  const [gesturePath, setGesturePath] = useState(Skia.Path.Make().moveTo(initialPoint.x, initialPoint.y) );
+  const nextPointN=nextPoint.n
   const gesturePathRef = usePathValue((p) => {
     "worklet";
-    if (wordA[currentIndex + 1]?.n) {
-      gesturePath.moveTo(wordA[0].x, wordA[0].y);
+    if (nextPointN) {
+      gesturePath.moveTo(nextPoint.x, nextPoint.y);
     } else {
       gesturePath.lineTo(MoveX.value, MoveY.value);
     }
@@ -91,20 +68,12 @@ const FixPath = () => {
 
   const gesture = Gesture.Pan()
   .onBegin((e) => {
-    const inside = e.x >= 70 && e.x <= 250 && e.y >= 0 && e.y <= 200; // area bounds
-    if (!inside) {
-      gesture.enabled(false); // disable if not in bounds
-    }
-  })
-    .onUpdate((e) => {
-      "worklet";
-          // const inside = e.x >= 70 && e.x <= 250 && e.y >= 50 && e.y <= 350; // area bounds
-      if(true){
-           if (wordA.length > currentIndex + 1) {
-        const startingPointX = wordA[currentIndex].x;
-        const startingPointY = wordA[currentIndex].y;
-        const endPointX = wordA[currentIndex + 1].x;
-        const endPointY = wordA[currentIndex + 1].y;
+          "worklet";
+    if (wordA.length > currentIndex + 1) {
+        const startingPointX = crntIndexPoint.x;
+        const startingPointY = crntIndexPoint.y;
+        const endPointX = nextPoint.x;
+        const endPointY = nextPoint.y;
         // Static line vector math
         const dx = endPointX - startingPointX;
         const dy = endPointY - startingPointY;
@@ -126,19 +95,40 @@ const FixPath = () => {
           });
         }
       }
-      }
+  }).onUpdate((e) => {
+      "worklet";
+    if (wordA.length > currentIndex + 1) {
+        const startingPointX = crntIndexPoint.x;
+        const startingPointY = crntIndexPoint.y;
+        const endPointX = nextPoint.x;
+        const endPointY = nextPoint.y;
+        // Static line vector math
+        const dx = endPointX - startingPointX;
+        const dy = endPointY - startingPointY;
+        const lengthSq = dx * dx + dy * dy;
+        const px = e.x - startingPointX;
+        const py = e.y - startingPointY;
+        const t = Math.max(0, Math.min(1, (px * dx + py * dy) / lengthSq));
+        MoveX.value = startingPointX + t * dx;
+        MoveY.value = startingPointY + t * dy;
+        if (Math.sqrt((e.x - endPointX) ** 2 + (e.y - endPointY) ** 2) < 20) {
+          MoveX.value = endPointX;
+          MoveY.value = endPointY;
+          setCurrentIndex((prev) => {
+            if (prev < wordA.length - 1) {
+              return prev + 1;
+            } else {
+              return prev;
+            }
+          });
+        }
+    }}).runOnJS(true);
 
-   
-
-    })
-    .runOnJS(true);
   const AnimStyle = useAnimatedStyle(() => {
-    const x1 = wordA[currentIndex]?.x;
-    const y1 = wordA[currentIndex]?.y;
-    const x2 =
-      wordA.length > currentIndex + 1 ? wordA[currentIndex + 1].x : wordA[0].x;
-    const y2 =
-      wordA.length > currentIndex + 1 ? wordA[currentIndex + 1].y : wordA[0].y;
+    const x1 = crntIndexPoint?.x;
+    const y1 = crntIndexPoint?.y;
+    const x2 = wordA.length > currentIndex + 1 ? nextPoint.x : initialPoint.x;
+    const y2 = wordA.length > currentIndex + 1 ? nextPoint.y : initialPoint.y;
     const angle = Math.atan2(y1 - y2, x1 - x2) * (180 / Math.PI);
     return {
       left: MoveX.value - 15,
@@ -146,8 +136,19 @@ const FixPath = () => {
       transform: [{ rotate: `${angle - 90}deg` }],
     };
   });
+ // Animation path for handDraw path //############################################################################
+  const [animPath, setAnimPath] = useState(Skia.Path.Make().moveTo(initialPoint.x, initialPoint.y));
+  const handPointSkip = useSharedValue(true);
+  const handAnimPath = usePathValue((p) => {
+    "worklet";
+    if (handPointSkip.value) {
+      // console.log(MoveX2.value, MoveY2.value)
+      animPath.lineTo(MoveX2.value, MoveY2.value);
+    }
+    return animPath;
+  }, animPath);
 
-  useEffect(() => {
+useEffect(() => {
     const time = 20;
     MoveX2.value = withRepeat(
       withSequence(
@@ -159,24 +160,29 @@ const FixPath = () => {
           if (wordA.length > i + 1) {
             return withTiming(item.x, { duration: Time }, (success) => {
               if (success) {
-                if (wordA[i + 1]?.n) {
-                  handPointSkip.value = true;
-                } else {
-                  handPointSkip.value = false;
+                if( wordA[i+1]?.n){
+                   handPointSkip.value =false;
+                }else{
+                animPath.moveTo(item.x,item.y) 
+                 handPointSkip.value = true;
                 }
               }
             });
           } else {
             return withSequence(
               withTiming(item.x, { duration: Time }, () => {
-                handPointSkip.value = true;
+                console.log('running with timing')
+               handPointSkip.value =false;
               }),
-              withTiming(wordA[0].x, { duration: Time }, () => {})
+              withTiming(initialPoint.x, { duration: Time }, () => {
+                 animPath.moveTo(initialPoint.x,initialPoint.y) 
+                 handPointSkip.value = true;
+              })
             );
           }
         })
       ),
-      1
+      2
     );
     MoveY2.value = withRepeat(
       withSequence(
@@ -190,12 +196,12 @@ const FixPath = () => {
           } else {
             return withSequence(
               withTiming(item.y, { duration: Time }),
-              withTiming(wordA[0].y, { duration: Time })
+              withTiming(initialPoint.y, { duration: Time })
             );
           }
         })
       ),
-      1
+      2
     );
     r.value = withRepeat(withTiming(size * 0.33, { duration: 1000 }), -1, true);
   }, []);
@@ -205,26 +211,24 @@ const FixPath = () => {
       top: MoveY2.value - 15,
     };
   });
-  ///shorts anim path  start code #########
-  const [shortsPath, setShortPath] = useState(
-    Skia.Path.Make().moveTo(wordA[0].x, wordA[0].y)
-  );
+  ///shorts anim path  start code #############################################################################
+  const [shortsPath, setShortPath] = useState(Skia.Path.Make().moveTo(initialPoint.x, initialPoint.y));
   const shortPathSkip = useSharedValue(false);
   const newWords = wordA.slice(currentIndex, currentIndex + 2); //list of movements for shorts anim
   const MoveShortX = useSharedValue(newWords[0].x);
   const MoveShortY = useSharedValue(newWords[0].y);
-
   const shortsPathRef = usePathValue((p) => {
     "worklet";
     if (!shortPathSkip.value) {
-      if (newWords[0].x === MoveShortX.value) {
-        shortsPath.reset();
-        shortsPath.moveTo(MoveShortX.value, MoveShortY.value);
-      } else shortsPath.lineTo(MoveShortX.value, MoveShortY.value);
-    } else {
+      if (newWords[0].x === MoveShortX.value & newWords[0].y === MoveShortY.value) {
+      shortsPath.reset();
+      shortsPath.moveTo(MoveShortX.value, MoveShortY.value);
+      } 
+      else shortsPath.lineTo(MoveShortX.value, MoveShortY.value);
+    } else
+    {
       shortsPath.moveTo(MoveShortX.value, MoveShortY.value);
     }
-    return shortsPath;
   }, shortsPath);
   useEffect(() => {
     const time = 20;
@@ -240,16 +244,16 @@ const FixPath = () => {
               "worklet";
               if (success) {
                 if (newWords[i + 1]?.n) {
-                  handPointSkip.value = true;
+                   shortPathSkip.value = true;
                 } else {
-                  handPointSkip.value = false;
+                   shortPathSkip.value = false;
                 }
               }
             });
           } else {
             return withSequence(
               withTiming(item.x, { duration: Time }, () => {
-                handPointSkip.value = true;
+                shortPathSkip.value = true;
               })
             );
           }
@@ -327,36 +331,10 @@ const FixPath = () => {
                 <Circle key={i} cx={p.x} cy={p.y} r={2} color="#4a148c" />
               )
             )}
-            <Path
-              path={path}
-              color="#fff"
-              style="stroke"
-              strokeJoin="round"
-              strokeWidth={5}
-            >
-                <DashPathEffect intervals={[4, 4]} />
-            </Path>
-            <Path
-              path={gesturePathRef}
-              color="yellow"
-              style="stroke"
-              strokeJoin="round"
-              strokeWidth={12}
-            />
-            <Path
-              path={handAnimPath}
-              color="green"
-              style="stroke"
-              strokeJoin="round"
-              strokeWidth={3}
-            />
-            <Path
-              path={shortsPathRef}
-              color="red"
-              style="stroke"
-              strokeJoin="round"
-              strokeWidth={5}
-            />
+            <Path  path={path}          paint={basePathStyle}/>
+            <Path  path={gesturePathRef} paint={tracePathStyle}/>
+            {/* <Path  path={handAnimPath}  paint={handPathStyle} /> */}
+            <Path  path={shortsPathRef} paint={sortPathStyle}/>
             <SkiaText
               x={10}
               y={20}
@@ -409,22 +387,23 @@ const FixPath = () => {
               AnimStyle2,
             ]}
           >
-            <Icon5
+            {/* <Icon5
               name="hand-point-up"
               color={"#000"}
               size={45}
               style={{ top: 5, left: 5 }}
-            />
+            /> */}
           </Animated.View>
         </View>
       </GestureDetector>
       <TouchableOpacity
         onPress={() => {
-          MoveX.value = wordA[0].x;
-          MoveY.value = wordA[0].y;
+          MoveX.value = initialPoint.x;
+          MoveY.value = initialPoint.y;
           setCurrentIndex(0);
-          setGesturePath(Skia.Path.Make().moveTo(wordA[0].x, wordA[0].y));
-          setAnimPath(Skia.Path.Make().moveTo(wordA[0].x, wordA[0].y));
+          setGesturePath(Skia.Path.Make().moveTo(initialPoint.x, initialPoint.y));
+          setAnimPath(Skia.Path.Make().moveTo(initialPoint.x, initialPoint.y));
+    
         }}
         style={{
           margin: 30,

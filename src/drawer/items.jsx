@@ -9,7 +9,7 @@ const pages=[
 ]
 
 
-const DrawerLink = () => {
+const DrawerLink = () => { 
   const navigation = useNavigation();
   return (
     <DrawerContentScrollView 
