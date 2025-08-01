@@ -11,8 +11,8 @@ const Skiahome = () => {
   return (
     <>
       {/* <FreeHand/> */}
-      <FixPath/>
-      {/* <TempPath/> */}
+      {/* <FixPath/> */}
+      <TempPath/>
       {/* <WordCoordGen/> */}
     </>
   )

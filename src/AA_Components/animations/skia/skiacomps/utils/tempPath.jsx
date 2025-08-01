@@ -1,43 +1,121 @@
-import React, { useRef, useState } from "react";
-import { View, Button } from "react-native";
-import { Canvas, Path, Skia, usePathValue,PathOp,FillType } from "@shopify/react-native-skia";
-import { useSharedValue, useDerivedValue } from "react-native-reanimated";
+import React, { useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import { Canvas, Circle,Path,Skia } from "@shopify/react-native-skia";
+import Animated, {
+  useSharedValue,
+  useDerivedValue,
+  withRepeat,
+  withTiming,
+  runOnUI,
+} from "react-native-reanimated";
 
-export default function SkiaExample() {
-  const [animPath] = useState(
-    Skia.Path.Make().moveTo(100, 100).lineTo(250, 250)
-  );
-  const pathRef = usePathValue((p) => {
-    "worklet";
-  }, animPath);
-    // 🔁 Apply a scale + rotation
-  const matrix = [
-    Math.cos(90), Math.sin(Math.PI / 2), 10, // a, b, 0
-    -Math.sin(Math.PI / 4), Math.cos(Math.PI / 4), 0, // c, d, 0
-    0, 0, 1, // tx, ty, 1
+// Interpolation helper
+const lerp = (a, b, t) => {
+  "worklet";
+  return a + (b - a) * t;
+};
+
+// Distance between 2 points
+const getDistance = (p1, p2) => {
+  "worklet";
+  return Math.sqrt((p2.x - p1.x) ** 2 + (p2.y - p1.y) ** 2);
+};
+
+// Normalize path segments
+const normalizeSegments = (points) => {
+  "worklet";
+  const segments = [];
+  let totalLength = 0;
+
+  for (let i = 0; i < points.length - 1; i++) {
+    const start = points[i];
+    const end = points[i + 1];
+    const length = getDistance(start, end);
+    totalLength += length;
+    segments.push({ start, end, length });
+  }
+
+  let accumulated = 0;
+  for (let segment of segments) {
+    segment.tStart = accumulated / totalLength;
+    accumulated += segment.length;
+    segment.tEnd = accumulated / totalLength;
+  }
+
+  return segments;
+}; 
+
+export default function ConstantSpeedSkiaExample() {
+  const progress = useSharedValue(0);
+
+  const points = [
+    { x: 30, y: 30 },
+    { x: 280, y:30 },
+    { x: 280, y: 150 },
+    { x: 30, y: 150 },
+    { x: 30, y: 30 },
   ];
+  const path=Skia.Path.Make()
+  for (let i=0;i<points.length;i++){
+    if(i===0){path.moveTo(points[0].x,points[0].y)}
+    else{path.lineTo(points[i].x,points[i].y)}
+  }
+  const segments = useSharedValue(normalizeSegments(points));
 
-  const resetPath = () => {
-    animPath.reset();
-    animPath.moveTo(10, 200).lineTo(300, 200)
-    animPath.offset(10,10)
-    // animPath.rLineTo(0,-100)
-    // animPath.rLineTo(-100,0)
-    // animPath.arcToTangent(10,-100,100,300,120)
-    // animPath.trim(0.1,0.4,true)
-    animPath.transform(matrix)
-    // console.log(animPath.getPoint(0,5))
-    // console.log(animPath.isEmpty())
+  useEffect(() => {
+    runOnUI(() => {
+      segments.value = normalizeSegments(points);
+    })();
+    progress.value = withRepeat(withTiming(1, { duration: 3000 }), -1, false);
+  }, []);
 
-  };
+  const animatedPointx = useDerivedValue(() => {
+    const t = progress.value;
+    const segs = segments.value;
+    const segment = segs.find((s) => t >= s.tStart && t <= s.tEnd);
+    if (!segment) return { x: points[0].x, y: points[0].y };
+
+    const localT = (t - segment.tStart) / (segment.tEnd - segment.tStart);
+    return  lerp(segment.start.x, segment.end.x, localT)
+  });
+  
+  const animatedPointy = useDerivedValue(() => {
+    const t = progress.value;
+    const segs = segments.value;
+    const segment = segs.find((s) => t >= s.tStart && t <= s.tEnd);
+    if (!segment) return { x: points[0].x, y: points[0].y };
+
+    const localT = (t - segment.tStart) / (segment.tEnd - segment.tStart);
+    return  lerp(segment.start.y, segment.end.y, localT)
+  });
 
   return (
-    <View style={{ height: 350, width: "100%" }}>
-      <Canvas style={{ height: 300, width: 350,backgroundColor:'#ccc' }}>
-        <Path path={pathRef} color="blue" strokeWidth={4} style="stroke" />
-         
+    <View style={styles.container}>
+      <Canvas style={styles.canvas}>
+        <Path path={path} style="stroke" strokeWidth={5} color='#ccc' />
+        <Circle
+          cx={animatedPointx}
+          cy={animatedPointy}
+          r={8}
+          color="orange"
+        />
+
       </Canvas>
-      <Button title="Reset Path" onPress={resetPath} />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#222",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  canvas: {
+    width: 320,
+    height: 360,
+    backgroundColor: "#fff",
+    borderRadius: 12,
+  },
+});

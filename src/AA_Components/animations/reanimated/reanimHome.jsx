@@ -13,7 +13,6 @@ import LoopAnim from './loop'
 import SkiaHome from '../skia/skiahome'
 
 
-
 const ReanimHome = () => {
   enableLayoutAnimations(true);
   return (
