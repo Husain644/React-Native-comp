@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const HindiSketch = () => {
+const home = () => {
   return (
     <View>
-      <Text>HindiSketch</Text>
+      <Text>home</Text>
     </View>
   )
 }
 
-export default HindiSketch
+export default home
 
 const styles = StyleSheet.create({})

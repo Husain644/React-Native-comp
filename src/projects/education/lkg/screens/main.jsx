@@ -24,21 +24,22 @@ const styles = StyleSheet.create({
     mainContainer:{
         flexDirection:'row',
         flexWrap:'wrap',
-        justifyContent:'space-around'
-
+        justifyContent:'space-evenly',
+        backgroundColor:'#999'
     },
     container:{
-        width:'48%',
-        height:210,
+        width:'32%',
         borderWidth:2,
         borderRadius:5,
-        marginTop:10
+        marginTop:10,
+        backgroundColor:'#fff000'
     },
     img:{
         width:'100%',
-        height:180
+        height:200
     },
     txt:{
+
         fontSize:25,
         fontWeight:'600',
         left:10

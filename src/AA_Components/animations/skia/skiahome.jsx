@@ -5,14 +5,16 @@ import FixPath from './skiacomps/fixPath'
 import WordCoordGen from './skiacomps/wordCoordGen'
 import Blink from './skiacomps/utils/blink'
 import TempPath from './skiacomps/utils/tempPath'
+import SkiaProjectsHome from './skiaProjectIdeas/skiaProjectsHome'
 
 
 const Skiahome = () => {
   return (
     <>
-      {/* <FreeHand/> */}
+      {/* <SkiaProjectsHome/> */}
+      <FreeHand/>
       {/* <FixPath/> */}
-      <TempPath/>
+      {/* <TempPath/> */}
       {/* <WordCoordGen/> */}
     </>
   )

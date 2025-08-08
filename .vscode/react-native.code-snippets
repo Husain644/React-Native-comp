@@ -1,0 +1,90 @@
+{
+  "React Native Component": {
+    "prefix": "rnc",
+    "body": [
+      "import React from 'react';",
+      "import { View, Text, StyleSheet } from 'react-native';",
+      "",
+      "export default function $1() {",
+      "  return (",
+      "    <View style={styles.container}>",
+      "      <Text>$2</Text>",
+      "    </View>",
+      "  );",
+      "}",
+      "",
+      "const styles = StyleSheet.create({",
+      "  container: {",
+      "    flex: 1,",
+      "    justifyContent: 'center',",
+      "    alignItems: 'center'",
+      "  }",
+      "});"
+    ],
+    "description": "React Native functional component template"
+  },
+  "Text Tag": {
+    "prefix": "p",
+    "body": [
+      "<Text>$1</Text>"
+    ],
+    "description": "Insert a <Text> tag",
+  },
+   "cont": {
+    "prefix": "cont",
+    "body": [
+     "  container: {",
+      "    height:350,",
+      "    width:'100%',",
+     "    backgroundColor:'#ccc',",
+      "    justifyContent: 'center',",
+      "    alignItems: 'center'",
+      "  }"
+    ],
+    "description": "Insert a container style",
+  },
+ 
+    "canvas": {
+    "prefix": "canvas",
+    "body": [
+     " <Canvas   style={{height:350,width:350, backgroundColor:'#ccc'}}>",
+       "   <Path path={path} style='stroke' strokeWidth={5} color='#ccc' />",
+       "</Canvas>"
+    ],
+    "description": "Insert a canvas style",
+  },
+    "h2": {
+    "prefix": "h2",
+    "body": [
+     "  h2: {",
+     "fontSize:25",
+     " color:'#000',",
+      "  }"
+      ],},
+    "btn":{
+        "prefix": "btn",
+        "body":[
+            "<TouchableOpacity onPress={()=>{}} style={[styles.btnStyle,{width:120}]} activeOpacity={.4}>",
+            "    <Text style={{fontSize:20,color:'#fff',padding:5,textAline:'center',fontWaight:'bold'}}>",
+            "    Hello",
+            "    </Text>",
+            "</TouchableOpacity>"]},
+        "row":{
+            "prefix": "row",
+            "body": [
+                "<View style={{flexDirection:'row',justifyContent:'space-between',width:'100%'}}>",
+                "</View>"
+            ]
+        },    
+    "btnStyle":{
+        "prefix": "btnstyle",
+        "body": [
+            "btnStyle:{",
+              "backgroundColor:'#663399',",
+              "borderRadius:10,",
+              "alignItems:'center'",
+            "}"
+        ]
+    }
+    
+}

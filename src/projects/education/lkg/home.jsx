@@ -7,7 +7,7 @@ import Main from './screens/main';
 import English from './screens/alphabet/english';
 import Hindi from './screens/alphabet/hindi';
 import TestHindi from './screens/test/hindi';
-import HindiSketch from './screens/alphabet/sketch/hindi';
+import Sketch from './screens/alphabet/sketch/sketch';
 
 const Stack = createStackNavigator();
 
@@ -33,16 +33,16 @@ const HomeLkg = () => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Main" screenOptions={{gestureEnabled:true,headerShown:false,
+        <Stack.Navigator initialRouteName="sketch" screenOptions={{gestureEnabled:true,headerShown:false,
           transitionSpec: {open: config,close: closeConfig,},cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS }}>
               <Stack.Screen name="Main" component={Main}  screenOptions={{}}/>
               <Stack.Screen name="Hindi" component={Hindi} />
-              <Stack.Screen name="English" component={Hindi} />
+              <Stack.Screen name="English" component={English} />
               <Stack.Screen name="Numbers" component={Hindi} />
               <Stack.Screen name="Animals" component={Hindi} />
               <Stack.Screen name="Veg" component={Hindi} />
               <Stack.Screen name="Bodyparts" component={Hindi} />
-               <Stack.Screen name="hindisketch" component={HindiSketch} />
+               <Stack.Screen name="sketch" component={Sketch} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
