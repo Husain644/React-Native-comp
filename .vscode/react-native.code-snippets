@@ -1,3 +1,4 @@
+
 {
   "React Native Component": {
     "prefix": "rnc",
@@ -23,12 +24,33 @@
     ],
     "description": "React Native functional component template"
   },
+   "view": {
+      "prefix": "v",
+      "body": [
+        "<View style={{flex:1,justifyContent:'center',alignItems:'center'}}>",
+        "  $1",
+        "</View>"
+      ],
+      "description": "Insert a <View> tag"
+    },
   "Text Tag": {
     "prefix": "p",
     "body": [
-      "<Text>$1</Text>"
+      "<Text style={{fontSize:20,color:'#000'}}>hello world</Text>"
     ],
     "description": "Insert a <Text> tag",
+  },
+  "inline-style":{
+    "prefix": "sty",
+    "body": [
+      "style={{flex:1,justifyContent:'center',alignItems:'center'}}"
+    ],
+    "description": "Insert inline style",
+  },
+  "style":{
+    "prefix": "styl",
+    "body": "style={styles.innerContainer}",
+    "description": "Insert style from stylesheet",
   },
    "cont": {
     "prefix": "cont",
@@ -69,13 +91,6 @@
             "    Hello",
             "    </Text>",
             "</TouchableOpacity>"]},
-        "row":{
-            "prefix": "row",
-            "body": [
-                "<View style={{flexDirection:'row',justifyContent:'space-between',width:'100%'}}>",
-                "</View>"
-            ]
-        },    
     "btnStyle":{
         "prefix": "btnstyle",
         "body": [
@@ -85,6 +100,144 @@
               "alignItems:'center'",
             "}"
         ]
-    }
-    
+      },
+      "longBtnStyle":{
+        "prefix": "longbtnstyle",
+        "body": [
+            "longBtnStyle:{",
+              "backgroundColor:'#663399',",
+              "borderRadius:10,",
+              "alignItems:'center',",
+              "width:'100%'",
+            "}"
+        ]
+      },
+        "row":{
+            "prefix": "row",
+            "body": [
+                "<View style={{flexDirection:'row',justifyContent:'space-between',width:'100%'}}>",
+                "</View>"
+            ]
+        },  
+        
+       
+    "input":{
+        "prefix": "input",
+        "body": [
+            "<TextInput placeholder='Enter text' style={styles.inputStyle} />"
+        ]
+    },
+    "inputStyle":{
+        "prefix": "inputstyle",
+        "body": [
+            "inputStyle:{",
+              "height:50,",
+              "width:'100%',",
+              "borderColor:'#000',",
+              "borderWidth:1,",
+              "borderRadius:10,",
+              "padding:10,",
+              "fontSize:20,",
+              "marginVertical:10",
+            "}"
+        ]
+    },
+    "flexCenter":{
+        "prefix": "flexCenter",
+        "body": [
+            "  flexCenter: {",
+            "    flex: 1,",
+            "    justifyContent: 'center',",
+            "    alignItems: 'center'",
+            "  }"
+        ]
+    },
+    "flexRow":{
+        "prefix": "flexRow",
+        "body": [
+            "  flexRow: {",
+            "    flexDirection: 'row',",
+            "    justifyContent: 'space-between',",
+            "    alignItems: 'center'",
+            "  }"
+        ]
+    },
+    "flexCol":{
+        "prefix": "flexCol",
+        "body": [
+            "  flexCol: {",
+            "    flexDirection: 'column',",
+            "    justifyContent: 'center',",
+            "    alignItems: 'center'",
+            "  }"
+        ]
+    },
+    "shadow":{
+        "prefix": "shadow",
+        "body": [
+            "  shadow: {",
+            "    shadowColor: '#000',",
+            "    shadowOffset: { width: 0, height: 2 },",
+            "    shadowOpacity: 0.25,",
+            "    shadowRadius: 3.84,",
+            "    elevation: 5",
+            "  }"
+        ]
+    },
+    "import icon":{
+        "prefix": "importicon",
+        "body": [
+            "import Icon from 'react-native-vector-icons/FontAwesome';"
+        ]
+    },
+    "icon":{
+        "prefix": "icon",
+        "body": [
+            "<Icon name='rocket' size={30} color='#900' />"
+        ]
+    },
+    "image":{
+        "prefix": "image",
+        "body": [
+            "<Image source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}} style={{width: 50, height: 50}} />"
+        ]
+    },
+    "rgbBackground":{
+        "prefix": "rgb",
+        "body": [
+            "backgroundColor: 'rgba(0,0,0,0.5)'"
+        ]
+    },
+     "import useWindowDimensions":{
+          "prefix": "importuseWindowDimensions",
+          "body": [
+              "import { useWindowDimensions } from 'react-native';"
+          ]
+      },
+      "useWindowDimensions":{
+            "prefix": "useWindowDimensions",
+            "body": [
+                "const { height, width } = useWindowDimensions();"
+            ]
+        },
+        "heading":{
+            "prefix": "heading",
+            "body": [
+                "<Text style={styles.h2}>Hello World</Text>"
+            ]
+        },
+        "h2style":{
+            "prefix": "h2style",
+            "body": [
+                "  h2: {",
+                "    fontSize: 25,",
+                "    color: '#000',",
+                "    fontWeight: 'bold',",
+                "    marginVertical: 10,",
+                "    textTransform: 'capitalize'",
+                "  },"
+            ]
+        },
+        
+
 }

@@ -1,7 +1,11 @@
 import { StyleSheet, Text, TextInput, View,TouchableOpacity } from "react-native";
 import React,{useState,useRef} from "react";
+import { getAuth, PhoneAuthProvider, signInWithPhoneNumber } from "@react-native-firebase/auth";
 
-const Auth = () => {
+
+const PhoneAuth = () => {
+  
+    const auth = getAuth();
     const [phoneSubmit,setPhoneSubmit]=useState(true);
     const [phone,setPhone]=useState('')
     const [otp,setOtp]=useState({val1:'',val2:'',val3:'',val4:''});
@@ -15,6 +19,15 @@ const Auth = () => {
    if(otp.val3.length>0){focusRef4.current.focus()}
    if(otp.val4.length>0){alert(`okk otp is ${otp.val1+otp.val2+otp.val3+otp.val4}`)}
 
+async  function sendOtp(){
+try {
+    const confirmation = await signInWithPhoneNumber(auth,'+916396625635')
+   console.log(confirmation)
+} catch (error) {
+  console.log(error)
+}
+  }
+
   return (
 <>
  {phoneSubmit?<View style={styles.container}>
@@ -23,7 +36,7 @@ const Auth = () => {
     <TextInput inputMode="numeric" placeholder="Enter Your Phone Number" placeholderTextColor='#ccc' style={styles.input} 
     value={phone} onChangeText={(t)=>setPhone(t)}
     />
-    <TouchableOpacity onPress={()=>{setPhoneSubmit(false)}} style={styles.submit}><Text style={styles.submitText}>
+    <TouchableOpacity onPress={()=>{sendOtp()}} style={styles.submit}><Text style={styles.submitText}>
         Submit
       </Text></TouchableOpacity>
   </View>:
@@ -42,7 +55,7 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default PhoneAuth;
 
 const styles = StyleSheet.create({
   container:{

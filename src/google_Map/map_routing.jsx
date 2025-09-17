@@ -9,13 +9,17 @@ import MapSplash from './comp/mapsplash';
 import ChooseOnMap from './comp/pick_drop_screens/choose_on_map';
 import LocationTracker from './comp/real_time_location/realtime';
 import PlaceAutoComplete from './comp/autoComplete/place_auto_complete';
+import TestingMap from './comp/utility/testingMap';
 
 const Stack = createNativeStackNavigator();
 export default function GoogleMap() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Nav">
-        <Stack.Screen  name='Splash' component={MapSplash} options={{headerShown:false}}/>
+      <Stack.Navigator initialRouteName="testing">
+
+        <Stack.Screen name='testing' component={TestingMap} options={{headerShown:false}} />
+
+         <Stack.Screen  name='Splash' component={MapSplash} options={{headerShown:false}}/>
          <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
          <Stack.Screen name="Map" component={MapHome}  options={{headerShown:false}}/>
          <Stack.Screen name="PickDrop" component={PickDrop} options={{headerShown:false,title:'pick and drop'}}/>
@@ -29,6 +33,7 @@ export default function GoogleMap() {
 }
 
 const data=[
+  {name:"map home",screen:"Map"},
   {name:'getting distance between two Location',screen:'PickDrop'},
   {name:'get realTime location',screen:'RealTime'},
   {name:'get Near by data like hospitals,bank etc',screen:'Place'},

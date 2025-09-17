@@ -32,7 +32,7 @@ const HomeA = () => {
  <>
         {/* <Accordian/>  */}
         {/* <Anim/> */}
-        <ReanimHome/>
+        {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
         {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
@@ -55,7 +55,7 @@ const HomeA = () => {
         {/* <Skelton/> */}
         {/* <Music/> */}
         {/* <Bar/> */}
-        {/* <Typography/> */}
+        <Typography/>
  </>
   )
 }

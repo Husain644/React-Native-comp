@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TextInput, ScrollView, TouchableOpacity } from 'react-native'
 import { React, useState } from 'react'
-import { FontIcon } from '../../../assets/assets'
-import css from '../../../AA_Components/css/css'
+import { FontIcon } from '../../../../assets/assets'
+import css from '../../../../AA_Components/css/css'
 import AddrListItem from '../components/addrListItem'
 import { useNavigation } from '@react-navigation/native'
 

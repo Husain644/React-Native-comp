@@ -1,6 +1,6 @@
 import { View, Text,TouchableOpacity } from 'react-native'
 import React from 'react'
-import { FontIcon } from '../../../assets/assets'
+import { FontIcon } from '../../../../assets/assets'
 
 const AddrListItem = ({addr=''}) => {
   return (

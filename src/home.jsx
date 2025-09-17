@@ -18,9 +18,9 @@ import DateTime from './forms/date&timepicker/datetime'
 import FileManager from './Fetures/fileSystems/file_manager'
 import NotifeeHome from './Fetures/notifications/notifeeHome'
 import ContactsHome from './Fetures/Contacts/contacts'
-import ProjectHome from './projects/proectHome'
-import Chat from './chatRoom/chat'
-import Auth from './forms/Authentication/auth'
+import ProjectHome from './projects/projectsHome'
+import RealTimeHome from './realTime/home'
+import AuthHome from './forms/Authentication/home'
 
 
 const Home = () => {
@@ -37,14 +37,14 @@ const Home = () => {
       {/* <Cashfree/> */}
       {/* <Redux_app/>  */}
       {/* <Share_It/> */}
-      {/* <GoogleMap/> */}
+      <GoogleMap/>
       {/* <AutoComplete/>  */}
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
-      <ProjectHome/>
-      {/* <Chat /> */}
-      {/* <Auth/> */}
+      {/* <ProjectHome/> */}
+      {/* <RealTimeHome /> */}
+      {/* <AuthHome/> */}
     </>
   )
 }

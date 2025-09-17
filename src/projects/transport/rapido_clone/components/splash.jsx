@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,ImageBackground } from 'react-native'
 import {React,useEffect} from 'react'
 import { useNavigation,CommonActions } from '@react-navigation/native'
-import mapBg from './../../../assets/images/rapido.jpg'
+import mapBg from './../../../../assets/images/rapido.jpg'
 
 const MapSplash = () => {
   const navigation=useNavigation()
