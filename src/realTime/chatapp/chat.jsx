@@ -5,7 +5,8 @@ import io from 'socket.io-client'
 
 
 const Chat = ({url}) => {
-    const socket = useMemo(()=>io(`http://192.168.15.197:8000/${url}`, {extraHeaders: {
+    const socket = useMemo(()=>io(`http://192.168.15.197:8000/${url}`,
+    {extraHeaders: {
     extra: "some-value",
     Authorization: "Bearer my-secret-token","x-client": "react-native"}}),[])
     const [message,setMessage] = useState([])

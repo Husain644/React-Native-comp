@@ -83,20 +83,14 @@ function MyStack() {
   }
   return (
     <Stack.Navigator screenOptions={{
-      gestureEnabled:true,
-      transitionSpec: {
-        open: config,
-        close: closeConfig,
-      },
+      gestureEnabled:true, transitionSpec: {  open: config,  close: closeConfig},
       cardStyleInterpolator:CardStyleInterpolators.forHorizontalIOS
       //CardStyleInterpolators.forVerticalIOS use other types of interpolators that are needs to be implemented
- }}>
-      <Stack.Screen name="Home" component={HomeScreen} options={{name:'Home screen', headerStyle: {
-            backgroundColor: '#CB5567'}, headerTintColor: '#fff',  headerTitleStyle: {fontWeight: 'bold'}}}/>
-      <Stack.Screen name="Notifications" component={NotificationsScreen} 
-      options={{headerTitle:()=><LogoTitle/> }}/>
-      <Stack.Screen name="Profile" component={ProfileScreen} initialParams={{name:'husain',roll:120}} />
-      <Stack.Screen name="Settings" component={SettingsScreen} />
+                }}>
+          <Stack.Screen name="Home" component={HomeScreen} options={{name:'Home screen', headerStyle: {  backgroundColor: '#CB5567'}, headerTintColor: '#fff',  headerTitleStyle: {fontWeight: 'bold'}}}/>
+          <Stack.Screen name="Notifications" component={NotificationsScreen}   options={{headerTitle:()=><LogoTitle/> }}/>
+          <Stack.Screen name="Profile" component={ProfileScreen} initialParams={{name:'husain',roll:120}} />
+          <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 }

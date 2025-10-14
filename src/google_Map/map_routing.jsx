@@ -15,7 +15,7 @@ const Stack = createNativeStackNavigator();
 export default function GoogleMap() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="testing">
+      <Stack.Navigator initialRouteName="Nav">
 
         <Stack.Screen name='testing' component={TestingMap} options={{headerShown:false}} />
 

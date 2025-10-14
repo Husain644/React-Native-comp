@@ -51,6 +51,8 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation 'com.android.support:multidex:2.0.1'
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
+    implementation platform('com.google.firebase:firebase-bom:33.2.1')
+    implementation 'com.google.firebase:firebase-messaging'
     // implementation project(':react-native-fs')
 
 

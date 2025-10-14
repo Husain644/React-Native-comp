@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import React from "react";
 
+
 const Txt = () => {
   const [color, setColor] = React.useState("#000");
   const colorList = [
@@ -30,7 +31,7 @@ const Txt = () => {
    "PlaywriteCA-Regular"  //not working
   ]
   return (
-    <View style={{ padding: 10, backgroundColor: "#ccc" }}>
+    <View style={{ padding: 10 }}>
       <Text style={{ fontSize: 35, textAlign: "center", color: "#000" ,fontFamily: "NotoSans-Bold" }}>
         Font Family - Android
       </Text>
@@ -92,6 +93,7 @@ const Txt = () => {
           </TouchableOpacity>
         ))}
       </View>
+ 
     </View>
   );
 };

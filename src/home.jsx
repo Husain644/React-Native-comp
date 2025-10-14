@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import Orientation from "react-native-orientation-locker";
+import KeepAwake from 'react-native-keep-awake';
+import React,{useEffect} from 'react'
 import DrawerHome from './drawer/drawer'
 import HomeNav from './navigation/home'
 import MyDrawer from './drawer/myDrawer/mydrawer'
@@ -21,9 +23,30 @@ import ContactsHome from './Fetures/Contacts/contacts'
 import ProjectHome from './projects/projectsHome'
 import RealTimeHome from './realTime/home'
 import AuthHome from './forms/Authentication/home'
+import Home_utility from './utility/home'
+import Home_firebase from './firebase_utility/Notification/home';
+import NotifeeNotification from './firebase_utility/Notification/notifee_notification';
+import StorageMain from './storage/storageMain';
 
 
 const Home = () => {
+    useEffect(() => {
+  //   // KeepAwake.activate();
+  //   // Lock the app to portrait on mount
+    Orientation.lockToPortrait();
+  //   // Orientation.lockToLandscape()
+  //   const orientationChangeListener = Orientation.addOrientationListener((orientation) => {
+  //     // console.log("Current Orientation:", orientation); // "PORTRAIT", "LANDSCAPE-LEFT", etc.
+  //   });
+  //   return () => {
+  //     Orientation.unlockAllOrientations(); // unlock all on unmount
+  //     Orientation.removeOrientationListener(orientationChangeListener);
+      
+  //   // Optional: deactivate on unmount
+  //     // KeepAwake.deactivate();
+  //   };
+  }, []);
+
   return (
     <>     
       {/* <HomeA/>  */}
@@ -37,14 +60,18 @@ const Home = () => {
       {/* <Cashfree/> */}
       {/* <Redux_app/>  */}
       {/* <Share_It/> */}
-      <GoogleMap/>
+      {/* <GoogleMap/> */}
       {/* <AutoComplete/>  */}
       {/* <FileManager/> */}
       {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}
-      {/* <RealTimeHome /> */}
+      <RealTimeHome />
       {/* <AuthHome/> */}
+      {/* <Home_utility/> */}
+      {/* <NotifeeNotification/> */}  
+      {/* <Home_firebase/> */}
+      {/* <StorageMain/> */}
     </>
   )
 }

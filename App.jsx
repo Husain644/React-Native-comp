@@ -2,10 +2,8 @@ import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Home from './src/home'
 import React,{useEffect} from 'react'
-import {initFirebase,firebaseAuth} from './src/forms/Authentication/firebase/firebase_initialize.jsx'
-
+import {initFirebase} from './src/forms/Authentication/firebase/firebase_initialize.jsx'
 const App = () => {
-
    useEffect(()=>{
     const app = initFirebase();
    },[])

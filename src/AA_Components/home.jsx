@@ -53,9 +53,9 @@ const HomeA = () => {
         {/* <Modal/> */}
         {/* <Menu/> */}
         {/* <Skelton/> */}
-        {/* <Music/> */}
+        <Music/>
         {/* <Bar/> */}
-        <Typography/>
+        {/* <Typography/> */}
  </>
   )
 }
