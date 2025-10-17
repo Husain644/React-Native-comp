@@ -7,8 +7,8 @@ import Sound_player from './sound_player'
 const Music = () => {
   return (
     <>
-    {/* <Sound_player/> */}
-    <Track/>
+    <Sound_player/>
+    {/* <Track/> */}
     {/* <SpeechToText/> */}
     </>
   )

@@ -10,7 +10,10 @@ const Divider = () => {
       <View style={{width:'100%',height:4,backgroundColor:'red',marginTop:10}}></View>
       <View style={{width:'100%',height:2,backgroundColor:'red',marginTop:10}}></View>
       <View style={{width:'100%',height:1,backgroundColor:'red',marginTop:5}}></View>
+      <View style={{width:'100%',height:1,borderStyle: 'dashed',borderTopWidth:1,backgroundColor:'#fff',marginTop:10}}></View>  
       <View style={{width:'100%',height:5,borderStyle: 'dotted',borderTopWidth:10,backgroundColor:'#fff',marginTop:10}}></View>     
+      <View style={{width:'100%',backgroundColor:'#a7e07c',paddingVertical:5,marginTop:10}}>
+        <View style={{width:'100%',height:5,borderStyle: 'dotted',borderTopWidth:5,backgroundColor:'#fff'}}></View></View>
     </View>
   )
 }

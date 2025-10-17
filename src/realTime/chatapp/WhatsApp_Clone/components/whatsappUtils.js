@@ -26,7 +26,7 @@ export  const pickImage = async () => {
       return res[0];
     } catch (err) {
       if (DocumentPicker.isCancel(err)) {
-        console.log('User cancelled');
+
       } else {
         console.error(err);
       }
@@ -69,7 +69,6 @@ export function getUserChat(_id){
 }
 
 export function formatChatTime(isoString) {
-  console.log(isoString);
   if (!isoString) return '';
   const date = new Date(isoString);
   const now = new Date();

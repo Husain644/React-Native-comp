@@ -56,8 +56,6 @@ const Card = () => {
       </View>
       </View>
     </View>
-    <Card2/>
-    <Story/>
     </View>
   )
 }

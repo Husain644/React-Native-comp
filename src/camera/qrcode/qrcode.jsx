@@ -17,4 +17,5 @@ const QrcodeHome = () => {
 
 export default QrcodeHome
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+})

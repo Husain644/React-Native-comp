@@ -8,8 +8,8 @@ const options={
   message: 'Check out this React Native app!',
   url: 'https://github.com/react-native-community/react-native-share',
   subject: 'React Native Share Example', //  for email
-  // social: Share.Social.WHATSAPP,
-  //recipient: "916396625635",
+  social: Share.Social.WHATSAPP,
+  recipient: "916396625635",
   //social: Share.Social.INSTAGRAM, // specify either 'INSTAGRAM', 'FACEBOOK', 'TWITTER', 'WHATSAPP', or 'EMAIL'
 }
 

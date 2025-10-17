@@ -28,7 +28,18 @@ const MMKV_DB = () => {
   // Read all students from MMKV
   const GetDataFromMMKV = () => {
     const allKeys = students.getAllKeys();
-    const allStudents = allKeys.map((key) => JSON.parse(students.getString(key)));
+    console.log(allKeys)
+    const allStudents = allKeys.map(key => {
+      const studentData = students.getString(key);
+      try {
+        const jsonData= JSON.parse(studentData)
+            return jsonData
+      } catch (error) {
+        if(error) return;
+        console.log(error)
+      }
+  
+    })
     setData(allStudents);
   };
 

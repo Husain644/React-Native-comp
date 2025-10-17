@@ -5,6 +5,7 @@ import ControlBar from './controlledProgress'
 const ProgressBar = () => {
     const pos=useRef(new Animated.Value(0)).current
     const[run,setRun]=useState(true)
+    const [width,setwidth]=useState(10)
    
   const Prog=()=>{
     Animated.timing(pos,{
@@ -24,12 +25,25 @@ console.log('Running')
         marginVertical:20
        }}>
           <Animated.View 
-        style={{width:50,height:'100%',backgroundColor:'blue'}}>
+        style={{width:`${width}%`,height:'100%',backgroundColor:'blue'}}>
 
         </Animated.View>
        </View>
-       <Button onPress={()=>{Prog()}} title="run"/>
-
+       <Button  onPress={()=>{setwidth(prev=>{
+        if(prev<100){
+          return prev+5
+        }else{
+          return prev
+        }
+        })}} title="increase"/>
+           <Text>{width}</Text>
+        <Button onPress={()=>{setwidth(prev=>{
+        if(prev > 0){
+          return prev-5
+        }else{
+          return prev
+        }
+        })}} title="decrease"/>
         <ControlBar/>
     </View>
   )

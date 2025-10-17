@@ -14,7 +14,7 @@ const AllList = ({route,navigation,socket}) => {
  useEffect(() => {
        if (!socket) return;
        const handleMessage = (socketData) => {
-         console.log("message received", socketData.text,socketData.senderId);
+         console.log("message received", socketData);
          const Chats=getUserChat(socketData.senderId);
          setUserChat(socketData.senderId,[...Chats,{sender:false,text:socketData.text,time:socketData.time}]); 
    setData(prevData => {

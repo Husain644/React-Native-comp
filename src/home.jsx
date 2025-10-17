@@ -49,7 +49,7 @@ const Home = () => {
 
   return (
     <>     
-      {/* <HomeA/>  */}
+      <HomeA/> 
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -60,16 +60,16 @@ const Home = () => {
       {/* <Cashfree/> */}
       {/* <Redux_app/>  */}
       {/* <Share_It/> */}
-      {/* <GoogleMap/> */}
+      {/* <GoogleMap/>      */}
       {/* <AutoComplete/>  */}
       {/* <FileManager/> */}
-      {/* <NotifeeHome/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}
-      <RealTimeHome />
+      {/* <RealTimeHome /> */}
       {/* <AuthHome/> */}
       {/* <Home_utility/> */}
-      {/* <NotifeeNotification/> */}  
+      {/* <NotifeeHome/> */}
+      {/* <NotifeeNotification/>   */}
       {/* <Home_firebase/> */}
       {/* <StorageMain/> */}
     </>

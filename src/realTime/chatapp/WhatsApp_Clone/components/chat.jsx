@@ -2,28 +2,65 @@ import { StyleSheet, Text, View, TouchableOpacity, Image,TextInput,ScrollView,Im
 import React,{useState,useRef,useEffect,useMemo} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { getUserChat,setUserChat,formatChatTime } from './whatsappUtils';
+import { pc,startCall } from './calling.js';
 
 const Chat = ({ route,navigation,socket }) => {
     const {name,_id,phone,dp} = route?.params
   const Chats=getUserChat(_id);
   const scrollViewRef = useRef();
   const [text,setText]=useState('')
-  const [chat,setChat]=useState(Chats)
+  const [chat,setChat]=useState(Chats);
+  const [reciverSocketId,setReciverSocketId]=useState(null)
 useEffect(() => {
   if (!socket) return;
   const handleMessage = (data) => {
-    console.log("message received", data);
+    const SocketId=data.from
+    setReciverSocketId(SocketId)
     setChat(prev => [...prev, { sender: false, text: data.text,time:data.time }]);
    
   };
   socket.on("message", handleMessage);
+
+socket.on("offer", async (offer) => {
+  if (pc.signalingState !== "stable") {
+    // already have an offer or answer
+    console.log("Ignoring duplicate offer");
+    return;
+  }
+  try {
+    await pc.setRemoteDescription(offer);
+    const answer = await pc.createAnswer();
+    await pc.setLocalDescription(answer);
+    socket.emit("answer", pc.localDescription);
+  } catch (err) {
+    console.log("Error handling offer:", err);
+  }
+});
+
+socket.on("answer", answer => {
+  pc.setRemoteDescription(answer);
+});
+
+pc.onicecandidate = e => {
+  if (e.candidate) {
+    socket.emit("ice-candidate", e.candidate);
+  }
+};
+
+socket.on("ice-candidate", candidate => {
+  pc.addIceCandidate(candidate);
+});
   return () => {
     socket.off("message", handleMessage);
   };
 }, [socket]);
-  
+  useEffect(() => {
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: false });
+    }, 0);
+  }, []);
 useEffect(() => {
-  scrollViewRef.current?.scrollToEnd({ animated: true });
+  scrollViewRef.current?.scrollToEnd({ animated: false });
 }, [chat]);
 
 function sendMessage(){ 
@@ -54,7 +91,8 @@ useEffect(() => {
          <Image style={styles.dp} source={{ uri:`http://192.168.30.197:8000/whatsapp/static/${dp}`}} />
            <View style={{}}>
           <Text style={{ fontSize: 20, color: '#000' }}>{name}</Text>
-          <Text style={{ fontSize: 14, color: '#000' }}>last Seen 04:45 am</Text>
+          <Text style={{ fontSize: 10, color: '#000' }}>last Seen 04:45 am</Text>
+          <Text style={{ fontSize: 8, color: '#000' }}>{reciverSocketId}</Text>
         </View>
        </View>
         <View style={styles.iconWrapper}>
@@ -69,7 +107,11 @@ useEffect(() => {
           </TouchableOpacity>
         </View>
       </View>
-      <ScrollView contentContainerStyle={{minWidth:'100%',padding:10}}  ref={scrollViewRef}> 
+      <ScrollView contentContainerStyle={{minWidth:'100%',padding:10}}  ref={scrollViewRef}
+              onContentSizeChange={() => {
+          scrollViewRef.current?.scrollToEnd({ animated: false });
+        }}
+      > 
            {
             chat?.map((item,index)=>{ return(
              <View  key={index} style={[styles.senderChatWrapper,item.sender?{alignSelf:'flex-end',backgroundColor:'rgb(139, 238, 139)'}:

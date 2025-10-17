@@ -10,7 +10,7 @@ import AppbarComp from './appbar/appbar'
 import Divider from './divider/divider'
 import Btns from './Buttons/btn'
 import Bar from './appbar/bottombar/bar'
-import Card from './card/card'
+import CardHome from './card/home'
 import Chckbox from './checkbox/checkbox'
 import BadgeComp from './badge/badge'
 import FabButton from './Buttons/fab_button'
@@ -29,7 +29,7 @@ import CaroselNew from './banner/carosel/caroselNew'
 
 const HomeA = () => {
   return (
- <>
+ <ScrollView>
         {/* <Accordian/>  */}
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
@@ -38,7 +38,7 @@ const HomeA = () => {
         {/* <AppbarComp/> */}
         {/* <Divider/> */}
         {/* <Btns/> */}
-        {/* <Card/> */}
+        {/* <CardHome/> */}
         {/* <Chckbox/> */}
         {/* <CaroselNew/> */}
         {/* <BannerHome/> */}
@@ -53,10 +53,10 @@ const HomeA = () => {
         {/* <Modal/> */}
         {/* <Menu/> */}
         {/* <Skelton/> */}
-        <Music/>
+        {/* <Music/> */}
         {/* <Bar/> */}
-        {/* <Typography/> */}
- </>
+        <Typography/>
+ </ScrollView>
   )
 }
 

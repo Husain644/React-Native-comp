@@ -1,6 +1,6 @@
 export const  musicData=[
      {
-        url: require('./gun.mp3'),
+        url:'https://www.techtt.site/html/getFile/Assets/songsMp3/zara-zara-hindi_songs.mp3',
         title: 'Gun mp3',
         artist: 'gun mp3',
         album: require('./img.png'),
