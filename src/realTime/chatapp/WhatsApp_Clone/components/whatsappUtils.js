@@ -2,19 +2,34 @@ import { io } from 'socket.io-client';
 import DocumentPicker from 'react-native-document-picker';
 import axios from 'axios';
 import { MMKV } from 'react-native-mmkv';
+import {ServerUrl} from 'react-native-dotenv'
 
 
-export function GetSocket(){
-    const myUserId=getMyUserId()
-    const socket = io(`http://192.168.30.197:8000/whatsapp`,
-        {
-        extraHeaders: {
-        extra: "some-value",
-        myuserid:myUserId,
-        Authorization: "Bearer my-secret-token",
-        "x-client": "react-native"
-        }})
-        return socket
+export function GetSocket(loginId) {
+  console.log(ServerUrl)
+  try {
+      const socket = io(`${ServerUrl}/whatsapp`, {
+    path: "/socket.io",              // must match server
+    transports: ["websocket", "polling"], // both
+    withCredentials: false,
+     query: {
+      myuserid: loginId || "68eb87e0754c8327d11004e0",
+      Authorization: "Bearer my-secret-token",
+    },
+  });
+
+  socket.on("connect", () => {
+    console.log("Connected and socketId: ", socket.id);
+  });
+
+  socket.on("connect_error", (err) => {
+    console.error("Connection Error:", err.message);
+  });
+
+  return socket;
+  } catch (error) {
+    console.log('error is ' , error)
+  }
 }
 
 

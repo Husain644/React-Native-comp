@@ -4,15 +4,16 @@ import Chat from './chatapp/chat'
 import axios from 'axios'
 import WhatsApp_Home from './chatapp/WhatsApp_Clone/home'
 import ToastManager from 'toastify-react-native'
+import FileStream from './filestreaming/filestream'
 
 const RealTimeHome = () => {
   
   return (
     <>
-   <WhatsApp_Home/>
-    <ToastManager />
-      {/* <Chat url={'user'}/>
-      <Chat url={'admin'}/> */}
+   {/* <WhatsApp_Home/> */}
+    {/* <ToastManager /> */}
+    {/* <Chat url={'user'}/> */}
+     <FileStream/>
     </>
   )
 }

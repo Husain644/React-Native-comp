@@ -34,7 +34,7 @@ const HomeA = () => {
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
-        {/* <Activity_Indicatr/> */}
+        <Activity_Indicatr/>
         {/* <AppbarComp/> */}
         {/* <Divider/> */}
         {/* <Btns/> */}
@@ -55,7 +55,7 @@ const HomeA = () => {
         {/* <Skelton/> */}
         {/* <Music/> */}
         {/* <Bar/> */}
-        <Typography/>
+        {/* <Typography/> */}
  </ScrollView>
   )
 }

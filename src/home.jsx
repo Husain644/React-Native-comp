@@ -49,7 +49,7 @@ const Home = () => {
 
   return (
     <>     
-      <HomeA/> 
+      {/* <HomeA/>  */}
       {/* <DrawerHome /> */}
       {/* <MyDrawer/> */}
       {/* <HomeNav /> */}
@@ -65,7 +65,7 @@ const Home = () => {
       {/* <FileManager/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}
-      {/* <RealTimeHome /> */}
+      <RealTimeHome />
       {/* <AuthHome/> */}
       {/* <Home_utility/> */}
       {/* <NotifeeHome/> */}
