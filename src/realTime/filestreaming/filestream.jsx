@@ -207,7 +207,7 @@ useEffect(() => {
       <ScrollView contentContainerStyle={{}}>
         {fileList.map((file, index) => (
         <View key={index} style={{flexDirection:'row',justifyContent:'space-between',width:'95%', borderBottomWidth:1,borderBottomColor:'#ccc',padding:5,marginBottom:5}}>
-            <Text key={index} style={{ fontSize: 14 }}> {file}</Text>
+            <Text key={index} style={{ fontSize: 10,maxWidth:250 }}>{file}</Text>
             <TouchableOpacity onPress={()=>startDownload(file)}  
             style={{flexDirection:'row',alignItems:'center',gap:5}}>
              <Text style={{color:fileNm.name===file?'#F25738':'#00ff',fontWeight:'bold'}}>

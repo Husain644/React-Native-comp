@@ -16,9 +16,7 @@ export default function GoogleMap() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Nav">
-
         <Stack.Screen name='testing' component={TestingMap} options={{headerShown:false}} />
-
          <Stack.Screen  name='Splash' component={MapSplash} options={{headerShown:false}}/>
          <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
          <Stack.Screen name="Map" component={MapHome}  options={{headerShown:false}}/>

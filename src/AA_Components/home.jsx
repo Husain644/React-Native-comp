@@ -26,15 +26,16 @@ import BannerHome from './banner/banner/bannerHome'
 import Music from './media/music/music'
 import Typography from './text/txt'
 import CaroselNew from './banner/carosel/caroselNew'
+import ChartsHome from './charts/home'
 
 const HomeA = () => {
   return (
  <ScrollView>
-        {/* <Accordian/>  */}
+        <Accordian/> 
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
-        <Activity_Indicatr/>
+        {/* <Activity_Indicatr/> */}
         {/* <AppbarComp/> */}
         {/* <Divider/> */}
         {/* <Btns/> */}
@@ -56,6 +57,7 @@ const HomeA = () => {
         {/* <Music/> */}
         {/* <Bar/> */}
         {/* <Typography/> */}
+        {/* <ChartsHome/> */}
  </ScrollView>
   )
 }

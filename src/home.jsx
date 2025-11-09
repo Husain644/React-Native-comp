@@ -65,13 +65,13 @@ const Home = () => {
       {/* <FileManager/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}
-      <RealTimeHome />
+      {/* <RealTimeHome /> */}
       {/* <AuthHome/> */}
       {/* <Home_utility/> */}
       {/* <NotifeeHome/> */}
       {/* <NotifeeNotification/>   */}
       {/* <Home_firebase/> */}
-      {/* <StorageMain/> */}
+      <StorageMain/>
     </>
   )
 }
