@@ -27,11 +27,12 @@ import Music from './media/music/music'
 import Typography from './text/txt'
 import CaroselNew from './banner/carosel/caroselNew'
 import ChartsHome from './charts/home'
+import StatusBarStyling from './others/statusbar'
 
 const HomeA = () => {
   return (
  <ScrollView>
-        <Accordian/> 
+        {/* <Accordian/>  */}
         {/* <Anim/> */}
         {/* <ReanimHome/> */}
         {/* <AutoComp/> */}
@@ -41,7 +42,7 @@ const HomeA = () => {
         {/* <Btns/> */}
         {/* <CardHome/> */}
         {/* <Chckbox/> */}
-        {/* <CaroselNew/> */}
+        <CaroselNew/>
         {/* <BannerHome/> */}
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
@@ -58,6 +59,7 @@ const HomeA = () => {
         {/* <Bar/> */}
         {/* <Typography/> */}
         {/* <ChartsHome/> */}
+        {/* <StatusBarStyling/> */}
  </ScrollView>
   )
 }

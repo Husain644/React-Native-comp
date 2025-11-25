@@ -13,7 +13,7 @@ import {Google_map_api_key} from "react-native-dotenv";
 
 
 const ChooseOnMap = ({route}) => {
-  Geocoder.init("AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us");
+  Geocoder.init(Google_map_api_key);
   const navigation=useNavigation();
   const {lat,lng}=route.params.curLatLong;
   const initialLocation=route.params.curLocName
@@ -37,16 +37,28 @@ const ChooseOnMap = ({route}) => {
   const [rigion, setRigion] = useState(currentLocation);
   const [location,setLocation]=useState({address_components:[{},{long_name:initialLocation.title}],
   formatted_address:initialLocation.desc});
+
   const getRegion = (r) =>{
     setRigion(r);}
   const lastLocation=async(r)=>{
-  console.log(r.latitude,r.longitude)
   const resp=await Geocoder.from(r.latitude,r.longitude);
   setLocation(resp.results[1])
   } 
   const addrToPicDrop=()=>{
-    pick?navigation.navigate("PickDrop",{pickLatLong:rigion,addr:location}):
-    navigation.navigate("Routes",{rigion:rigion,addr:location})
+    const Loc={
+    dropLocation: { lat:rigion.latitude, lng:rigion.longitude},
+    pickLocation: { lat: 26.8557289, lng: 75.6451589 },}
+    const picDropAddr= {
+    drop: "Rewari ",
+    pick: "VJ4W+73 Sarangpura, Rajasthan, India",
+    pickDesc: "Sarangpura",
+    dropDesc:"drop description"
+  }
+    console.log()
+    // pick?navigation.navigate("PickDrop",{pickLatLong:rigion,addr:location}):
+    navigation.navigate('Routes',{picDropAddr,Loc});
+    // navigation.navigate("Routes",{rigion:rigion,addr:location})
+
   }
   return (
     <View style={{ flex: 1}}>

@@ -11,11 +11,11 @@ const ProjectHome = () => {
   return (
     <>
       {/* <ExpHome/> */}  
-      <Rapido/>
+      {/* <Rapido/> */}
       {/* <RapidoByRitik/> */}
       {/* <App_fresh/> */}
       {/* <HomeLkg/> */}
-      {/* <CncHome/> */}
+      <CncHome/>
     </>
   )
 }

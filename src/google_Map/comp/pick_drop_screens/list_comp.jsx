@@ -7,7 +7,7 @@ const ListComp = ({item,getLatLong}) => {
     <View style={{ backgroundColor: "#fff", paddingVertical: 2 }}>
                  <TouchableOpacity
                    onPress={() => {
-                     getLatLong(item.place_id,item.structured_formatting.main_text);
+                     getLatLong(item.place_id,item.description);
                    }}
                    style={{
                      flexDirection: "row",

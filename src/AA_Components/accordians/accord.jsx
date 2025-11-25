@@ -10,6 +10,7 @@ const Accordian = () => {
     
   return (
     <>
+    <Text>accordian by react native paper</Text>
     <List.Section title="Paper Accordions" style={{borderWidth:1,backgroundColor:'#ffc',marginBottom:20}}>
       <List.Accordion
         title="Uncontrolled Accordion"
@@ -27,6 +28,7 @@ const Accordian = () => {
         <List.Item title="Second item" />
       </List.Accordion>
     </List.Section>
+    <Text>custom accordian</Text>
      <Myaccord />
      <Accord3/>
     </>

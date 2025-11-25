@@ -1,10 +1,12 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import BasicCarosel from './rn_animated_carosel/basic'
+
 
 const CaroselNew = () => {
   return (
     <View>
-      <Text>CaroselNew</Text>
+      <BasicCarosel/>
     </View>
   )
 }

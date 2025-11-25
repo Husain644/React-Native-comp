@@ -9,6 +9,7 @@ import MapSplash from './comp/mapsplash';
 import ChooseOnMap from './comp/pick_drop_screens/choose_on_map';
 import LocationTracker from './comp/real_time_location/realtime';
 import PlaceAutoComplete from './comp/autoComplete/place_auto_complete';
+import StartRide from './comp/routes/start_ride';
 import TestingMap from './comp/utility/testingMap';
 
 const Stack = createNativeStackNavigator();
@@ -23,6 +24,7 @@ export default function GoogleMap() {
          <Stack.Screen name="PickDrop" component={PickDrop} options={{headerShown:false,title:'pick and drop'}}/>
          <Stack.Screen name="Routes" component={Routes} options={{headerShown:false,title:'Routes'}}/> 
          <Stack.Screen name="ChooseOnMap" component={ChooseOnMap} options={{headerShown:false,title:'Routes'}}/>
+         <Stack.Screen name="StartRide" component={StartRide} options={{headerShown:false}} />
          <Stack.Screen name="RealTime" component={LocationTracker} options={{headerShown:true,title:'Real Time Location'}}/>
          <Stack.Screen name="Place" component={PlaceAutoComplete} options={{headerShown:true,title:'search place type'}}/>
       </Stack.Navigator>
@@ -32,7 +34,7 @@ export default function GoogleMap() {
 
 const data=[
   {name:"map home",screen:"Map"},
-  {name:'getting distance between two Location',screen:'PickDrop'},
+  {name:'getting route and distance between two Location',screen:'PickDrop'},
   {name:'get realTime location',screen:'RealTime'},
   {name:'get Near by data like hospitals,bank etc',screen:'Place'},
   {name:'Real Time Location sharing',screen:'Nav'}
@@ -47,7 +49,7 @@ const Nav=({navigation})=>{
        {
         data.map((item,index)=>{return(
           <TouchableOpacity key={index}  style={styles.links}  onPress={()=>navigation.navigate(item.screen)}>
-          <Text style={styles.linkText}>{index+1}. {item.name} </Text>
+          <Text style={styles.linkText}>{index+1}.{item.name} </Text>
        </TouchableOpacity>
         )})}
       </View>
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   },
   linkText:{
     color:'#101110',
-    fontSize:16,
+    fontSize:15,
     fontWeight:'600',
     borderBottomWidth:2,
     borderBottomColor:'#0000ff',

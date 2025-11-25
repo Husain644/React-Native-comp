@@ -7,7 +7,7 @@ import FantIcon from 'react-native-vector-icons/Fontisto';
 import MapViewDirections from 'react-native-maps-directions';
 import Geolocation from '@react-native-community/geolocation';
 import {Google_map_api_key} from "react-native-dotenv"
-import Header from './comp/header';
+
 
 
 const MapHome = () => {
@@ -55,7 +55,7 @@ const MapHome = () => {
   }
   return (
     <View style={{ flex: 1 }}>
-     <Header/>
+ 
       <MapView style={{ flex: 1, zIndex: 0 }}
         initialRegion={rigion}
         onRegionChange={getRegion}

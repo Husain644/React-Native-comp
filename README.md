@@ -1,5 +1,5 @@
 how to start React native app-[
-npx @react-native-community/cli projectName
+ npx @react-native-community/cli init projectName  --version 0.74.2
 ]
 
 React native Top Library 

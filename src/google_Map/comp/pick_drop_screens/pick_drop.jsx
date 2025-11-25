@@ -5,9 +5,10 @@ import axios from 'axios'
 import Geolocation from '@react-native-community/geolocation';
 import Geocoder from 'react-native-geocoding';
 import { useNavigation } from '@react-navigation/native';
+import { Google_map_api_key } from "react-native-dotenv"
 import ListComp from './list_comp';
 
-const AutoComplete = ({route}) => {
+const PickDropComp = ({route}) => {
   const pickFromMap={
     title:route.params?.addr.formatted_address,
     desc:route.params?.addr.address_components[1].long_name,
@@ -16,21 +17,22 @@ const AutoComplete = ({route}) => {
   }
 
   const navigation = useNavigation();
-  Geocoder.init("AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us");
-  const [predictions, setPredictions] = useState([]);
-  const [predictions2, setPredictions2] = useState([]);
-  const [pick, setPick]= useState(true);
-  const [picDropAddr, setPicDropAddr]= useState({pick:'',pickDesc:'', drop:'',dropDesc:''});
+  Geocoder.init(Google_map_api_key);
+  const [predictions, setPredictions] = useState([]);  //pickup location predictions
+  const [predictions2, setPredictions2] = useState([]); // drop location predictions
+  const [pick, setPick]= useState(true);                 // true for pick location , false for drop location selection
+  const [picDropAddr, setPicDropAddr]= useState({pick:'',pickDesc:'', drop:'',dropDesc:''});  
   const [locations,setLocations]=useState({pickLocation:{lat:0,lng:0},dropLocation:{lat:0,lng:0}});
   const [currentLocation,setCurrentLocation]=useState(null);
 
   const getData = async () => {
+      console.log('call predection and place id')
       const options={
       input:pick?picDropAddr.pick:picDropAddr.drop,
       type:'geocode',
       location: { lat: 29.4727, lng: 77.7085 },
       radius: 5000,
-      key:'AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us',
+      key:Google_map_api_key,
       token:'abcd1234-5678-90ab-cdef-1234567890ab'
      }
   const url=`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${options.input}&key=${options.key}&types=${options.type}&components=country:in&
@@ -44,17 +46,19 @@ const AutoComplete = ({route}) => {
       }
 
 const getLatLong = async (placeId,placeName) => {
-        pick?setPicDropAddr({...picDropAddr, pick:placeName}):setPicDropAddr({...picDropAddr, drop:placeName})
-        const res = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=geometry&key=AIzaSyC_s-1cRcgLN2mvsN2GDCNUs86t-SXv4us`);
+    console.log('call for lat long')
+        pick?setPicDropAddr({...picDropAddr, pick:placeName}):setPicDropAddr({...picDropAddr, drop:placeName}) 
+        const res = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${placeId}&fields=geometry&key=${Google_map_api_key}`);
         const response= await res.json(); 
         const Loc=pick?{...locations,pickLocation:response.result.geometry.location}:
         {...locations,dropLocation:response.result.geometry.location}
         setLocations(Loc);
         if(Loc.pickLocation.lat!==0 & Loc.dropLocation.lng!==0){
-             navigation.navigate('Routes',Loc);
+             navigation.navigate('Routes',{picDropAddr,Loc});
           }};
 
 useEffect(() =>{getData()},[picDropAddr]);
+
 useEffect(
   ()=>{if(route!==undefined){
   setPicDropAddr({
@@ -127,7 +131,7 @@ return (
     </View>
   );
 }
-export default AutoComplete;
+export default PickDropComp;
 
 const styles = StyleSheet.create({
   container: {
