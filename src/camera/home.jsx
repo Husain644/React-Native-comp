@@ -12,10 +12,10 @@ import QrcodeHome from './qrcode/qrcode';
 
 const Stack = createNativeStackNavigator()
 
-export default function HomeCamera() {
+export default function HomeCamera({ navigation = 'Nav' }) {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Nav">
+    <NavigationContainer independent={true}>
+      <Stack.Navigator initialRouteName={navigation}>
         <Stack.Screen name="Nav" component={Nav}  options={{headerShown:false}}/>
         <Stack.Screen name="Camera" component={CameraHome}  options={{headerShown:false}}/>
         <Stack.Screen name="Photo" component={ShowImage}  options={{headerShown:true}}/>
