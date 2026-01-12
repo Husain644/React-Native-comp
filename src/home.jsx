@@ -32,20 +32,7 @@ import VideoDownloader from './downloder/videos_downloder/downloder'
 
 const Home = () => {
     useEffect(() => {
-  //   // KeepAwake.activate();
-  //   // Lock the app to portrait on mount
     Orientation.lockToPortrait();
-  //   // Orientation.lockToLandscape()
-  //   const orientationChangeListener = Orientation.addOrientationListener((orientation) => {
-  //     // console.log("Current Orientation:", orientation); // "PORTRAIT", "LANDSCAPE-LEFT", etc.
-  //   });
-  //   return () => {
-  //     Orientation.unlockAllOrientations(); // unlock all on unmount
-  //     Orientation.removeOrientationListener(orientationChangeListener);
-      
-  //   // Optional: deactivate on unmount
-  //     // KeepAwake.deactivate();
-  //   };
   }, []);
 
   return (
@@ -62,7 +49,7 @@ const Home = () => {
       {/* <Redux_app/>  */}
       {/* <Share_It/> */}
       {/* <GoogleMap/>      */}
-      {/* <AutoComplete/>  */}
+      {/* <AutoComplete/>    */}
       {/* <FileManager/> */}
       {/* <ContactsHome/> */}
       {/* <ProjectHome/> */}

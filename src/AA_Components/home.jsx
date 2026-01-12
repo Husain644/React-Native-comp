@@ -28,6 +28,7 @@ import Typography from './text/txt'
 import CaroselNew from './banner/carosel/caroselNew'
 import ChartsHome from './charts/home'
 import StatusBarStyling from './others/statusbar'
+import SplashScreen from './splash_screen/splash'
 
 const HomeA = () => {
   return (
@@ -42,7 +43,7 @@ const HomeA = () => {
         {/* <Btns/> */}
         {/* <CardHome/> */}
         {/* <Chckbox/> */}
-        <CaroselNew/>
+        {/* <CaroselNew/> */}
         {/* <BannerHome/> */}
         {/* <BadgeComp/> */}
         {/* <FabButton/> */}
@@ -60,6 +61,7 @@ const HomeA = () => {
         {/* <Typography/> */}
         {/* <ChartsHome/> */}
         {/* <StatusBarStyling/> */}
+        <SplashScreen/>
  </ScrollView>
   )
 }

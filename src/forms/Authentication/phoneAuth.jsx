@@ -24,7 +24,7 @@ const AuthScreen = () => {
       return;
     }
     try {
-      const confirmation = await signInWithPhoneNumber(auth, phone);
+      const confirmation = await signInWithPhoneNumber(auth, `+91${phone}`);
       setConfirm(confirmation);
       Alert.alert("OTP Sent", "Please check your SMS for OTP.");
     } catch (err) {
